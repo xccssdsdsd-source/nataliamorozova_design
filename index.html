@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Natalia Morozova — projektowanie wnętrz, Warszawa</title>
+<meta name="description" content="Projektuję wnętrza w Warszawie i zdalnie na całym świecie. Pełna dokumentacja wykonawcza, wizualizacje 3D, nadzór autorski. Bezpłatna konsultacja 30 minut.">
+<link rel="canonical" href="https://nataliamorozova.design/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Natalia Morozova">
+<meta property="og:title" content="Natalia Morozova — projektowanie wnętrz, Warszawa">
+<meta property="og:description" content="Projektuję wnętrza w Warszawie i zdalnie na całym świecie. Pełna dokumentacja wykonawcza, wizualizacje 3D, nadzór autorski.">
+<meta property="og:image" content="assets/hero-45m2-kitchen-bar.webp">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6F2ED">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@400;500&display=swap&subset=latin,latin-ext,cyrillic,cyrillic-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@400;500&display=swap&subset=latin,latin-ext,cyrillic,cyrillic-ext">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://nataliamorozova.design/#natalia",
+      "name": "Natalia Morozova",
+      "jobTitle": "Projektantka wnętrz",
+      "image": "https://nataliamorozova.design/assets/about-portrait.webp",
+      "knowsLanguage": ["pl", "ru", "en"],
+      "sameAs": ["https://www.instagram.com/nataliamorozova_design/"],
+      "worksFor": { "@id": "https://nataliamorozova.design/#studio" }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://nataliamorozova.design/#studio",
+      "name": "Natalia Morozova — projektowanie wnętrz",
+      "url": "https://nataliamorozova.design/",
+      "image": "https://nataliamorozova.design/assets/hero-45m2-kitchen-bar.webp",
+      "description": "Projektowanie wnętrz mieszkalnych w Warszawie i zdalnie. Układ funkcjonalny, wizualizacje 3D, dokumentacja wykonawcza, nadzór autorski.",
+      "founder": { "@id": "https://nataliamorozova.design/#natalia" },
+      "knowsLanguage": ["pl", "ru", "en"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Warszawa",
+        "addressCountry": "PL"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Warszawa" },
+        { "@type": "Place", "name": "Online, worldwide" }
+      ],
+      "availableLanguage": ["Polish", "Russian", "English"]
+    }
+  ]
+}
+</script>
+
+<style>
+:root{
+  --ink:       #1C1A18;
+  --wine:      #6B1F2E;
+  --wine-soft: #8E3446;
+  --cream:     #F6F2ED;
+  --greige:    #E4DCD3;
+  --oak:       #B98B5E;
+  --white:     #FFFFFF;
+
+  --line:      rgba(107,31,46,.20);
+  --line-soft: rgba(107,31,46,.12);
+  --ghost:     rgba(107,31,46,.15);
+
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body:    "Inter", "Segoe UI", Helvetica, sans-serif;
+
+  --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 40px;
+  --s5: 64px; --s6: 96px; --s7: 128px;
+
+  --gutter: 20px;
+  --gap: 24px;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.65;
+  font-weight:400;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto;}
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:300;
+  line-height:1.06;
+  letter-spacing:-0.015em;
+  margin:0;
+  text-wrap:balance;
+}
+p{margin:0;max-width:62ch;}
+a{color:inherit;}
+button{font:inherit;color:inherit;}
+
+:focus-visible{
+  outline:2px solid var(--wine);
+  outline-offset:3px;
+}
+.on-wine :focus-visible{outline-color:var(--cream);}
+
+.wrap{
+  width:100%;
+  max-width:1560px;
+  margin:0 auto;
+  padding-inline:var(--gutter);
+}
+section{position:relative;}
+.bg-cream{background:var(--cream);}
+.bg-greige{background:var(--greige);}
+.bg-wine{background:var(--wine);color:var(--cream);}
+.bg-ink{background:var(--ink);color:var(--cream);}
+
+.pad{padding-block:var(--s6);}
+
+.eyebrow{
+  font-family:var(--font-body);
+  font-size:11px;
+  line-height:1.5;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--wine);
+  margin:0;
+  max-width:none;
+}
+.on-wine .eyebrow,.bg-ink .eyebrow{color:var(--oak);}
+
+.rule{height:1px;background:var(--line);border:0;margin:0;}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:var(--s2);
+  padding:14px var(--gutter);
+  transition:background-color .35s var(--ease), box-shadow .35s var(--ease);
+}
+.nav.is-stuck{
+  background:rgba(246,242,237,.82);
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line-soft);
+}
+.wordmark{
+  font-family:var(--font-display);
+  font-size:clamp(1.05rem,2.2vw,1.4rem);
+  letter-spacing:.01em;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.nav-right{display:flex;align-items:center;gap:var(--s3);}
+
+.langsw{display:flex;align-items:center;gap:2px;}
+.langsw button{
+  background:none;border:0;cursor:pointer;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  padding:6px 7px;
+  border-bottom:1px solid transparent;
+  transition:border-color .25s var(--ease), opacity .25s var(--ease);
+  opacity:.55;
+}
+.langsw button:hover{opacity:1;}
+.langsw button[aria-current="true"]{
+  opacity:1;color:var(--wine);border-bottom-color:var(--wine);
+}
+.menu-btn{
+  background:none;border:0;cursor:pointer;padding:6px 0;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  border-bottom:1px solid var(--line);
+  transition:border-color .25s var(--ease);
+}
+.menu-btn:hover{border-bottom-color:var(--wine);}
+
+.overlay{
+  position:fixed;inset:0;z-index:70;
+  background:var(--cream);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:var(--s5) var(--gutter);
+  opacity:0;visibility:hidden;
+  transition:opacity .4s var(--ease),visibility .4s;
+}
+.overlay[data-open="true"]{opacity:1;visibility:visible;}
+.overlay-close{
+  position:absolute;top:14px;right:var(--gutter);
+  background:none;border:0;cursor:pointer;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  border-bottom:1px solid var(--line);padding:6px 0;
+}
+.overlay nav{display:flex;flex-direction:column;gap:2px;max-width:1560px;margin:0 auto;width:100%;}
+.overlay nav a{
+  display:flex;align-items:baseline;gap:var(--s3);
+  text-decoration:none;
+  font-family:var(--font-display);
+  font-size:clamp(2rem,7vw,4.4rem);
+  line-height:1.2;
+  padding-block:6px;
+  border-bottom:1px solid var(--line-soft);
+  transition:color .3s var(--ease),padding-left .35s var(--ease);
+}
+.overlay nav a:hover{color:var(--wine);padding-left:12px;}
+.overlay nav a span{
+  font-family:var(--font-body);font-size:11px;letter-spacing:.18em;
+  color:var(--wine);opacity:.6;
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-block;
+  font-family:var(--font-body);
+  font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+  padding:.95em 1.7em;
+  background:var(--wine);color:var(--cream);
+  border:1px solid var(--wine);
+  text-decoration:none;cursor:pointer;
+  text-align:center;
+  transition:transform .18s var(--ease),background-color .25s var(--ease),box-shadow .25s var(--ease);
+}
+.btn:hover{
+  background:var(--wine-soft);border-color:var(--wine-soft);
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(107,31,46,.22);
+}
+.btn-ghost{
+  background:transparent;color:var(--wine);border-color:var(--line);
+}
+.btn-ghost:hover{background:var(--wine);color:var(--cream);border-color:var(--wine);}
+.btn-cream{background:var(--cream);color:var(--wine);border-color:var(--cream);}
+.btn-cream:hover{background:var(--white);border-color:var(--white);color:var(--wine);box-shadow:0 10px 24px rgba(0,0,0,.18);}
+.link-u{
+  display:inline-block;
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  padding-bottom:3px;
+  font-size:15px;
+  transition:border-color .25s var(--ease),color .25s var(--ease);
+}
+.link-u:hover{border-bottom-color:var(--wine);color:var(--wine);}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;
+  background:var(--cream);
+}
+.hero-media{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/5;
+  max-height:42svh;
+  overflow:hidden;
+  flex:0 0 auto;
+}
+.hero-media img{width:100%;height:100%;object-fit:cover;}
+.hero-body{
+  flex:1 1 auto;
+  display:flex;flex-direction:column;justify-content:center;
+  gap:var(--s2);
+  padding:var(--s4) var(--gutter) var(--s3);
+}
+.hero h1{
+  font-size:clamp(2.1rem,8.6vw,6.5rem);
+  margin-block:2px 4px;
+}
+.hero-sub{font-size:16px;}
+.hero-pos{font-size:15px;color:var(--wine);}
+.hero-actions{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s2);margin-top:4px;}
+.hero-actions .btn{width:100%;}
+.hero-micro{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  line-height:1.7;opacity:.62;max-width:46ch;
+}
+
+/* ---------- trust ---------- */
+.trust{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line-soft);
+}
+.trust div{
+  padding:var(--s3) var(--s2);
+  border-bottom:1px solid var(--line-soft);
+  border-right:1px solid var(--line-soft);
+  font-family:var(--font-display);
+  font-size:clamp(1.15rem,4vw,1.7rem);
+  line-height:1.25;
+  text-align:center;
+}
+.trust div:nth-child(2n){border-right:0;}
+
+/* ---------- problem ---------- */
+.problem-head{max-width:20ch;font-size:clamp(2rem,5.4vw,4.2rem);}
+.cols3{
+  display:grid;grid-template-columns:1fr;gap:var(--s4);
+  margin-top:var(--s5);
+}
+.col h3{
+  font-size:clamp(1.35rem,3.4vw,1.9rem);
+  margin-bottom:var(--s2);
+  padding-top:var(--s2);
+  border-top:1px solid var(--line);
+}
+.col p{font-size:16px;}
+.closer{
+  margin-top:var(--s6);
+  font-family:var(--font-display);
+  font-size:clamp(1.6rem,4.4vw,3.2rem);
+  line-height:1.18;
+  color:var(--wine);
+  max-width:22ch;
+}
+
+/* ---------- process ---------- */
+.proc-head{max-width:16ch;font-size:clamp(2rem,5.4vw,4.2rem);}
+.proc-sub{margin-top:var(--s3);font-size:16px;}
+.proc-list{margin-top:var(--s5);display:flex;flex-direction:column;}
+.step{
+  position:relative;
+  padding:var(--s4) 0 var(--s4) 0;
+  border-top:1px solid var(--line);
+  overflow:hidden;
+}
+.step:last-child{border-bottom:1px solid var(--line);}
+.step-num{
+  position:absolute;right:-.06em;top:8px;
+  font-family:var(--font-display);
+  font-size:clamp(5rem,20vw,11rem);
+  line-height:.8;
+  color:var(--ghost);
+  pointer-events:none;user-select:none;z-index:0;
+}
+.step > *{position:relative;z-index:1;}
+.step h3{font-size:clamp(1.5rem,4.4vw,2.4rem);margin-bottom:var(--s1);}
+.step .meta{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--wine);margin-bottom:var(--s2);
+}
+.step p{font-size:16px;}
+.step .deliver{
+  margin-top:var(--s2);padding-top:var(--s2);
+  border-top:1px solid var(--line-soft);
+  font-size:15px;color:var(--wine);
+}
+.step.is-active .step-num{color:rgba(107,31,46,.26);}
+.proc-cta{margin-top:var(--s5);}
+
+/* ---------- portfolio ---------- */
+.pf-note{margin-top:var(--s2);font-size:14px;opacity:.7;}
+.pf-grid{
+  margin-top:var(--s5);
+  display:grid;
+  grid-template-columns:1fr;
+  gap:var(--gap);
+  align-items:start;
+}
+.pf-grid.masonry{grid-auto-rows:8px;}
+.pf-item{
+  margin:0;padding:0;
+  display:block;width:100%;
+  background:none;border:0;cursor:pointer;
+  text-align:left;
+  overflow:hidden;
+}
+.pf-shot{overflow:hidden;position:relative;background:var(--greige);}
+.pf-shot img{
+  width:100%;height:auto;
+  transition:transform .6s var(--ease);
+  will-change:transform;
+}
+.pf-item:hover .pf-shot img,
+.pf-item:focus-visible .pf-shot img{transform:scale(1.03);}
+.pf-cap{
+  overflow:hidden;
+  padding-top:10px;
+}
+.pf-cap span{
+  display:block;
+  font-size:13px;line-height:1.5;
+  transform:translateY(110%);
+  opacity:0;
+  transition:transform .5s var(--ease),opacity .4s var(--ease);
+}
+.pf-item:hover .pf-cap span,
+.pf-item:focus-visible .pf-cap span{transform:translateY(0);opacity:1;}
+.pf-item:first-child .pf-cap span{transform:none;opacity:1;}
+
+/* ---------- lightbox ---------- */
+.lb{
+  position:fixed;inset:0;z-index:90;
+  background:rgba(28,26,24,.94);
+  display:flex;align-items:center;justify-content:center;
+  padding:var(--s4) var(--gutter);
+  opacity:0;visibility:hidden;
+  transition:opacity .3s var(--ease),visibility .3s;
+}
+.lb[data-open="true"]{opacity:1;visibility:visible;}
+.lb-inner{
+  max-width:1100px;width:100%;
+  max-height:100%;
+  display:flex;flex-direction:column;gap:var(--s3);
+  color:var(--cream);
+}
+.lb-inner img{
+  width:auto;max-width:100%;max-height:64svh;margin:0 auto;
+  object-fit:contain;
+}
+.lb-text h3{font-size:clamp(1.3rem,3.2vw,2rem);margin-bottom:var(--s1);}
+.lb-text p{font-size:15px;opacity:.85;}
+.lb-close{
+  position:absolute;top:16px;right:var(--gutter);
+  background:none;border:0;color:var(--cream);cursor:pointer;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  border-bottom:1px solid rgba(246,242,237,.35);padding:6px 0;
+}
+.lb-close:focus-visible{outline-color:var(--cream);}
+
+/* ---------- services ---------- */
+.svc-head{font-size:clamp(2rem,5.4vw,4.2rem);}
+.svc-grid{
+  margin-top:var(--s5);
+  display:grid;grid-template-columns:1fr;gap:var(--gap);
+}
+.svc{
+  background:var(--cream);
+  border:1px solid var(--line-soft);
+  padding:var(--s4) var(--s3) var(--s3);
+  position:relative;
+  display:flex;flex-direction:column;gap:var(--s2);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+}
+.svc:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(107,31,46,.10);}
+.svc.is-featured{border:1px solid var(--wine);}
+.svc-badge{
+  position:absolute;top:-1px;left:-1px;
+  background:var(--wine);color:var(--cream);
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  padding:7px 12px;
+}
+.svc h3{font-size:clamp(1.5rem,4vw,2.1rem);}
+.svc .who{font-size:15px;color:var(--wine);}
+.svc .inc{font-size:16px;}
+.svc .price{
+  margin-top:auto;padding-top:var(--s3);
+  border-top:1px solid var(--line-soft);
+  font-family:var(--font-display);font-size:1.4rem;
+}
+.svc-note{margin-top:var(--s4);font-size:15px;}
+
+/* ---------- reviews ---------- */
+.rev-grid{
+  margin-top:var(--s5);
+  display:grid;grid-template-columns:1fr;gap:var(--gap);
+}
+.rev{
+  position:relative;
+  padding:var(--s4) 0 0;
+  border-top:1px solid var(--line);
+}
+.rev::before{
+  content:"“";
+  position:absolute;top:-.24em;left:-.02em;
+  font-family:var(--font-display);
+  font-size:9rem;line-height:1;
+  color:var(--ghost);pointer-events:none;
+}
+.rev p{position:relative;font-size:16px;}
+.rev .src{margin-top:var(--s2);font-size:13px;opacity:.65;}
+.rev-source{margin-top:var(--s4);font-size:13px;opacity:.65;}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1fr;gap:var(--s4);}
+.about-portrait img{width:100%;}
+.about-text{display:flex;flex-direction:column;gap:var(--s3);}
+.about-text h2{font-size:clamp(2.2rem,6.4vw,4rem);}
+.about-text p{font-size:16px;}
+.about-fair{
+  margin-top:var(--s4);
+  display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);
+  align-items:start;
+}
+.about-faircap{
+  grid-column:1 / -1;
+  font-size:13px;opacity:.72;padding-top:var(--s1);
+  border-top:1px solid var(--line-soft);
+}
+.about-ig{margin-top:var(--s3);}
+
+/* ---------- faq ---------- */
+.faq-head{font-size:clamp(2rem,5.4vw,4.2rem);}
+.faq{margin-top:var(--s5);border-top:1px solid var(--line);}
+.faq details{border-bottom:1px solid var(--line);}
+.faq summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:baseline;justify-content:space-between;gap:var(--s3);
+  padding:var(--s3) 0;
+  font-family:var(--font-display);
+  font-size:clamp(1.3rem,3.6vw,1.9rem);
+  line-height:1.25;
+  transition:color .25s var(--ease);
+}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary:hover{color:var(--wine);}
+.faq summary .plus{
+  flex:0 0 auto;width:14px;height:14px;position:relative;translate:0 -2px;
+}
+.faq summary .plus::before,.faq summary .plus::after{
+  content:"";position:absolute;background:var(--wine);
+  transition:transform .3s var(--ease),opacity .3s var(--ease);
+}
+.faq summary .plus::before{inset:6px 0 auto 0;height:1px;}
+.faq summary .plus::after{inset:0 auto 0 6px;width:1px;}
+.faq details[open] summary .plus::after{transform:scaleY(0);opacity:0;}
+.faq .ans{padding:0 0 var(--s3);}
+.faq .ans p{font-size:16px;}
+
+/* ---------- cta / form ---------- */
+.cta-head{font-size:clamp(2.2rem,6.4vw,4.6rem);max-width:16ch;}
+.cta-sub{margin-top:var(--s3);font-size:16px;color:rgba(246,242,237,.86);}
+.form{margin-top:var(--s5);max-width:640px;display:flex;flex-direction:column;gap:var(--s4);}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(246,242,237,.72);
+}
+.field input,.field select,.field textarea{
+  font-family:var(--font-body);font-size:16px;
+  color:var(--cream);
+  background:transparent;
+  border:0;border-bottom:1px solid rgba(246,242,237,.34);
+  padding:10px 0;
+  border-radius:0;
+  transition:border-color .25s var(--ease);
+}
+.field textarea{resize:vertical;min-height:88px;}
+.field select{appearance:none;-webkit-appearance:none;}
+.field select option{color:var(--ink);background:var(--cream);}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-bottom-color:var(--cream);
+}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{
+  outline:2px solid var(--cream);outline-offset:4px;
+}
+.field .err{font-size:13px;color:#F2C9C9;min-height:0;display:none;}
+.field.has-err .err{display:block;}
+.field.has-err input,.field.has-err select{border-bottom-color:#F2C9C9;}
+.consent{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:14px;line-height:1.55;color:rgba(246,242,237,.86);
+}
+.consent input{
+  flex:0 0 auto;width:18px;height:18px;margin-top:3px;
+  accent-color:var(--cream);
+}
+.consent.has-err{color:#F2C9C9;}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.form-note{font-size:13px;color:rgba(246,242,237,.7);line-height:1.6;}
+.form-note a{color:inherit;}
+.form-success{
+  display:none;
+  padding:var(--s4) 0;
+  font-family:var(--font-display);
+  font-size:clamp(1.5rem,4vw,2.4rem);
+  line-height:1.2;
+}
+.form-success[data-on="true"]{display:block;}
+.channels{margin-top:var(--s4);font-size:14px;color:rgba(246,242,237,.8);}
+
+/* ---------- footer ---------- */
+.foot{padding-block:var(--s5) var(--s4);}
+.foot-mark{font-family:var(--font-display);font-size:clamp(1.8rem,6vw,3rem);}
+.foot-rule{height:1px;background:rgba(185,139,94,.4);margin-block:var(--s3);}
+.foot-cols{display:grid;grid-template-columns:1fr;gap:var(--s3);}
+.foot-cols nav{display:flex;flex-direction:column;gap:8px;}
+.foot a{
+  text-decoration:none;font-size:14px;
+  border-bottom:1px solid transparent;
+  align-self:flex-start;
+  transition:border-color .25s var(--ease);
+}
+.foot a:hover{border-bottom-color:var(--oak);}
+.foot small{display:block;font-size:12px;opacity:.6;line-height:1.7;}
+.foot .foot-legal{margin-top:var(--s4);display:flex;flex-direction:column;gap:8px;}
+
+/* ---------- sticky mobile cta ---------- */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:55;
+  padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+  background:rgba(246,242,237,.94);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-top:1px solid var(--line-soft);
+  transform:translateY(110%);
+  transition:transform .4s var(--ease);
+}
+.sticky-cta[data-on="true"]{transform:translateY(0);}
+.sticky-cta .btn{width:100%;}
+
+/* ---------- reveal ---------- */
+[data-reveal]{opacity:0;transform:translateY(24px);}
+[data-reveal].is-in{
+  opacity:1;transform:none;
+  transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+
+/* ---------- breakpoints ---------- */
+@media (min-width:768px){
+  :root{--gutter:6vw;}
+  body{font-size:18px;}
+  .pad{padding-block:var(--s7);}
+  .trust{grid-template-columns:repeat(4,1fr);}
+  .trust div:nth-child(2n){border-right:1px solid var(--line-soft);}
+  .trust div:last-child{border-right:0;}
+  .cols3{grid-template-columns:repeat(3,1fr);gap:var(--s4);}
+  .pf-grid{grid-template-columns:repeat(2,1fr);}
+  .pf-grid .pf-item:first-child{grid-column:span 2;}
+  .svc-grid{grid-template-columns:repeat(3,1fr);}
+  .rev-grid{grid-template-columns:repeat(3,1fr);}
+  .about-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s5);align-items:start;}
+  .about-fair{grid-template-columns:1fr 1fr;}
+  .foot-cols{grid-template-columns:2fr 1fr 1fr;}
+  .sticky-cta{display:none;}
+  .hero{flex-direction:row;}
+  .hero-media{
+    width:55%;aspect-ratio:auto;max-height:none;height:100svh;
+    position:sticky;top:0;
+  }
+  .hero-body{
+    width:45%;
+    padding:calc(var(--s7)) 6vw var(--s5);
+    gap:var(--s3);
+    justify-content:center;
+  }
+  .hero h1{font-size:clamp(2.6rem,4.4vw,5rem);}
+  .hero-actions{flex-direction:row;align-items:center;flex-wrap:wrap;gap:var(--s3);}
+  .hero-actions .btn{width:auto;}
+  .step{padding-left:0;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s4);}
+  .step-num{right:auto;left:0;top:var(--s4);font-size:clamp(4rem,7vw,8rem);}
+  .step-head{padding-left:0;position:relative;}
+  .step-body{position:relative;}
+  .closer{margin-top:var(--s7);}
+}
+
+@media (min-width:1280px){
+  .pf-grid{grid-template-columns:repeat(3,1fr);}
+  .pf-grid .pf-item:first-child{grid-column:span 2;}
+  .hero h1{font-size:clamp(3.2rem,4vw,6.5rem);}
+  .problem-head,.proc-head{font-size:clamp(3rem,4.4vw,4.6rem);}
+  .step{grid-template-columns:minmax(0,4fr) minmax(0,7fr);}
+  .lb-inner{flex-direction:row;align-items:flex-end;gap:var(--s4);}
+  .lb-inner img{max-height:78svh;margin:0;}
+  .lb-text{flex:0 0 300px;padding-bottom:var(--s2);}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{animation:none !important;transition-duration:.01ms !important;}
+  [data-reveal]{opacity:1;transform:none;}
+  .pf-cap span{transform:none;opacity:1;}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="wordmark" href="#top">Natalia Morozova</a>
+  <div class="nav-right">
+    <div class="langsw" role="group" aria-label="Language" id="langsw">
+      <button type="button" data-lang="pl" aria-current="true">PL</button>
+      <button type="button" data-lang="ru" aria-current="false">RU</button>
+      <button type="button" data-lang="en" aria-current="false">EN</button>
+    </div>
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuOverlay" data-i18n="nav.menu">Menu</button>
+  </div>
+</header>
+
+<div class="overlay" id="menuOverlay" data-open="false" role="dialog" aria-modal="true" aria-label="Menu">
+  <button type="button" class="overlay-close" id="menuClose" data-i18n="nav.close">Zamknij</button>
+  <nav>
+    <a href="#proces"><span>01</span><em style="font-style:normal" data-i18n="menu.process">Współpraca</em></a>
+    <a href="#portfolio"><span>02</span><em style="font-style:normal" data-i18n="menu.portfolio">Portfolio</em></a>
+    <a href="#uslugi"><span>03</span><em style="font-style:normal" data-i18n="menu.services">Zakres</em></a>
+    <a href="#o-mnie"><span>04</span><em style="font-style:normal" data-i18n="menu.about">O mnie</em></a>
+    <a href="#faq"><span>05</span><em style="font-style:normal" data-i18n="menu.faq">FAQ</em></a>
+    <a href="#kontakt"><span>06</span><em style="font-style:normal" data-i18n="menu.contact">Kontakt</em></a>
+  </nav>
+</div>
+
+<main id="top">
+
+<!-- 1. HERO -->
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="hero-media">
+    <img src="assets/hero-45m2-kitchen-bar.webp" width="1440" height="1434"
+         fetchpriority="high" decoding="async"
+         data-i18n-alt="alt.hero"
+         alt="Kuchnia połączona z salonem 45 m², bar z hokerami, burgundowa zabudowa, marmurowy backsplash, podłoga w jodełkę">
+  </div>
+  <div class="hero-body">
+    <p class="eyebrow" data-i18n="hero.eyebrow">WARSZAWA, MOKOTÓW / 45 m² / KUCHNIA POŁĄCZONA Z SALONEM</p>
+    <h1 id="hero-h1" data-i18n="hero.h1">Małe mieszkanie, które nie wygląda na małe</h1>
+    <p class="hero-sub" data-i18n="hero.sub">45 metrów dla młodej pary na Mokotowie. Kuchnia i salon w jednym, burgund, jodełka i światło. Charakter właścicieli widać już od progu.</p>
+    <p class="hero-pos" data-i18n="hero.pos">Projektuję wnętrza od 10 lat. Online i stacjonarnie, po polsku, rosyjsku i angielsku.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#kontakt" data-i18n="cta.primary">Umów bezpłatną konsultację</a>
+      <a class="link-u" href="#proces" data-i18n="cta.secondary">Zobacz, jak wygląda współpraca krok po kroku</a>
+    </div>
+    <p class="hero-micro" data-i18n="hero.micro">10 lat doświadczenia · projekty online na całym świecie · pełna dokumentacja wykonawcza</p>
+  </div>
+</section>
+
+<!-- 2. TRUST -->
+<section class="bg-greige" aria-label="W liczbach">
+  <div class="trust">
+    <div data-i18n="trust.1">10 lat praktyki</div>
+    <div data-i18n="trust.2">[X] projektów</div>
+    <div data-i18n="trust.3">[X] m² zaprojektowanych</div>
+    <div data-i18n="trust.4">3 języki obsługi</div>
+  </div>
+</section>
+
+<!-- 3. PROBLEM -->
+<section class="bg-cream pad" id="dlaczego" aria-labelledby="problem-h">
+  <div class="wrap">
+    <h2 class="problem-head" id="problem-h" data-reveal data-i18n="problem.h">Remont bez projektu kosztuje więcej niż projekt</h2>
+    <div class="cols3">
+      <div class="col" data-reveal>
+        <h3 data-i18n="problem.1t">Ekipa zrobi po swojemu</h3>
+        <p data-i18n="problem.1b">Bez rysunków wykonawczych każdy detal jest decyzją wykonawcy, a nie twoją. Poprawki po fakcie kosztują dwa razy więcej niż przewidzenie ich na papierze.</p>
+      </div>
+      <div class="col" data-reveal>
+        <h3 data-i18n="problem.2t">Zakupy pochłaniają miesiące</h3>
+        <p data-i18n="problem.2b">Setki decyzji, dziesiątki sklepów, terminy dostaw. Bez listy zakupowej z konkretnymi modelami remont stoi.</p>
+      </div>
+      <div class="col" data-reveal>
+        <h3 data-i18n="problem.3t">Małe mieszkanie wybacza najmniej</h3>
+        <p data-i18n="problem.3b">Na 45 metrach każdy centymetr ma zadanie. Układ, w którym coś jest o 10 cm za blisko, czuć codziennie.</p>
+      </div>
+    </div>
+    <p class="closer" data-reveal data-i18n="problem.closer">Projekt to nie koszt estetyczny. To instrukcja, dzięki której remont ma jedną wersję.</p>
+  </div>
+</section>
+
+<!-- 4. PROCES -->
+<section class="bg-greige pad" id="proces" aria-labelledby="proc-h">
+  <div class="wrap">
+    <h2 class="proc-head" id="proc-h" data-reveal data-i18n="process.h">Jak wygląda współpraca</h2>
+    <p class="proc-sub" data-reveal data-i18n="process.sub">Sześć etapów. Wiesz z góry, co się dzieje, kiedy i co dostajesz na końcu każdego z nich.</p>
+
+    <div class="proc-list" id="procList">
+      <article class="step" data-reveal>
+        <span class="step-num" aria-hidden="true">01</span>
+        <div class="step-head"><h3 data-i18n="process.1.t">Rozmowa i wycena</h3></div>
+        <div class="step-body">
+          <p class="meta" data-i18n="process.1.meta">30 minut, bezpłatnie</p>
+          <p data-i18n="process.1.b">Poznajemy się, oglądam rzut, słucham jak żyjecie. Mówię, co jest możliwe w waszym metrażu i budżecie.</p>
+          <p class="deliver" data-i18n="process.1.d">Dostajesz: konkretną wycenę i termin startu.</p>
+        </div>
+      </article>
+
+      <article class="step" data-reveal>
+        <span class="step-num" aria-hidden="true">02</span>
+        <div class="step-head"><h3 data-i18n="process.2.t">Brief i pomiary</h3></div>
+        <div class="step-body">
+          <p data-i18n="process.2.b">Wypełniamy szczegółowy brief: nawyki, przechowywanie, gotowanie, goście, praca z domu, zwierzęta. Robię pomiar inwentaryzacyjny lub przyjmuję wasz.</p>
+          <p class="deliver" data-i18n="process.2.d">Dostajesz: rzut inwentaryzacyjny i spisane założenia projektu.</p>
+        </div>
+      </article>
+
+      <article class="step" data-reveal>
+        <span class="step-num" aria-hidden="true">03</span>
+        <div class="step-head"><h3 data-i18n="process.3.t">Układ funkcjonalny</h3></div>
+        <div class="step-body">
+          <p data-i18n="process.3.b">Przygotowuję kilka wariantów rozplanowania. Rozmawiamy o każdym, wybieramy jeden i dopracowujemy do centymetra.</p>
+          <p class="deliver" data-i18n="process.3.d">Dostajesz: zatwierdzony plan funkcjonalny, na którym opiera się wszystko dalej.</p>
+        </div>
+      </article>
+
+      <article class="step" data-reveal>
+        <span class="step-num" aria-hidden="true">04</span>
+        <div class="step-head"><h3 data-i18n="process.4.t">Koncepcja wizualna</h3></div>
+        <div class="step-body">
+          <p data-i18n="process.4.b">Kolory, materiały, światło, nastrój. Wizualizacje 3D każdego pomieszczenia, żeby zobaczyć wnętrze zanim ktokolwiek chwyci za młotek.</p>
+          <p class="deliver" data-i18n="process.4.d">Dostajesz: wizualizacje i paletę materiałów.</p>
+        </div>
+      </article>
+
+      <article class="step" data-reveal>
+        <span class="step-num" aria-hidden="true">05</span>
+        <div class="step-head"><h3 data-i18n="process.5.t">Dokumentacja wykonawcza</h3></div>
+        <div class="step-body">
+          <p data-i18n="process.5.b">Komplet rysunków dla ekipy: wyburzenia, ścianki, elektryka, oświetlenie, hydraulika, układanie płytek, rysunki mebli na wymiar.</p>
+          <p class="deliver" data-i18n="process.5.d">Dostajesz: teczkę rysunków i listę zakupową z konkretnymi modelami, linkami i cenami.</p>
+        </div>
+      </article>
+
+      <article class="step" data-reveal>
+        <span class="step-num" aria-hidden="true">06</span>
+        <div class="step-head"><h3 data-i18n="process.6.t">Nadzór autorski</h3></div>
+        <div class="step-body">
+          <p data-i18n="process.6.b">Jestem w kontakcie z ekipą i wchodzę na budowę w kluczowych momentach. Pilnuję, żeby to, co powstaje, było tym, co zatwierdziliśmy.</p>
+          <p class="deliver" data-i18n="process.6.d">Dostajesz: wnętrze zgodne z projektem, bez tłumaczenia się, kto co źle zrozumiał.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="proc-cta" data-reveal>
+      <a class="btn" href="#kontakt" data-i18n="process.cta">Zacznijmy od rozmowy</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PORTFOLIO -->
+<section class="bg-cream pad" id="portfolio" aria-labelledby="pf-h">
+  <div class="wrap">
+    <h2 class="svc-head" id="pf-h" data-reveal data-i18n="portfolio.h">Wnętrza, które już żyją</h2>
+    <p class="pf-note" data-reveal data-i18n="portfolio.note">Wizualizacje 3D projektów. Kliknij kafelek, żeby powiększyć.</p>
+
+    <div class="pf-grid" id="pfGrid">
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/hero-45m2-kitchen-bar.webp" data-w="1440" data-h="1434"
+        data-cap="pf.1.cap" data-desc="pf.1.desc" data-alt="alt.hero">
+        <span class="pf-shot"><img src="assets/hero-45m2-kitchen-bar.webp" width="1440" height="1434" loading="lazy" decoding="async" data-i18n-alt="alt.hero" alt="Kuchnia połączona z salonem 45 m², bar z hokerami, burgundowa zabudowa, marmurowy backsplash, podłoga w jodełkę"></span>
+        <span class="pf-cap"><span data-i18n="pf.1.cap">45 m², Mokotów, Warszawa</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p02-studio-bed-kitchen.webp" data-w="1080" data-h="608"
+        data-cap="pf.2.cap" data-desc="alt.p02" data-alt="alt.p02">
+        <span class="pf-shot"><img src="assets/p02-studio-bed-kitchen.webp" width="1080" height="608" loading="lazy" decoding="async" data-i18n-alt="alt.p02" alt="Studio: strefa spania oddzielona zasłoną od aneksu kuchennego, czerwony obraz, chłodziarka na wino"></span>
+        <span class="pf-cap"><span data-i18n="pf.2.cap">Studio, strefa spania i aneks kuchenny · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p11-living-grey-01.webp" data-w="417" data-h="500"
+        data-cap="pf.11.cap" data-desc="alt.p11" data-alt="alt.p11">
+        <span class="pf-shot"><img src="assets/p11-living-grey-01.webp" width="417" height="500" loading="lazy" decoding="async" data-i18n-alt="alt.p11" alt="Salon w szarościach z witryną, jodełką i szyną oświetleniową"></span>
+        <span class="pf-cap"><span data-i18n="pf.11.cap">Salon w szarościach · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p06-living-blue-wall.webp" data-w="712" data-h="580"
+        data-cap="pf.6.cap" data-desc="alt.p06" data-alt="alt.p06">
+        <span class="pf-shot"><img src="assets/p06-living-blue-wall.webp" width="712" height="580" loading="lazy" decoding="async" data-i18n-alt="alt.p06" alt="Salon z niebieską ścianą, czerwonym obrazem, kremową sofą i okrągłym stołem"></span>
+        <span class="pf-cap"><span data-i18n="pf.6.cap">Salon z niebieską ścianą · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p04-kitchen-glass-partition.webp" data-w="672" data-h="672"
+        data-cap="pf.4.cap" data-desc="alt.p04" data-alt="alt.p04">
+        <span class="pf-shot"><img src="assets/p04-kitchen-glass-partition.webp" width="672" height="672" loading="lazy" decoding="async" data-i18n-alt="alt.p04" alt="Kuchnia z drewnianym blatem i przeszkloną ścianą działową do salonu"></span>
+        <span class="pf-cap"><span data-i18n="pf.4.cap">Kuchnia z przeszkloną ścianą działową · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p07-bedroom-glass-wall.webp" data-w="714" data-h="665"
+        data-cap="pf.7.cap" data-desc="alt.p07" data-alt="alt.p07">
+        <span class="pf-shot"><img src="assets/p07-bedroom-glass-wall.webp" width="714" height="665" loading="lazy" decoding="async" data-i18n-alt="alt.p07" alt="Sypialnia oddzielona szklaną ścianą w czarnej ramie, podświetlane wnęki, jodełka"></span>
+        <span class="pf-cap"><span data-i18n="pf.7.cap">Sypialnia za szklaną ścianą · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p05-kitchen-blue-wall.webp" data-w="826" data-h="716"
+        data-cap="pf.5.cap" data-desc="alt.p05" data-alt="alt.p05">
+        <span class="pf-shot"><img src="assets/p05-kitchen-blue-wall.webp" width="826" height="716" loading="lazy" decoding="async" data-i18n-alt="alt.p05" alt="Biała kuchnia z drewnianą lamperią, szarymi płytkami i niebieską ścianą"></span>
+        <span class="pf-cap"><span data-i18n="pf.5.cap">Kuchnia z drewnianą lamperią · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p13-bedroom-neutral.webp" data-w="400" data-h="340"
+        data-cap="pf.13.cap" data-desc="alt.p13" data-alt="alt.p13">
+        <span class="pf-shot"><img src="assets/p13-bedroom-neutral.webp" width="400" height="340" loading="lazy" decoding="async" data-i18n-alt="alt.p13" alt="Jasna sypialnia z zabudową po sufit i miejscem do pracy"></span>
+        <span class="pf-cap"><span data-i18n="pf.13.cap">Sypialnia z zabudową po sufit · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p03-hallway.webp" data-w="933" data-h="720"
+        data-cap="pf.3.cap" data-desc="alt.p03" data-alt="alt.p03">
+        <span class="pf-shot"><img src="assets/p03-hallway.webp" width="933" height="720" loading="lazy" decoding="async" data-i18n-alt="alt.p03" alt="Przedpokój z szarymi frontami bezuchwytowymi i oświetleniem liniowym w suficie"></span>
+        <span class="pf-cap"><span data-i18n="pf.3.cap">Przedpokój z zabudową bezuchwytową · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p09-bath-walkin-shower.webp" data-w="384" data-h="500"
+        data-cap="pf.9.cap" data-desc="alt.p09" data-alt="alt.p09">
+        <span class="pf-shot"><img src="assets/p09-bath-walkin-shower.webp" width="384" height="500" loading="lazy" decoding="async" data-i18n-alt="alt.p09" alt="Łazienka z prysznicem walk in, czarna armatura, terrazzo i drewno"></span>
+        <span class="pf-cap"><span data-i18n="pf.9.cap">Łazienka z prysznicem walk in · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p08-bath-terrazzo-mirror.webp" data-w="281" data-h="500"
+        data-cap="pf.8.cap" data-desc="alt.p08" data-alt="alt.p08">
+        <span class="pf-shot"><img src="assets/p08-bath-terrazzo-mirror.webp" width="281" height="500" loading="lazy" decoding="async" data-i18n-alt="alt.p08" alt="Łazienka z terrazzo, betonowa umywalka wolnostojąca, okrągłe podświetlane lustro"></span>
+        <span class="pf-cap"><span data-i18n="pf.8.cap">Łazienka z terrazzo · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p12-bath-vertical.webp" data-w="270" data-h="500"
+        data-cap="pf.12.cap" data-desc="alt.p12" data-alt="alt.p12">
+        <span class="pf-shot"><img src="assets/p12-bath-vertical.webp" width="270" height="500" loading="lazy" decoding="async" data-i18n-alt="alt.p12" alt="Wąska łazienka z pralką w słupku, betonowa umywalka, szklane kule"></span>
+        <span class="pf-cap"><span data-i18n="pf.12.cap">Wąska łazienka z pralką w słupku · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+      <button type="button" class="pf-item" data-reveal
+        data-img="assets/p10-wc-laundry.webp" data-w="281" data-h="500"
+        data-cap="pf.10.cap" data-desc="alt.p10" data-alt="alt.p10">
+        <span class="pf-shot"><img src="assets/p10-wc-laundry.webp" width="281" height="500" loading="lazy" decoding="async" data-i18n-alt="alt.p10" alt="Toaleta z pralką w zabudowie, terrazzo, grzejnik dekoracyjny"></span>
+        <span class="pf-cap"><span data-i18n="pf.10.cap">Toaleta z pralką w zabudowie · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- 6. USŁUGI -->
+<section class="bg-greige pad" id="uslugi" aria-labelledby="svc-h">
+  <div class="wrap">
+    <h2 class="svc-head" id="svc-h" data-reveal data-i18n="services.h">Wybierz zakres</h2>
+    <div class="svc-grid">
+      <article class="svc" data-reveal>
+        <h3 data-i18n="services.1.t">Konsultacja online</h3>
+        <p class="who" data-i18n="services.1.who">Dla osób, które projektują same, ale utknęły na jednej decyzji.</p>
+        <p class="inc" data-i18n="services.1.inc">Rozmowa 60 minut, analiza rzutu, wskazówki na piśmie po spotkaniu.</p>
+        <p class="price" data-i18n="services.1.price">Cena: [UZUPEŁNIĆ]</p>
+      </article>
+      <article class="svc is-featured" data-reveal>
+        <span class="svc-badge" data-i18n="services.badge">najczęściej wybierany</span>
+        <h3 data-i18n="services.2.t">Projekt kompletny</h3>
+        <p class="who" data-i18n="services.2.who">Dla remontu od zera lub generalnego.</p>
+        <p class="inc" data-i18n="services.2.inc">Etapy 02 do 05, wizualizacje, pełna dokumentacja wykonawcza, lista zakupowa.</p>
+        <p class="price" data-i18n="services.2.price">Cena: od [UZUPEŁNIĆ] za m²</p>
+      </article>
+      <article class="svc" data-reveal>
+        <h3 data-i18n="services.3.t">Projekt z prowadzeniem</h3>
+        <p class="who" data-i18n="services.3.who">Dla osób, które nie mają czasu ani nerwów na remont.</p>
+        <p class="inc" data-i18n="services.3.inc">Wszystko z projektu kompletnego plus nadzór autorski, kontakt z ekipą, wsparcie przy zakupach.</p>
+        <p class="price" data-i18n="services.3.price">Cena: od [UZUPEŁNIĆ] za m²</p>
+      </article>
+    </div>
+    <p class="svc-note" data-reveal data-i18n="services.note">Pracuję z klientami w Polsce i zdalnie na całym świecie. Rozmawiamy po polsku, rosyjsku lub angielsku.</p>
+  </div>
+</section>
+
+<!-- 7. OPINIE -->
+<section class="bg-cream pad" id="opinie" aria-labelledby="rev-h">
+  <div class="wrap">
+    <h2 class="svc-head" id="rev-h" data-reveal data-i18n="reviews.h">Co mówią klienci</h2>
+    <div class="rev-grid">
+      <blockquote class="rev" data-reveal>
+        <p data-i18n="reviews.placeholder">[UZUPEŁNIĆ realnym cytatem, imieniem i zgodą na publikację]</p>
+        <p class="src" data-i18n="reviews.name">[UZUPEŁNIĆ imię i projekt]</p>
+      </blockquote>
+      <blockquote class="rev" data-reveal>
+        <p data-i18n="reviews.placeholder">[UZUPEŁNIĆ realnym cytatem, imieniem i zgodą na publikację]</p>
+        <p class="src" data-i18n="reviews.name">[UZUPEŁNIĆ imię i projekt]</p>
+      </blockquote>
+      <blockquote class="rev" data-reveal>
+        <p data-i18n="reviews.placeholder">[UZUPEŁNIĆ realnym cytatem, imieniem i zgodą na publikację]</p>
+        <p class="src" data-i18n="reviews.name">[UZUPEŁNIĆ imię i projekt]</p>
+      </blockquote>
+    </div>
+    <p class="rev-source" data-reveal data-i18n="reviews.source">Źródło: wyróżnione relacje „Feedbacks” na Instagramie. Cytat zostaje w języku oryginału, tłumaczenie pod spodem.</p>
+  </div>
+</section>
+
+<!-- 8. O MNIE -->
+<section class="bg-greige pad" id="o-mnie" aria-labelledby="about-h">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-portrait" data-reveal>
+        <img src="assets/about-portrait.webp" width="1080" height="1080" loading="lazy" decoding="async"
+             data-i18n-alt="alt.portrait" alt="Natalia Morozova, portret w kamienicznej klatce schodowej">
+      </div>
+      <div class="about-text" data-reveal>
+        <h2 id="about-h">Natalia Morozova</h2>
+        <p data-i18n="about.p1">Od dziesięciu lat tworzę przestrzenie emocjonalne. Projektuję znaczenia, uczucia i kolor, a nie tylko rzuty i rysunki.</p>
+        <p data-i18n="about.p2">Wnętrze działa wtedy, kiedy wchodzisz i od razu wiesz, że to twoje miejsce. Dlatego zaczynam od pytań o życie, a nie o styl.</p>
+        <p data-i18n="about.p3">Pracuję w Warszawie i zdalnie na całym świecie. Mówię po polsku, rosyjsku i angielsku, więc prowadzę też osoby, dla których remont w Polsce to pierwszy remont w nowym kraju: przez formalności, przez ekipy, przez zakupy.</p>
+        <p data-i18n="about.p4">Sprawiam, że ludzie zakochują się w swoim wnętrzu. To jedyny wynik, który mnie interesuje.</p>
+
+        <div class="about-fair">
+          <img src="assets/about-fair-sofa.webp" width="1080" height="1239" loading="lazy" decoding="async"
+               data-i18n-alt="alt.fairsofa" alt="Natalia na targach branżowych, przegląda katalogi">
+          <img src="assets/about-fair-bathroom.webp" width="1080" height="1070" loading="lazy" decoding="async"
+               data-i18n-alt="alt.fairbath" alt="Ekspozycja targowa, aranżacja łazienki z kamienia i drewna">
+          <p class="about-faircap" data-i18n="about.faircap">Targi branżowe i showroomy. Materiały wybieram na żywo, nie z katalogu.</p>
+        </div>
+
+        <p class="about-ig">
+          <a class="link-u" href="https://www.instagram.com/nataliamorozova_design/" target="_blank" rel="noopener">@nataliamorozova_design</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. FAQ -->
+<section class="bg-cream pad" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <h2 class="faq-head" id="faq-h" data-reveal data-i18n="faq.h">Pytania, które padają najczęściej</h2>
+    <div class="faq" data-reveal>
+      <details open>
+        <summary><span data-i18n="faq.q1">Ile trwa projekt?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p data-i18n="faq.a1">[UZUPEŁNIĆ]</p></div>
+      </details>
+      <details>
+        <summary><span data-i18n="faq.q2">Czy pracujesz zdalnie?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p data-i18n="faq.a2">Tak, prowadzę projekty online na całym świecie. Pomiar wykonuje ekipa lub przyjmuję wasz rzut, reszta idzie przez wideo i chmurę.</p></div>
+      </details>
+      <details>
+        <summary><span data-i18n="faq.q3">Czy pomagasz znaleźć ekipę?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p data-i18n="faq.a3">[UZUPEŁNIĆ]</p></div>
+      </details>
+      <details>
+        <summary><span data-i18n="faq.q4">Czy mogę kupić sam projekt, bez nadzoru?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p data-i18n="faq.a4">Tak. Dokumentacja jest kompletna i ekipa pracuje z niej samodzielnie.</p></div>
+      </details>
+      <details>
+        <summary><span data-i18n="faq.q5">W jakim języku prowadzisz projekt?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p data-i18n="faq.a5">Po polsku, rosyjsku lub angielsku. Wybierasz przy pierwszej rozmowie.</p></div>
+      </details>
+      <details>
+        <summary><span data-i18n="faq.q6">Co jeśli mam już częściowo kupione meble?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p data-i18n="faq.a6">Pracuję z tym, co jest. Na etapie briefu ustalamy co zostaje i budujemy projekt wokół tego.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CTA + FORMULARZ -->
+<section class="bg-wine on-wine pad" id="kontakt" aria-labelledby="cta-h">
+  <div class="wrap">
+    <h2 class="cta-head" id="cta-h" data-reveal data-i18n="contact.h">Opowiedz mi o swoim mieszkaniu</h2>
+    <p class="cta-sub" data-reveal data-i18n="contact.sub">Pierwsza rozmowa jest bezpłatna i trwa 30 minut. Wychodzisz z niej z konkretną wyceną i pomysłem na swoją przestrzeń, nawet jeśli nie zaczniemy współpracy.</p>
+
+    <form class="form" id="leadForm" novalidate data-reveal>
+      <div class="hp" aria-hidden="true">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" name="lang" id="formLang" value="pl">
+
+      <div class="field" id="f-name">
+        <label for="in-name" data-i18n="form.name">Imię</label>
+        <input type="text" id="in-name" name="name" autocomplete="given-name" required
+               data-i18n-placeholder="form.name.ph" placeholder="Anna">
+        <span class="err" data-i18n="form.err.name">Podaj imię.</span>
+      </div>
+
+      <div class="field" id="f-contact">
+        <label for="in-contact" data-i18n="form.contact">Telefon lub e mail</label>
+        <input type="text" id="in-contact" name="contact" autocomplete="email" required
+               data-i18n-placeholder="form.contact.ph" placeholder="+48 000 000 000 lub anna@poczta.pl">
+        <span class="err" data-i18n="form.err.contact">Podaj telefon albo adres e mail.</span>
+      </div>
+
+      <div class="field" id="f-size">
+        <label for="in-size" data-i18n="form.size">Metraż i lokalizacja</label>
+        <input type="text" id="in-size" name="size" required
+               data-i18n-placeholder="form.size.ph" placeholder="45 m², Mokotów">
+        <span class="err" data-i18n="form.err.size">Napisz metraż i miejsce.</span>
+      </div>
+
+      <div class="field" id="f-stage">
+        <label for="in-stage" data-i18n="form.stage">Etap</label>
+        <select id="in-stage" name="stage" required>
+          <option value="" data-i18n="form.stage.o0">Wybierz</option>
+          <option value="buying" data-i18n="form.stage.o1">kupuję mieszkanie</option>
+          <option value="keys" data-i18n="form.stage.o2">mam klucze</option>
+          <option value="renovating" data-i18n="form.stage.o3">remont trwa</option>
+          <option value="looking" data-i18n="form.stage.o4">tylko się rozglądam</option>
+        </select>
+        <span class="err" data-i18n="form.err.stage">Wybierz etap.</span>
+      </div>
+
+      <div class="field" id="f-msg">
+        <label for="in-msg" data-i18n="form.msg">Wiadomość, opcjonalnie</label>
+        <textarea id="in-msg" name="message" rows="3"
+                  data-i18n-placeholder="form.msg.ph" placeholder="Co jest dla was najważniejsze w tym mieszkaniu?"></textarea>
+      </div>
+
+      <label class="consent" id="f-consent">
+        <input type="checkbox" id="in-consent" name="consent" required>
+        <span data-i18n="form.consent">Zgadzam się na przetwarzanie moich danych w celu odpowiedzi na zgłoszenie. Polityka prywatności: [UZUPEŁNIĆ link]</span>
+      </label>
+
+      <div>
+        <button type="submit" class="btn btn-cream" data-i18n="form.submit">Wyślij zgłoszenie</button>
+      </div>
+
+      <p class="form-note" data-i18n="form.rodo">Administratorem danych jest Natalia Morozova. Dane wykorzystuję wyłącznie do kontaktu w sprawie zgłoszenia i usuwam je na twoją prośbę. [UZUPEŁNIĆ dane firmy i NIP]</p>
+    </form>
+
+    <p class="form-success" id="formSuccess" data-on="false" role="status" data-i18n="form.success">Dziękuję. Odezwę się w ciągu 24 godzin.</p>
+
+    <p class="channels" data-i18n="contact.channels">Wolisz napisać od razu: WhatsApp [UZUPEŁNIĆ numer] · Telegram [UZUPEŁNIĆ] · Instagram DM @nataliamorozova_design · e mail [UZUPEŁNIĆ adres]</p>
+  </div>
+</section>
+
+</main>
+
+<!-- 11. STOPKA -->
+<footer class="bg-ink foot">
+  <div class="wrap">
+    <p class="foot-mark">Natalia Morozova</p>
+    <div class="foot-rule"></div>
+    <div class="foot-cols">
+      <div>
+        <small data-i18n="footer.blurb">Projektowanie wnętrz. Warszawa i zdalnie na całym świecie. Polski, rosyjski, angielski.</small>
+        <small data-i18n="footer.nap">[UZUPEŁNIĆ adres] · [UZUPEŁNIĆ telefon] · [UZUPEŁNIĆ e mail]</small>
+      </div>
+      <nav aria-label="Sekcje">
+        <a href="#proces" data-i18n="menu.process">Współpraca</a>
+        <a href="#portfolio" data-i18n="menu.portfolio">Portfolio</a>
+        <a href="#uslugi" data-i18n="menu.services">Zakres</a>
+        <a href="#o-mnie" data-i18n="menu.about">O mnie</a>
+        <a href="#faq" data-i18n="menu.faq">FAQ</a>
+        <a href="#kontakt" data-i18n="menu.contact">Kontakt</a>
+      </nav>
+      <nav aria-label="Social">
+        <a href="https://www.instagram.com/nataliamorozova_design/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.threads.net/@nataliamorozova_design" target="_blank" rel="noopener">Threads</a>
+        <a href="#" data-i18n="footer.privacy">Polityka prywatności [UZUPEŁNIĆ]</a>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <small data-i18n="footer.rights">© 2026 Natalia Morozova. Wszystkie projekty i wizualizacje są jej autorstwa.</small>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta" data-on="false">
+  <a class="btn" href="#kontakt" data-i18n="cta.primary">Umów bezpłatną konsultację</a>
+</div>
+
+<div class="lb" id="lightbox" data-open="false" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <button type="button" class="lb-close" id="lbClose" data-i18n="nav.close">Zamknij</button>
+  <div class="lb-inner">
+    <img id="lbImg" src="" alt="" width="1440" height="1434">
+    <div class="lb-text">
+      <h3 id="lbTitle"></h3>
+      <p id="lbDesc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var i18n = {
+pl:{
+"meta.title":"Natalia Morozova — projektowanie wnętrz, Warszawa",
+"meta.desc":"Projektuję wnętrza w Warszawie i zdalnie na całym świecie. Pełna dokumentacja wykonawcza, wizualizacje 3D, nadzór autorski. Bezpłatna konsultacja 30 minut.",
+
+"nav.menu":"Menu","nav.close":"Zamknij",
+"menu.process":"Współpraca","menu.portfolio":"Portfolio","menu.services":"Zakres","menu.about":"O mnie","menu.faq":"FAQ","menu.contact":"Kontakt",
+
+"hero.eyebrow":"WARSZAWA, MOKOTÓW / 45 m² / KUCHNIA POŁĄCZONA Z SALONEM",
+"hero.h1":"Małe mieszkanie, które nie wygląda na małe",
+"hero.sub":"45 metrów dla młodej pary na Mokotowie. Kuchnia i salon w jednym, burgund, jodełka i światło. Charakter właścicieli widać już od progu.",
+"hero.pos":"Projektuję wnętrza od 10 lat. Online i stacjonarnie, po polsku, rosyjsku i angielsku.",
+"hero.micro":"10 lat doświadczenia · projekty online na całym świecie · pełna dokumentacja wykonawcza",
+"cta.primary":"Umów bezpłatną konsultację",
+"cta.secondary":"Zobacz, jak wygląda współpraca krok po kroku",
+
+"trust.1":"10 lat praktyki","trust.2":"[X] projektów","trust.3":"[X] m² zaprojektowanych","trust.4":"3 języki obsługi",
+
+"problem.h":"Remont bez projektu kosztuje więcej niż projekt",
+"problem.1t":"Ekipa zrobi po swojemu",
+"problem.1b":"Bez rysunków wykonawczych każdy detal jest decyzją wykonawcy, a nie twoją. Poprawki po fakcie kosztują dwa razy więcej niż przewidzenie ich na papierze.",
+"problem.2t":"Zakupy pochłaniają miesiące",
+"problem.2b":"Setki decyzji, dziesiątki sklepów, terminy dostaw. Bez listy zakupowej z konkretnymi modelami remont stoi.",
+"problem.3t":"Małe mieszkanie wybacza najmniej",
+"problem.3b":"Na 45 metrach każdy centymetr ma zadanie. Układ, w którym coś jest o 10 cm za blisko, czuć codziennie.",
+"problem.closer":"Projekt to nie koszt estetyczny. To instrukcja, dzięki której remont ma jedną wersję.",
+
+"process.h":"Jak wygląda współpraca",
+"process.sub":"Sześć etapów. Wiesz z góry, co się dzieje, kiedy i co dostajesz na końcu każdego z nich.",
+"process.1.t":"Rozmowa i wycena","process.1.meta":"30 minut, bezpłatnie",
+"process.1.b":"Poznajemy się, oglądam rzut, słucham jak żyjecie. Mówię, co jest możliwe w waszym metrażu i budżecie.",
+"process.1.d":"Dostajesz: konkretną wycenę i termin startu.",
+"process.2.t":"Brief i pomiary",
+"process.2.b":"Wypełniamy szczegółowy brief: nawyki, przechowywanie, gotowanie, goście, praca z domu, zwierzęta. Robię pomiar inwentaryzacyjny lub przyjmuję wasz.",
+"process.2.d":"Dostajesz: rzut inwentaryzacyjny i spisane założenia projektu.",
+"process.3.t":"Układ funkcjonalny",
+"process.3.b":"Przygotowuję kilka wariantów rozplanowania. Rozmawiamy o każdym, wybieramy jeden i dopracowujemy do centymetra.",
+"process.3.d":"Dostajesz: zatwierdzony plan funkcjonalny, na którym opiera się wszystko dalej.",
+"process.4.t":"Koncepcja wizualna",
+"process.4.b":"Kolory, materiały, światło, nastrój. Wizualizacje 3D każdego pomieszczenia, żeby zobaczyć wnętrze zanim ktokolwiek chwyci za młotek.",
+"process.4.d":"Dostajesz: wizualizacje i paletę materiałów.",
+"process.5.t":"Dokumentacja wykonawcza",
+"process.5.b":"Komplet rysunków dla ekipy: wyburzenia, ścianki, elektryka, oświetlenie, hydraulika, układanie płytek, rysunki mebli na wymiar.",
+"process.5.d":"Dostajesz: teczkę rysunków i listę zakupową z konkretnymi modelami, linkami i cenami.",
+"process.6.t":"Nadzór autorski",
+"process.6.b":"Jestem w kontakcie z ekipą i wchodzę na budowę w kluczowych momentach. Pilnuję, żeby to, co powstaje, było tym, co zatwierdziliśmy.",
+"process.6.d":"Dostajesz: wnętrze zgodne z projektem, bez tłumaczenia się, kto co źle zrozumiał.",
+"process.cta":"Zacznijmy od rozmowy",
+
+"portfolio.h":"Wnętrza, które już żyją",
+"portfolio.note":"Wizualizacje 3D projektów. Kliknij kafelek, żeby powiększyć.",
+"pf.1.cap":"45 m², Mokotów, Warszawa",
+"pf.1.desc":"45 m², Mokotów, Warszawa. Młoda para. Kuchnia i salon jako jedno pomieszczenie, burgundowa zabudowa jako oś kompozycji, jodełka na podłodze, marmur z rdzawym rysunkiem na ścianie kuchennej. Mała przestrzeń, w której chce się zostać na dłużej.",
+"pf.2.cap":"Studio, strefa spania i aneks kuchenny · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.11.cap":"Salon w szarościach · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.6.cap":"Salon z niebieską ścianą · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.4.cap":"Kuchnia z przeszkloną ścianą działową · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.7.cap":"Sypialnia za szklaną ścianą · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.5.cap":"Kuchnia z drewnianą lamperią · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.13.cap":"Sypialnia z zabudową po sufit · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.3.cap":"Przedpokój z zabudową bezuchwytową · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.9.cap":"Łazienka z prysznicem walk in · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.8.cap":"Łazienka z terrazzo · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.12.cap":"Wąska łazienka z pralką w słupku · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.10.cap":"Toaleta z pralką w zabudowie · [UZUPEŁNIĆ metraż i lokalizację]",
+
+"alt.hero":"Kuchnia połączona z salonem 45 m², bar z hokerami, burgundowa zabudowa, marmurowy backsplash, podłoga w jodełkę",
+"alt.p02":"Studio: strefa spania oddzielona zasłoną od aneksu kuchennego, czerwony obraz, chłodziarka na wino",
+"alt.p03":"Przedpokój z szarymi frontami bezuchwytowymi i oświetleniem liniowym w suficie",
+"alt.p04":"Kuchnia z drewnianym blatem i przeszkloną ścianą działową do salonu",
+"alt.p05":"Biała kuchnia z drewnianą lamperią, szarymi płytkami i niebieską ścianą",
+"alt.p06":"Salon z niebieską ścianą, czerwonym obrazem, kremową sofą i okrągłym stołem",
+"alt.p07":"Sypialnia oddzielona szklaną ścianą w czarnej ramie, podświetlane wnęki, jodełka",
+"alt.p08":"Łazienka z terrazzo, betonowa umywalka wolnostojąca, okrągłe podświetlane lustro",
+"alt.p09":"Łazienka z prysznicem walk in, czarna armatura, terrazzo i drewno",
+"alt.p10":"Toaleta z pralką w zabudowie, terrazzo, grzejnik dekoracyjny",
+"alt.p11":"Salon w szarościach z witryną, jodełką i szyną oświetleniową",
+"alt.p12":"Wąska łazienka z pralką w słupku, betonowa umywalka, szklane kule",
+"alt.p13":"Jasna sypialnia z zabudową po sufit i miejscem do pracy",
+"alt.portrait":"Natalia Morozova, portret w kamienicznej klatce schodowej",
+"alt.fairsofa":"Natalia na targach branżowych, przegląda katalogi",
+"alt.fairbath":"Ekspozycja targowa, aranżacja łazienki z kamienia i drewna",
+
+"services.h":"Wybierz zakres",
+"services.badge":"najczęściej wybierany",
+"services.1.t":"Konsultacja online",
+"services.1.who":"Dla osób, które projektują same, ale utknęły na jednej decyzji.",
+"services.1.inc":"Rozmowa 60 minut, analiza rzutu, wskazówki na piśmie po spotkaniu.",
+"services.1.price":"Cena: [UZUPEŁNIĆ]",
+"services.2.t":"Projekt kompletny",
+"services.2.who":"Dla remontu od zera lub generalnego.",
+"services.2.inc":"Etapy 02 do 05, wizualizacje, pełna dokumentacja wykonawcza, lista zakupowa.",
+"services.2.price":"Cena: od [UZUPEŁNIĆ] za m²",
+"services.3.t":"Projekt z prowadzeniem",
+"services.3.who":"Dla osób, które nie mają czasu ani nerwów na remont.",
+"services.3.inc":"Wszystko z projektu kompletnego plus nadzór autorski, kontakt z ekipą, wsparcie przy zakupach.",
+"services.3.price":"Cena: od [UZUPEŁNIĆ] za m²",
+"services.note":"Pracuję z klientami w Polsce i zdalnie na całym świecie. Rozmawiamy po polsku, rosyjsku lub angielsku.",
+
+"reviews.h":"Co mówią klienci",
+"reviews.placeholder":"[UZUPEŁNIĆ realnym cytatem, imieniem i zgodą na publikację]",
+"reviews.name":"[UZUPEŁNIĆ imię i projekt]",
+"reviews.source":"Źródło: wyróżnione relacje „Feedbacks” na Instagramie. Cytat zostaje w języku oryginału, tłumaczenie pod spodem.",
+
+"about.p1":"Od dziesięciu lat tworzę przestrzenie emocjonalne. Projektuję znaczenia, uczucia i kolor, a nie tylko rzuty i rysunki.",
+"about.p2":"Wnętrze działa wtedy, kiedy wchodzisz i od razu wiesz, że to twoje miejsce. Dlatego zaczynam od pytań o życie, a nie o styl.",
+"about.p3":"Pracuję w Warszawie i zdalnie na całym świecie. Mówię po polsku, rosyjsku i angielsku, więc prowadzę też osoby, dla których remont w Polsce to pierwszy remont w nowym kraju: przez formalności, przez ekipy, przez zakupy.",
+"about.p4":"Sprawiam, że ludzie zakochują się w swoim wnętrzu. To jedyny wynik, który mnie interesuje.",
+"about.faircap":"Targi branżowe i showroomy. Materiały wybieram na żywo, nie z katalogu.",
+
+"faq.h":"Pytania, które padają najczęściej",
+"faq.q1":"Ile trwa projekt?","faq.a1":"[UZUPEŁNIĆ]",
+"faq.q2":"Czy pracujesz zdalnie?","faq.a2":"Tak, prowadzę projekty online na całym świecie. Pomiar wykonuje ekipa lub przyjmuję wasz rzut, reszta idzie przez wideo i chmurę.",
+"faq.q3":"Czy pomagasz znaleźć ekipę?","faq.a3":"[UZUPEŁNIĆ]",
+"faq.q4":"Czy mogę kupić sam projekt, bez nadzoru?","faq.a4":"Tak. Dokumentacja jest kompletna i ekipa pracuje z niej samodzielnie.",
+"faq.q5":"W jakim języku prowadzisz projekt?","faq.a5":"Po polsku, rosyjsku lub angielsku. Wybierasz przy pierwszej rozmowie.",
+"faq.q6":"Co jeśli mam już częściowo kupione meble?","faq.a6":"Pracuję z tym, co jest. Na etapie briefu ustalamy co zostaje i budujemy projekt wokół tego.",
+
+"contact.h":"Opowiedz mi o swoim mieszkaniu",
+"contact.sub":"Pierwsza rozmowa jest bezpłatna i trwa 30 minut. Wychodzisz z niej z konkretną wyceną i pomysłem na swoją przestrzeń, nawet jeśli nie zaczniemy współpracy.",
+"contact.channels":"Wolisz napisać od razu: WhatsApp [UZUPEŁNIĆ numer] · Telegram [UZUPEŁNIĆ] · Instagram DM @nataliamorozova_design · e mail [UZUPEŁNIĆ adres]",
+
+"form.name":"Imię","form.name.ph":"Anna",
+"form.contact":"Telefon lub e mail","form.contact.ph":"+48 000 000 000 lub anna@poczta.pl",
+"form.size":"Metraż i lokalizacja","form.size.ph":"45 m², Mokotów",
+"form.stage":"Etap",
+"form.stage.o0":"Wybierz","form.stage.o1":"kupuję mieszkanie","form.stage.o2":"mam klucze","form.stage.o3":"remont trwa","form.stage.o4":"tylko się rozglądam",
+"form.msg":"Wiadomość, opcjonalnie","form.msg.ph":"Co jest dla was najważniejsze w tym mieszkaniu?",
+"form.consent":"Zgadzam się na przetwarzanie moich danych w celu odpowiedzi na zgłoszenie. Polityka prywatności: [UZUPEŁNIĆ link]",
+"form.submit":"Wyślij zgłoszenie",
+"form.success":"Dziękuję. Odezwę się w ciągu 24 godzin.",
+"form.err.name":"Podaj imię.",
+"form.err.contact":"Podaj telefon albo adres e mail.",
+"form.err.size":"Napisz metraż i miejsce.",
+"form.err.stage":"Wybierz etap.",
+"form.err.consent":"Bez zgody nie mogę odpowiedzieć na zgłoszenie.",
+"form.rodo":"Administratorem danych jest Natalia Morozova. Dane wykorzystuję wyłącznie do kontaktu w sprawie zgłoszenia i usuwam je na twoją prośbę. [UZUPEŁNIĆ dane firmy i NIP]",
+
+"footer.blurb":"Projektowanie wnętrz. Warszawa i zdalnie na całym świecie. Polski, rosyjski, angielski.",
+"footer.nap":"[UZUPEŁNIĆ adres] · [UZUPEŁNIĆ telefon] · [UZUPEŁNIĆ e mail]",
+"footer.privacy":"Polityka prywatności [UZUPEŁNIĆ]",
+"footer.rights":"© 2026 Natalia Morozova. Wszystkie projekty i wizualizacje są jej autorstwa."
+},
+
+ru:{
+"meta.title":"Наталья Морозова — дизайн интерьера, Варшава",
+"meta.desc":"Проектирую интерьеры в Варшаве и удалённо по всему миру. Полная рабочая документация, 3D визуализации, авторский надзор. Бесплатная консультация 30 минут.",
+
+"nav.menu":"Меню","nav.close":"Закрыть",
+"menu.process":"Работа","menu.portfolio":"Портфолио","menu.services":"Объём","menu.about":"Обо мне","menu.faq":"Вопросы","menu.contact":"Контакт",
+
+"hero.eyebrow":"ВАРШАВА, МОКОТУВ / 45 м² / КУХНЯ-ГОСТИНАЯ",
+"hero.h1":"Маленькая квартира, которая не выглядит маленькой",
+"hero.sub":"45 метров для молодой пары на варшавском Мокотуве. Кухня и гостиная в одном пространстве, бордо, ёлочка и свет. Характер хозяев виден с порога.",
+"hero.pos":"Проектирую интерьеры 10 лет. Онлайн и офлайн, на польском, русском и английском.",
+"hero.micro":"10 лет опыта · проекты онлайн по всему миру · полный комплект рабочей документации",
+"cta.primary":"Записаться на бесплатную консультацию",
+"cta.secondary":"Посмотреть, как проходит работа шаг за шагом",
+
+"trust.1":"10 лет практики","trust.2":"[X] проектов","trust.3":"[X] м² спроектировано","trust.4":"3 языка общения",
+
+"problem.h":"Ремонт без проекта стоит дороже, чем проект",
+"problem.1t":"Бригада сделает по-своему",
+"problem.1b":"Без рабочих чертежей каждую деталь решает бригада, а не вы. Переделка стоит вдвое дороже, чем продуманное решение на бумаге.",
+"problem.2t":"Покупки съедают месяцы",
+"problem.2b":"Сотни решений, десятки магазинов, сроки поставки. Без списка покупок с конкретными моделями ремонт стоит на месте.",
+"problem.3t":"Маленькая квартира прощает меньше всего",
+"problem.3b":"На 45 метрах у каждого сантиметра есть задача. Планировку, где что-то на 10 см ближе, чем нужно, вы чувствуете каждый день.",
+"problem.closer":"Проект — это не расход на красоту. Это инструкция, благодаря которой у ремонта одна версия.",
+
+"process.h":"Как проходит работа",
+"process.sub":"Шесть этапов. Вы заранее знаете, что происходит, когда и что вы получаете в конце каждого.",
+"process.1.t":"Разговор и смета","process.1.meta":"30 минут, бесплатно",
+"process.1.b":"Знакомимся, я смотрю планировку и слушаю, как вы живёте. Говорю, что возможно в вашем метраже и бюджете.",
+"process.1.d":"Вы получаете: конкретную смету и дату старта.",
+"process.2.t":"Бриф и замеры",
+"process.2.b":"Заполняем подробный бриф: привычки, хранение, готовка, гости, работа из дома, животные. Делаю обмерный план или принимаю ваш.",
+"process.2.d":"Вы получаете: обмерный план и зафиксированное техническое задание.",
+"process.3.t":"Планировочное решение",
+"process.3.b":"Готовлю несколько вариантов планировки. Обсуждаем каждый, выбираем один и доводим до сантиметра.",
+"process.3.d":"Вы получаете: утверждённую планировку, на которой строится всё дальнейшее.",
+"process.4.t":"Визуальная концепция",
+"process.4.b":"Цвет, материалы, свет, настроение. 3D визуализации каждого помещения, чтобы увидеть интерьер до того, как кто-то возьмёт молоток.",
+"process.4.d":"Вы получаете: визуализации и палитру материалов.",
+"process.5.t":"Рабочая документация",
+"process.5.b":"Полный комплект чертежей для бригады: демонтаж, перегородки, электрика, освещение, сантехника, раскладка плитки, чертежи мебели на заказ.",
+"process.5.d":"Вы получаете: папку чертежей и список покупок с конкретными моделями, ссылками и ценами.",
+"process.6.t":"Авторский надзор",
+"process.6.b":"Я на связи с бригадой и приезжаю на объект в ключевые моменты. Слежу, чтобы то, что получается, было тем, что мы утвердили.",
+"process.6.d":"Вы получаете: интерьер, соответствующий проекту, без выяснений, кто что не так понял.",
+"process.cta":"Начнём с разговора",
+
+"portfolio.h":"Интерьеры, которые уже живут",
+"portfolio.note":"3D визуализации проектов. Нажмите на плитку, чтобы увеличить.",
+"pf.1.cap":"45 м², Мокотув, Варшава",
+"pf.1.desc":"45 м², Мокотув, Варшава. Молодая пара. Кухня и гостиная как одно пространство, бордовая колонна как ось композиции, ёлочка на полу, мрамор с рыжим рисунком на кухонной стене. Маленькое пространство, из которого не хочется уходить.",
+"pf.2.cap":"Студия, зона сна и кухонная зона · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.11.cap":"Гостиная в серых тонах · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.6.cap":"Гостиная с синей стеной · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.4.cap":"Кухня со стеклянной перегородкой · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.7.cap":"Спальня за стеклянной стеной · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.5.cap":"Кухня с деревянными панелями · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.13.cap":"Спальня со шкафом до потолка · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.3.cap":"Прихожая со шкафом без ручек · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.9.cap":"Ванная с душем walk in · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.8.cap":"Ванная с терраццо · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.12.cap":"Узкая ванная со стиральной машиной в пенале · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.10.cap":"Санузел со встроенной стиральной машиной · [UZUPEŁNIĆ metraż i lokalizację]",
+
+"alt.hero":"Кухня-гостиная 45 м², барная стойка с табуретами, бордовая мебель, мраморный фартук, пол ёлочкой",
+"alt.p02":"Студия: зона сна отделена шторой от кухонной зоны, красная картина, винный шкаф",
+"alt.p03":"Прихожая с серыми фасадами без ручек и линейным светом в потолке",
+"alt.p04":"Кухня с деревянной столешницей и стеклянной перегородкой в гостиную",
+"alt.p05":"Белая кухня с деревянными панелями, серой плиткой и синей стеной",
+"alt.p06":"Гостиная с синей стеной, красной картиной, кремовым диваном и круглым столом",
+"alt.p07":"Спальня, отделённая стеклянной стеной в чёрной раме, подсвеченные ниши, ёлочка",
+"alt.p08":"Ванная с терраццо, бетонная раковина отдельно стоящая, круглое подсвеченное зеркало",
+"alt.p09":"Ванная с душем walk in, чёрная сантехника, терраццо и дерево",
+"alt.p10":"Санузел со встроенной стиральной машиной, терраццо, дизайнерский радиатор",
+"alt.p11":"Гостиная в серых тонах с витриной, полом ёлочкой и осветительной шиной",
+"alt.p12":"Узкая ванная со стиральной машиной в пенале, бетонная раковина, стеклянные шары",
+"alt.p13":"Светлая спальня со шкафом до потолка и рабочим местом",
+"alt.portrait":"Наталья Морозова, портрет в подъезде старой варшавской камяницы",
+"alt.fairsofa":"Наталья на отраслевой выставке, просматривает каталоги",
+"alt.fairbath":"Выставочная экспозиция, ванная из камня и дерева",
+
+"services.h":"Выберите объём работы",
+"services.badge":"чаще всего выбирают",
+"services.1.t":"Онлайн консультация",
+"services.1.who":"Для тех, кто проектирует сам, но застрял на одном решении.",
+"services.1.inc":"Разговор 60 минут, разбор планировки, письменные рекомендации после встречи.",
+"services.1.price":"Цена: [UZUPEŁNIĆ]",
+"services.2.t":"Полный проект",
+"services.2.who":"Для ремонта с нуля или капитального.",
+"services.2.inc":"Этапы 02–05, визуализации, полная рабочая документация, список покупок.",
+"services.2.price":"Цена: от [UZUPEŁNIĆ] за м²",
+"services.3.t":"Проект с сопровождением",
+"services.3.who":"Для тех, у кого нет ни времени, ни нервов на ремонт.",
+"services.3.inc":"Всё из полного проекта плюс авторский надзор, связь с бригадой, помощь с покупками.",
+"services.3.price":"Цена: от [UZUPEŁNIĆ] за м²",
+"services.note":"Работаю с клиентами в Польше и удалённо по всему миру. Общаемся на польском, русском или английском.",
+
+"reviews.h":"Что говорят клиенты",
+"reviews.placeholder":"[UZUPEŁNIĆ realnym cytatem, imieniem i zgodą na publikację]",
+"reviews.name":"[UZUPEŁNIĆ imię i projekt]",
+"reviews.source":"Источник: закреплённые истории „Feedbacks” в Instagram. Цитата остаётся на языке оригинала, перевод ниже.",
+
+"about.p1":"Уже десять лет я создаю эмоциональные пространства. Я проектирую смыслы, чувства и цвет, а не только планы и чертежи.",
+"about.p2":"Интерьер работает тогда, когда вы входите и сразу понимаете, что это ваше место. Поэтому я начинаю с вопросов о жизни, а не о стиле.",
+"about.p3":"Работаю в Варшаве и удалённо по всему миру. Говорю по польски, по русски и по английски, поэтому веду и тех, для кого ремонт в Польше — первый ремонт в новой стране: через формальности, через бригады, через покупки.",
+"about.p4":"Я влюбляю людей в их интерьер. Это единственный результат, который меня интересует.",
+"about.faircap":"Отраслевые выставки и шоурумы. Материалы выбираю вживую, а не по каталогу.",
+
+"faq.h":"Частые вопросы",
+"faq.q1":"Сколько времени занимает проект?","faq.a1":"[UZUPEŁNIĆ]",
+"faq.q2":"Вы работаете удалённо?","faq.a2":"Да, веду проекты онлайн по всему миру. Замер делает бригада или я принимаю вашу планировку, всё остальное идёт через видеосвязь и облако.",
+"faq.q3":"Помогаете ли вы найти бригаду?","faq.a3":"[UZUPEŁNIĆ]",
+"faq.q4":"Можно купить только проект, без надзора?","faq.a4":"Да. Документация полная, бригада работает по ней самостоятельно.",
+"faq.q5":"На каком языке вы ведёте проект?","faq.a5":"На польском, русском или английском. Вы выбираете на первом созвоне.",
+"faq.q6":"Что, если мебель уже частично куплена?","faq.a6":"Работаю с тем, что есть. На этапе брифа решаем, что остаётся, и строим проект вокруг этого.",
+
+"contact.h":"Расскажите мне о своей квартире",
+"contact.sub":"Первый разговор бесплатный и длится 30 минут. Вы выходите из него с конкретной сметой и идеей для своего пространства, даже если мы не начнём работать вместе.",
+"contact.channels":"Хотите написать сразу: WhatsApp [UZUPEŁNIĆ numer] · Telegram [UZUPEŁNIĆ] · Instagram DM @nataliamorozova_design · e mail [UZUPEŁNIĆ adres]",
+
+"form.name":"Имя","form.name.ph":"Анна",
+"form.contact":"Телефон или e mail","form.contact.ph":"+48 000 000 000 или anna@pochta.pl",
+"form.size":"Метраж и локация","form.size.ph":"45 м², Мокотув",
+"form.stage":"Этап",
+"form.stage.o0":"Выберите","form.stage.o1":"покупаю квартиру","form.stage.o2":"ключи уже есть","form.stage.o3":"ремонт идёт","form.stage.o4":"пока просто смотрю",
+"form.msg":"Сообщение, необязательно","form.msg.ph":"Что для вас важнее всего в этой квартире?",
+"form.consent":"Согласен на обработку моих данных для ответа на заявку. Политика конфиденциальности: [UZUPEŁNIĆ link]",
+"form.submit":"Отправить заявку",
+"form.success":"Спасибо. Отвечу в течение 24 часов.",
+"form.err.name":"Укажите имя.",
+"form.err.contact":"Укажите телефон или e mail.",
+"form.err.size":"Напишите метраж и место.",
+"form.err.stage":"Выберите этап.",
+"form.err.consent":"Без согласия я не смогу ответить на заявку.",
+"form.rodo":"Администратор данных — Наталья Морозова. Данные использую только для ответа на заявку и удаляю по вашей просьбе. [UZUPEŁNIĆ dane firmy i NIP]",
+
+"footer.blurb":"Дизайн интерьера. Варшава и удалённо по всему миру. Польский, русский, английский.",
+"footer.nap":"[UZUPEŁNIĆ adres] · [UZUPEŁNIĆ telefon] · [UZUPEŁNIĆ e mail]",
+"footer.privacy":"Политика конфиденциальности [UZUPEŁNIĆ]",
+"footer.rights":"© 2026 Наталья Морозова. Все проекты и визуализации — её авторства."
+},
+
+en:{
+"meta.title":"Natalia Morozova — interior design, Warsaw",
+"meta.desc":"I design interiors in Warsaw and remotely worldwide. Complete construction documentation, 3D visualisations, design supervision. Free 30 minute consultation.",
+
+"nav.menu":"Menu","nav.close":"Close",
+"menu.process":"Process","menu.portfolio":"Portfolio","menu.services":"Scope","menu.about":"About","menu.faq":"FAQ","menu.contact":"Contact",
+
+"hero.eyebrow":"WARSAW, MOKOTÓW / 45 m² / OPEN PLAN KITCHEN AND LIVING ROOM",
+"hero.h1":"A small apartment that does not feel small",
+"hero.sub":"45 square metres for a young couple in Mokotów, Warsaw. Kitchen and living room in one space, burgundy, herringbone and light. You can read the owners' character from the doorway.",
+"hero.pos":"Ten years of designing interiors. Online and on site, in Polish, Russian and English.",
+"hero.micro":"10 years of experience · online projects worldwide · complete construction documentation",
+"cta.primary":"Book a free consultation",
+"cta.secondary":"See how the process works step by step",
+
+"trust.1":"10 years in practice","trust.2":"[X] projects","trust.3":"[X] m² designed","trust.4":"3 working languages",
+
+"problem.h":"A renovation without a design costs more than the design",
+"problem.1t":"The contractor will decide for you",
+"problem.1b":"Without construction drawings every detail is decided by the contractor, not by you. Fixing it later costs twice what planning it on paper would have.",
+"problem.2t":"Sourcing eats months",
+"problem.2b":"Hundreds of decisions, dozens of shops, delivery lead times. Without a shopping list with specific models the site simply waits.",
+"problem.3t":"A small flat forgives the least",
+"problem.3b":"In 45 square metres every centimetre has a job. A layout where something sits 10 cm too close is something you feel every day.",
+"problem.closer":"A design is not a cost for beauty. It is the instruction that keeps the renovation to a single version.",
+
+"process.h":"How we work together",
+"process.sub":"Six stages. You know in advance what happens, when, and what you receive at the end of each one.",
+"process.1.t":"Call and quote","process.1.meta":"30 minutes, free",
+"process.1.b":"We meet, I look at your floor plan and listen to how you live. I tell you what is possible within your space and budget.",
+"process.1.d":"You receive: a firm quote and a start date.",
+"process.2.t":"Brief and survey",
+"process.2.b":"We fill in a detailed brief: habits, storage, cooking, guests, working from home, pets. I take the measurements or work from yours.",
+"process.2.d":"You receive: a measured plan and a written project brief.",
+"process.3.t":"Layout",
+"process.3.b":"I prepare several layout options. We go through each one, choose one and refine it to the centimetre.",
+"process.3.d":"You receive: an approved layout that everything else is built on.",
+"process.4.t":"Visual concept",
+"process.4.b":"Colour, materials, light, mood. 3D visualisations of every room, so you see the interior before anyone picks up a hammer.",
+"process.4.d":"You receive: visualisations and a material palette.",
+"process.5.t":"Construction documentation",
+"process.5.b":"A full drawing set for the contractor: demolition, partitions, electrics, lighting, plumbing, tile layouts, joinery drawings.",
+"process.5.d":"You receive: the drawing set and a shopping list with specific models, links and prices.",
+"process.6.t":"Design supervision",
+"process.6.b":"I stay in contact with the contractor and visit the site at the key moments. I make sure what gets built is what we approved.",
+"process.6.d":"You receive: an interior that matches the design, with no argument about who misread what.",
+"process.cta":"Let us start with a call",
+
+"portfolio.h":"Interiors that are already alive",
+"portfolio.note":"3D visualisations of the projects. Tap a tile to enlarge.",
+"pf.1.cap":"45 m², Mokotów, Warsaw",
+"pf.1.desc":"45 m², Mokotów, Warsaw. A young couple. Kitchen and living room as one space, a burgundy tall unit as the axis of the composition, herringbone floor, marble with rust veining on the kitchen wall. A small space you want to stay in.",
+"pf.2.cap":"Studio, sleeping area and kitchenette · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.11.cap":"Living room in greys · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.6.cap":"Living room with a blue wall · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.4.cap":"Kitchen with a glazed partition · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.7.cap":"Bedroom behind a glass wall · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.5.cap":"Kitchen with timber panelling · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.13.cap":"Bedroom with full height joinery · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.3.cap":"Hallway with handleless joinery · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.9.cap":"Bathroom with a walk in shower · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.8.cap":"Bathroom in terrazzo · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.12.cap":"Narrow bathroom with a washing machine tower · [UZUPEŁNIĆ metraż i lokalizację]",
+"pf.10.cap":"WC with a built in washing machine · [UZUPEŁNIĆ metraż i lokalizację]",
+
+"alt.hero":"Open plan kitchen and living room of 45 m², bar with stools, burgundy joinery, marble backsplash, herringbone floor",
+"alt.p02":"Studio: sleeping area separated by a curtain from the kitchenette, red painting, wine fridge",
+"alt.p03":"Hallway with grey handleless fronts and linear ceiling lighting",
+"alt.p04":"Kitchen with a timber worktop and a glazed partition to the living room",
+"alt.p05":"White kitchen with timber panelling, grey tiles and a blue wall",
+"alt.p06":"Living room with a blue wall, red painting, cream sofa and round table",
+"alt.p07":"Bedroom separated by a black framed glass wall, lit niches, herringbone floor",
+"alt.p08":"Bathroom in terrazzo, freestanding concrete basin, round backlit mirror",
+"alt.p09":"Bathroom with a walk in shower, black fittings, terrazzo and timber",
+"alt.p10":"WC with a built in washing machine, terrazzo, decorative radiator",
+"alt.p11":"Living room in greys with a display cabinet, herringbone floor and track lighting",
+"alt.p12":"Narrow bathroom with a washing machine tower, concrete basin, glass globe lights",
+"alt.p13":"Light bedroom with full height joinery and a work space",
+"alt.portrait":"Natalia Morozova, portrait in an old Warsaw tenement stairwell",
+"alt.fairsofa":"Natalia at a trade fair, going through catalogues",
+"alt.fairbath":"Trade fair display, a bathroom set in stone and timber",
+
+"services.h":"Choose the scope",
+"services.badge":"most popular",
+"services.1.t":"Online consultation",
+"services.1.who":"For people designing on their own who are stuck on one decision.",
+"services.1.inc":"A 60 minute call, a review of your floor plan, written recommendations afterwards.",
+"services.1.price":"Price: [UZUPEŁNIĆ]",
+"services.2.t":"Full design package",
+"services.2.who":"For a new build fit out or a full renovation.",
+"services.2.inc":"Stages 02 to 05, visualisations, complete construction documentation, shopping list.",
+"services.2.price":"Price: from [UZUPEŁNIĆ] per m²",
+"services.3.t":"Design with project management",
+"services.3.who":"For people with neither the time nor the patience for a building site.",
+"services.3.inc":"Everything in the full package plus design supervision, contractor liaison and purchasing support.",
+"services.3.price":"Price: from [UZUPEŁNIĆ] per m²",
+"services.note":"I work with clients in Poland and remotely worldwide. We can work in Polish, Russian or English.",
+
+"reviews.h":"What clients say",
+"reviews.placeholder":"[UZUPEŁNIĆ realnym cytatem, imieniem i zgodą na publikację]",
+"reviews.name":"[UZUPEŁNIĆ imię i projekt]",
+"reviews.source":"Source: the pinned „Feedbacks” stories on Instagram. Each quote stays in its original language, with a translation below it.",
+
+"about.p1":"For ten years I have been creating emotional spaces. I design meaning, feeling and colour, not only plans and drawings.",
+"about.p2":"An interior works when you walk in and know immediately that this is your place. That is why I start with questions about your life, not about style.",
+"about.p3":"I work in Warsaw and remotely worldwide. I speak Polish, Russian and English, so I also guide people for whom a renovation in Poland is their first renovation in a new country: through the paperwork, the contractors and the purchasing.",
+"about.p4":"I make people fall in love with their own interior. That is the only result I care about.",
+"about.faircap":"Trade fairs and showrooms. I choose materials in person, not from a catalogue.",
+
+"faq.h":"Questions that come up most often",
+"faq.q1":"How long does a project take?","faq.a1":"[UZUPEŁNIĆ]",
+"faq.q2":"Do you work remotely?","faq.a2":"Yes, I run projects online worldwide. The survey is done by your contractor or I work from your plan, everything else happens over video and cloud files.",
+"faq.q3":"Do you help find a contractor?","faq.a3":"[UZUPEŁNIĆ]",
+"faq.q4":"Can I buy the design only, without supervision?","faq.a4":"Yes. The documentation is complete and a contractor can build from it on their own.",
+"faq.q5":"What language do you work in?","faq.a5":"Polish, Russian or English. You choose at the first call.",
+"faq.q6":"What if I have already bought some furniture?","faq.a6":"I work with what you have. At the brief stage we decide what stays and build the design around it.",
+
+"contact.h":"Tell me about your apartment",
+"contact.sub":"The first call is free and takes 30 minutes. You leave it with a firm quote and an idea for your space, even if we never work together.",
+"contact.channels":"Prefer to write straight away: WhatsApp [UZUPEŁNIĆ numer] · Telegram [UZUPEŁNIĆ] · Instagram DM @nataliamorozova_design · e mail [UZUPEŁNIĆ adres]",
+
+"form.name":"Name","form.name.ph":"Anna",
+"form.contact":"Phone or email","form.contact.ph":"+48 000 000 000 or anna@mail.com",
+"form.size":"Size and location","form.size.ph":"45 m², Mokotów",
+"form.stage":"Stage",
+"form.stage.o0":"Choose","form.stage.o1":"buying an apartment","form.stage.o2":"I have the keys","form.stage.o3":"renovation underway","form.stage.o4":"just looking for now",
+"form.msg":"Message, optional","form.msg.ph":"What matters most to you in this apartment?",
+"form.consent":"I agree to my data being processed so that my enquiry can be answered. Privacy policy: [UZUPEŁNIĆ link]",
+"form.submit":"Send enquiry",
+"form.success":"Thank you. I will reply within 24 hours.",
+"form.err.name":"Please add your name.",
+"form.err.contact":"Please add a phone number or an email address.",
+"form.err.size":"Please add the size and the location.",
+"form.err.stage":"Please choose a stage.",
+"form.err.consent":"Without your consent I cannot reply to the enquiry.",
+"form.rodo":"The data controller is Natalia Morozova. I use your data only to answer this enquiry and delete it on request. [UZUPEŁNIĆ dane firmy i NIP]",
+
+"footer.blurb":"Interior design. Warsaw and remotely worldwide. Polish, Russian, English.",
+"footer.nap":"[UZUPEŁNIĆ adres] · [UZUPEŁNIĆ telefon] · [UZUPEŁNIĆ e mail]",
+"footer.privacy":"Privacy policy [UZUPEŁNIĆ]",
+"footer.rights":"© 2026 Natalia Morozova. All projects and visualisations are her own work."
+}
+};
+
+var LANGS = ["pl","ru","en"];
+var current = "pl";
+var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function t(key){
+  var d = i18n[current];
+  return (d && d[key] !== undefined) ? d[key] : (i18n.pl[key] !== undefined ? i18n.pl[key] : key);
+}
+
+function setLang(code){
+  if (LANGS.indexOf(code) === -1) code = "pl";
+  current = code;
+  document.documentElement.lang = code;
+
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    el.textContent = t(el.getAttribute("data-i18n"));
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(function(el){
+    el.setAttribute("placeholder", t(el.getAttribute("data-i18n-placeholder")));
+  });
+  document.querySelectorAll("[data-i18n-alt]").forEach(function(el){
+    el.setAttribute("alt", t(el.getAttribute("data-i18n-alt")));
+  });
+
+  document.title = t("meta.title");
+  setMeta("name","description", t("meta.desc"));
+  setMeta("property","og:title", t("meta.title"));
+  setMeta("property","og:description", t("meta.desc"));
+  setMeta("property","og:locale", code === "pl" ? "pl_PL" : (code === "ru" ? "ru_RU" : "en_GB"));
+
+  var lf = document.getElementById("formLang");
+  if (lf) lf.value = code;
+
+  document.querySelectorAll("#langsw button").forEach(function(b){
+    b.setAttribute("aria-current", b.getAttribute("data-lang") === code ? "true" : "false");
+  });
+
+  try { localStorage.setItem("lang", code); } catch(e){}
+  if (lightboxOpenKey) fillLightbox(lightboxOpenKey);
+  layoutMasonry();
+}
+
+function setMeta(attr, name, value){
+  var el = document.querySelector("meta[" + attr + '="' + name + '"]');
+  if (!el){
+    el = document.createElement("meta");
+    el.setAttribute(attr, name);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", value);
+}
+
+function detectLang(){
+  var stored = null;
+  try { stored = localStorage.getItem("lang"); } catch(e){}
+  if (stored && LANGS.indexOf(stored) !== -1) return stored;
+  var nav = (navigator.language || "pl").toLowerCase();
+  if (nav.indexOf("ru") === 0) return "ru";
+  if (nav.indexOf("en") === 0) return "en";
+  return "pl";
+}
+
+document.getElementById("langsw").addEventListener("click", function(e){
+  var btn = e.target.closest("button[data-lang]");
+  if (btn) setLang(btn.getAttribute("data-lang"));
+});
+
+/* ---------- nav + overlay ---------- */
+var nav = document.getElementById("nav");
+var overlay = document.getElementById("menuOverlay");
+var menuBtn = document.getElementById("menuBtn");
+var menuClose = document.getElementById("menuClose");
+var stickyCta = document.getElementById("stickyCta");
+
+function openMenu(){
+  overlay.setAttribute("data-open","true");
+  menuBtn.setAttribute("aria-expanded","true");
+  menuClose.focus();
+}
+function closeMenu(){
+  overlay.setAttribute("data-open","false");
+  menuBtn.setAttribute("aria-expanded","false");
+  menuBtn.focus();
+}
+menuBtn.addEventListener("click", openMenu);
+menuClose.addEventListener("click", closeMenu);
+overlay.addEventListener("click", function(e){
+  if (e.target.closest("a")) closeMenu();
+});
+
+window.addEventListener("scroll", function(){
+  var y = window.scrollY;
+  nav.classList.toggle("is-stuck", y > 24);
+  stickyCta.setAttribute("data-on", y > window.innerHeight * 0.9 ? "true" : "false");
+}, { passive:true });
+
+/* ---------- reveal ---------- */
+if ("IntersectionObserver" in window && !reduced){
+  var revObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){
+        en.target.classList.add("is-in");
+        revObs.unobserve(en.target);
+      }
+    });
+  }, { rootMargin:"0px 0px -12% 0px", threshold:0.06 });
+  document.querySelectorAll("[data-reveal]").forEach(function(el){ revObs.observe(el); });
+} else {
+  document.querySelectorAll("[data-reveal]").forEach(function(el){ el.classList.add("is-in"); });
+}
+
+/* ---------- process active step ---------- */
+if ("IntersectionObserver" in window){
+  var stepObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      en.target.classList.toggle("is-active", en.isIntersecting);
+    });
+  }, { rootMargin:"-40% 0px -40% 0px" });
+  document.querySelectorAll(".step").forEach(function(el){ stepObs.observe(el); });
+}
+
+/* ---------- masonry ---------- */
+var grid = document.getElementById("pfGrid");
+var rafId = null;
+
+function layoutMasonry(){
+  if (!grid) return;
+  if (window.innerWidth < 768){
+    grid.classList.remove("masonry");
+    grid.querySelectorAll(".pf-item").forEach(function(it){ it.style.gridRowEnd = ""; });
+    return;
+  }
+  grid.classList.add("masonry");
+  var rowH = 8, gap = 24;
+  grid.querySelectorAll(".pf-item").forEach(function(it){
+    it.style.gridRowEnd = "";
+    var h = it.getBoundingClientRect().height;
+    it.style.gridRowEnd = "span " + Math.ceil((h + gap) / (rowH + gap));
+  });
+}
+function scheduleLayout(){
+  if (rafId) cancelAnimationFrame(rafId);
+  rafId = requestAnimationFrame(layoutMasonry);
+}
+window.addEventListener("resize", scheduleLayout, { passive:true });
+window.addEventListener("load", scheduleLayout);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(scheduleLayout);
+if (grid){
+  grid.querySelectorAll("img").forEach(function(img){
+    if (!img.complete) img.addEventListener("load", scheduleLayout, { once:true });
+  });
+}
+
+/* ---------- lightbox ---------- */
+var lb = document.getElementById("lightbox");
+var lbImg = document.getElementById("lbImg");
+var lbTitle = document.getElementById("lbTitle");
+var lbDesc = document.getElementById("lbDesc");
+var lbClose = document.getElementById("lbClose");
+var lastFocus = null;
+var lightboxOpenKey = null;
+
+function fillLightbox(keys){
+  lbImg.src = keys.img;
+  lbImg.width = keys.w;
+  lbImg.height = keys.h;
+  lbImg.alt = t(keys.alt);
+  lbTitle.textContent = t(keys.cap);
+  lbDesc.textContent = t(keys.desc);
+}
+
+function openLightbox(btn){
+  lastFocus = btn;
+  lightboxOpenKey = {
+    img: btn.getAttribute("data-img"),
+    w: btn.getAttribute("data-w"),
+    h: btn.getAttribute("data-h"),
+    cap: btn.getAttribute("data-cap"),
+    desc: btn.getAttribute("data-desc"),
+    alt: btn.getAttribute("data-alt")
+  };
+  fillLightbox(lightboxOpenKey);
+  lb.setAttribute("data-open","true");
+  document.body.style.overflow = "hidden";
+  lbClose.focus();
+}
+function closeLightbox(){
+  lb.setAttribute("data-open","false");
+  document.body.style.overflow = "";
+  lightboxOpenKey = null;
+  if (lastFocus) lastFocus.focus();
+}
+if (grid){
+  grid.addEventListener("click", function(e){
+    var btn = e.target.closest(".pf-item");
+    if (btn) openLightbox(btn);
+  });
+}
+lbClose.addEventListener("click", closeLightbox);
+lb.addEventListener("click", function(e){
+  if (e.target === lb) closeLightbox();
+});
+
+document.addEventListener("keydown", function(e){
+  if (e.key === "Escape"){
+    if (lb.getAttribute("data-open") === "true") closeLightbox();
+    else if (overlay.getAttribute("data-open") === "true") closeMenu();
+  }
+  if (e.key !== "Tab") return;
+  var box = lb.getAttribute("data-open") === "true" ? lb
+          : (overlay.getAttribute("data-open") === "true" ? overlay : null);
+  if (!box) return;
+  var focusables = box.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+  if (!focusables.length) return;
+  var first = focusables[0], last = focusables[focusables.length - 1];
+  if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+});
+
+/* ---------- form ---------- */
+var form = document.getElementById("leadForm");
+var success = document.getElementById("formSuccess");
+
+function mark(fieldId, bad){
+  var f = document.getElementById(fieldId);
+  if (f) f.classList.toggle("has-err", bad);
+}
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  if (document.getElementById("company").value !== "") return;
+
+  var name = document.getElementById("in-name");
+  var contact = document.getElementById("in-contact");
+  var size = document.getElementById("in-size");
+  var stage = document.getElementById("in-stage");
+  var consent = document.getElementById("in-consent");
+
+  var contactOk = /(^|\s)[^@\s]+@[^@\s]+\.[^@\s]+/.test(contact.value) ||
+                  (contact.value.replace(/\D/g,"").length >= 9);
+
+  var errs = [
+    ["f-name", name.value.trim().length < 2, name],
+    ["f-contact", !contactOk, contact],
+    ["f-size", size.value.trim().length < 2, size],
+    ["f-stage", stage.value === "", stage],
+    ["f-consent", !consent.checked, consent]
+  ];
+
+  var firstBad = null;
+  errs.forEach(function(row){
+    mark(row[0], row[1]);
+    if (row[1] && !firstBad) firstBad = row[2];
+  });
+
+  if (firstBad){ firstBad.focus(); return; }
+
+  /* [UZUPEŁNIĆ endpoint formularza: Formspree, Netlify Forms, własne API] */
+  form.style.display = "none";
+  success.setAttribute("data-on","true");
+  success.focus && success.focus();
+});
+
+form.addEventListener("input", function(e){
+  var f = e.target.closest(".field, .consent");
+  if (f) f.classList.remove("has-err");
+});
+
+/* ---------- boot ---------- */
+setLang(detectLang());
+scheduleLayout();
+
+})();
+</script>
+</body>
+</html>
