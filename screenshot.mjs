@@ -28,16 +28,13 @@ for (const s of shots) {
   await new Promise(r => setTimeout(r, 600))
   if (s.full) {
     await page.evaluate(async () => {
-      await new Promise(resolve => {
-        let y = 0
-        const step = () => {
-          y += window.innerHeight * 0.8
-          window.scrollTo(0, y)
-          if (y < document.body.scrollHeight) requestAnimationFrame(step)
-          else { window.scrollTo(0, 0); setTimeout(resolve, 400) }
-        }
-        step()
-      })
+      const sleep = ms => new Promise(r => setTimeout(r, ms))
+      for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight * 0.6) {
+        window.scrollTo({top:y, behavior:'instant'})
+        await sleep(140)
+      }
+      window.scrollTo({top:0, behavior:'instant'})
+      await sleep(500)
     })
   }
   const overflow = await page.evaluate(() => ({

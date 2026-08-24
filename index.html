@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Natalia Morozova — projektowanie wnętrz, Warszawa</title>
 <meta name="description" content="Projektuję wnętrza w Warszawie i zdalnie na całym świecie. Pełna dokumentacja wykonawcza, wizualizacje 3D, nadzór autorski. Bezpłatna konsultacja 30 minut.">
+<!-- [UZUPEŁNIĆ domenę] podmień nataliamorozova.design na realny adres w: canonical, og:url, og:image, JSON-LD, sitemap.xml, llms.txt -->
 <link rel="canonical" href="https://nataliamorozova.design/">
+<meta property="og:url" content="https://nataliamorozova.design/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Natalia Morozova">
 <meta property="og:title" content="Natalia Morozova — projektowanie wnętrz, Warszawa">
@@ -14,6 +16,7 @@
 <meta property="og:locale" content="pl_PL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F6F2ED">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%236B1F2E'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='34' fill='%23F6F2ED' text-anchor='middle'%3ENM%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -150,6 +153,12 @@ section{position:relative;}
   padding:14px var(--gutter);
   transition:background-color .35s var(--ease), box-shadow .35s var(--ease);
 }
+.nav::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(246,242,237,.92),rgba(246,242,237,0));
+  transition:opacity .35s var(--ease);
+}
+.nav.is-stuck::before{opacity:0;}
 .nav.is-stuck{
   background:rgba(246,242,237,.82);
   -webkit-backdrop-filter:blur(14px);
@@ -192,9 +201,12 @@ section{position:relative;}
   display:flex;flex-direction:column;justify-content:center;
   padding:var(--s5) var(--gutter);
   opacity:0;visibility:hidden;
-  transition:opacity .4s var(--ease),visibility .4s;
+  transition:opacity .4s var(--ease),visibility 0s linear .4s;
 }
-.overlay[data-open="true"]{opacity:1;visibility:visible;}
+.overlay[data-open="true"]{
+  opacity:1;visibility:visible;
+  transition:opacity .4s var(--ease),visibility 0s linear 0s;
+}
 .overlay-close{
   position:absolute;top:14px;right:var(--gutter);
   background:none;border:0;cursor:pointer;
@@ -261,7 +273,7 @@ section{position:relative;}
   position:relative;
   width:100%;
   aspect-ratio:4/5;
-  max-height:42svh;
+  max-height:36svh;
   overflow:hidden;
   flex:0 0 auto;
 }
@@ -269,8 +281,8 @@ section{position:relative;}
 .hero-body{
   flex:1 1 auto;
   display:flex;flex-direction:column;justify-content:center;
-  gap:var(--s2);
-  padding:var(--s4) var(--gutter) var(--s3);
+  gap:14px;
+  padding:var(--s3) var(--gutter) var(--s3);
 }
 .hero h1{
   font-size:clamp(2.1rem,8.6vw,6.5rem);
@@ -342,7 +354,7 @@ section{position:relative;}
   color:var(--ghost);
   pointer-events:none;user-select:none;z-index:0;
 }
-.step > *{position:relative;z-index:1;}
+.step-head,.step-body{position:relative;z-index:1;}
 .step h3{font-size:clamp(1.5rem,4.4vw,2.4rem);margin-bottom:var(--s1);}
 .step .meta{
   font-size:11px;letter-spacing:.18em;text-transform:uppercase;
@@ -366,7 +378,8 @@ section{position:relative;}
   gap:var(--gap);
   align-items:start;
 }
-.pf-grid.masonry{grid-auto-rows:8px;}
+.pf-grid.masonry{display:block;position:relative;}
+.pf-grid.masonry .pf-item{position:absolute;top:0;left:0;}
 .pf-item{
   margin:0;padding:0;
   display:block;width:100%;
@@ -374,7 +387,7 @@ section{position:relative;}
   text-align:left;
   overflow:hidden;
 }
-.pf-shot{overflow:hidden;position:relative;background:var(--greige);}
+.pf-shot{display:block;overflow:hidden;position:relative;background:var(--greige);}
 .pf-shot img{
   width:100%;height:auto;
   transition:transform .6s var(--ease);
@@ -404,9 +417,12 @@ section{position:relative;}
   display:flex;align-items:center;justify-content:center;
   padding:var(--s4) var(--gutter);
   opacity:0;visibility:hidden;
-  transition:opacity .3s var(--ease),visibility .3s;
+  transition:opacity .3s var(--ease),visibility 0s linear .3s;
 }
-.lb[data-open="true"]{opacity:1;visibility:visible;}
+.lb[data-open="true"]{
+  opacity:1;visibility:visible;
+  transition:opacity .3s var(--ease),visibility 0s linear 0s;
+}
 .lb-inner{
   max-width:1100px;width:100%;
   max-height:100%;
@@ -529,7 +545,9 @@ section{position:relative;}
 /* ---------- cta / form ---------- */
 .cta-head{font-size:clamp(2.2rem,6.4vw,4.6rem);max-width:16ch;}
 .cta-sub{margin-top:var(--s3);font-size:16px;color:rgba(246,242,237,.86);}
-.form{margin-top:var(--s5);max-width:640px;display:flex;flex-direction:column;gap:var(--s4);}
+.cta-grid{display:grid;grid-template-columns:1fr;gap:var(--s5);}
+.cta-copy{align-self:start;}
+.form{margin-top:0;max-width:640px;display:flex;flex-direction:column;gap:var(--s4);}
 .field{display:flex;flex-direction:column;gap:6px;}
 .field label{
   font-size:11px;letter-spacing:.18em;text-transform:uppercase;
@@ -547,6 +565,9 @@ section{position:relative;}
 .field textarea{resize:vertical;min-height:88px;}
 .field select{appearance:none;-webkit-appearance:none;}
 .field select option{color:var(--ink);background:var(--cream);}
+.field input::placeholder,.field textarea::placeholder{
+  color:rgba(246,242,237,.5);opacity:1;
+}
 .field input:focus,.field select:focus,.field textarea:focus{
   outline:none;border-bottom-color:var(--cream);
 }
@@ -622,15 +643,31 @@ section{position:relative;}
   .trust{grid-template-columns:repeat(4,1fr);}
   .trust div:nth-child(2n){border-right:1px solid var(--line-soft);}
   .trust div:last-child{border-right:0;}
-  .cols3{grid-template-columns:repeat(3,1fr);gap:var(--s4);}
   .pf-grid{grid-template-columns:repeat(2,1fr);}
   .pf-grid .pf-item:first-child{grid-column:span 2;}
-  .svc-grid{grid-template-columns:repeat(3,1fr);}
   .rev-grid{grid-template-columns:repeat(3,1fr);}
-  .about-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s5);align-items:start;}
   .about-fair{grid-template-columns:1fr 1fr;}
   .foot-cols{grid-template-columns:2fr 1fr 1fr;}
   .sticky-cta{display:none;}
+  .hero-media{max-height:52svh;}
+  .hero-body{padding:var(--s4) var(--gutter) var(--s5);gap:var(--s3);}
+  .hero-actions{flex-direction:row;align-items:center;flex-wrap:wrap;gap:var(--s3);}
+  .hero-actions .btn{width:auto;}
+  .step{padding-left:0;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s4);}
+  .step-num{
+    right:auto;left:-.06em;top:50%;
+    transform:translateY(-50%);
+    font-size:clamp(6rem,11vw,13rem);
+  }
+  .step-head{padding-left:0;position:relative;}
+  .step-body{position:relative;}
+  .closer{margin-top:var(--s7);}
+}
+
+@media (min-width:1024px){
+  .cols3{grid-template-columns:repeat(3,1fr);gap:var(--s4);}
+  .svc-grid{grid-template-columns:repeat(3,1fr);}
+  .about-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s5);align-items:start;}
   .hero{flex-direction:row;}
   .hero-media{
     width:55%;aspect-ratio:auto;max-height:none;height:100svh;
@@ -638,18 +675,10 @@ section{position:relative;}
   }
   .hero-body{
     width:45%;
-    padding:calc(var(--s7)) 6vw var(--s5);
-    gap:var(--s3);
+    padding:var(--s7) 6vw var(--s5);
     justify-content:center;
   }
   .hero h1{font-size:clamp(2.6rem,4.4vw,5rem);}
-  .hero-actions{flex-direction:row;align-items:center;flex-wrap:wrap;gap:var(--s3);}
-  .hero-actions .btn{width:auto;}
-  .step{padding-left:0;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s4);}
-  .step-num{right:auto;left:0;top:var(--s4);font-size:clamp(4rem,7vw,8rem);}
-  .step-head{padding-left:0;position:relative;}
-  .step-body{position:relative;}
-  .closer{margin-top:var(--s7);}
 }
 
 @media (min-width:1280px){
@@ -658,6 +687,8 @@ section{position:relative;}
   .hero h1{font-size:clamp(3.2rem,4vw,6.5rem);}
   .problem-head,.proc-head{font-size:clamp(3rem,4.4vw,4.6rem);}
   .step{grid-template-columns:minmax(0,4fr) minmax(0,7fr);}
+  .cta-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:var(--s7);align-items:start;}
+  .cta-copy{position:sticky;top:96px;}
   .lb-inner{flex-direction:row;align-items:flex-end;gap:var(--s4);}
   .lb-inner img{max-height:78svh;margin:0;}
   .lb-text{flex:0 0 300px;padding-bottom:var(--s2);}
@@ -843,7 +874,7 @@ section{position:relative;}
         <span class="pf-cap"><span data-i18n="pf.2.cap">Studio, strefa spania i aneks kuchenny · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
       </button>
 
-      <button type="button" class="pf-item" data-reveal
+      <button type="button" class="pf-item" data-reveal style="max-width:417px"
         data-img="assets/p11-living-grey-01.webp" data-w="417" data-h="500"
         data-cap="pf.11.cap" data-desc="alt.p11" data-alt="alt.p11">
         <span class="pf-shot"><img src="assets/p11-living-grey-01.webp" width="417" height="500" loading="lazy" decoding="async" data-i18n-alt="alt.p11" alt="Salon w szarościach z witryną, jodełką i szyną oświetleniową"></span>
@@ -878,7 +909,7 @@ section{position:relative;}
         <span class="pf-cap"><span data-i18n="pf.5.cap">Kuchnia z drewnianą lamperią · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
       </button>
 
-      <button type="button" class="pf-item" data-reveal
+      <button type="button" class="pf-item" data-reveal style="max-width:400px"
         data-img="assets/p13-bedroom-neutral.webp" data-w="400" data-h="340"
         data-cap="pf.13.cap" data-desc="alt.p13" data-alt="alt.p13">
         <span class="pf-shot"><img src="assets/p13-bedroom-neutral.webp" width="400" height="340" loading="lazy" decoding="async" data-i18n-alt="alt.p13" alt="Jasna sypialnia z zabudową po sufit i miejscem do pracy"></span>
@@ -892,28 +923,28 @@ section{position:relative;}
         <span class="pf-cap"><span data-i18n="pf.3.cap">Przedpokój z zabudową bezuchwytową · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
       </button>
 
-      <button type="button" class="pf-item" data-reveal
+      <button type="button" class="pf-item" data-reveal style="max-width:384px"
         data-img="assets/p09-bath-walkin-shower.webp" data-w="384" data-h="500"
         data-cap="pf.9.cap" data-desc="alt.p09" data-alt="alt.p09">
         <span class="pf-shot"><img src="assets/p09-bath-walkin-shower.webp" width="384" height="500" loading="lazy" decoding="async" data-i18n-alt="alt.p09" alt="Łazienka z prysznicem walk in, czarna armatura, terrazzo i drewno"></span>
         <span class="pf-cap"><span data-i18n="pf.9.cap">Łazienka z prysznicem walk in · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
       </button>
 
-      <button type="button" class="pf-item" data-reveal
+      <button type="button" class="pf-item" data-reveal style="max-width:281px"
         data-img="assets/p08-bath-terrazzo-mirror.webp" data-w="281" data-h="500"
         data-cap="pf.8.cap" data-desc="alt.p08" data-alt="alt.p08">
         <span class="pf-shot"><img src="assets/p08-bath-terrazzo-mirror.webp" width="281" height="500" loading="lazy" decoding="async" data-i18n-alt="alt.p08" alt="Łazienka z terrazzo, betonowa umywalka wolnostojąca, okrągłe podświetlane lustro"></span>
         <span class="pf-cap"><span data-i18n="pf.8.cap">Łazienka z terrazzo · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
       </button>
 
-      <button type="button" class="pf-item" data-reveal
+      <button type="button" class="pf-item" data-reveal style="max-width:270px"
         data-img="assets/p12-bath-vertical.webp" data-w="270" data-h="500"
         data-cap="pf.12.cap" data-desc="alt.p12" data-alt="alt.p12">
         <span class="pf-shot"><img src="assets/p12-bath-vertical.webp" width="270" height="500" loading="lazy" decoding="async" data-i18n-alt="alt.p12" alt="Wąska łazienka z pralką w słupku, betonowa umywalka, szklane kule"></span>
         <span class="pf-cap"><span data-i18n="pf.12.cap">Wąska łazienka z pralką w słupku · [UZUPEŁNIĆ metraż i lokalizację]</span></span>
       </button>
 
-      <button type="button" class="pf-item" data-reveal
+      <button type="button" class="pf-item" data-reveal style="max-width:281px"
         data-img="assets/p10-wc-laundry.webp" data-w="281" data-h="500"
         data-cap="pf.10.cap" data-desc="alt.p10" data-alt="alt.p10">
         <span class="pf-shot"><img src="assets/p10-wc-laundry.webp" width="281" height="500" loading="lazy" decoding="async" data-i18n-alt="alt.p10" alt="Toaleta z pralką w zabudowie, terrazzo, grzejnik dekoracyjny"></span>
@@ -1041,9 +1072,13 @@ section{position:relative;}
 
 <!-- 10. CTA + FORMULARZ -->
 <section class="bg-wine on-wine pad" id="kontakt" aria-labelledby="cta-h">
-  <div class="wrap">
+  <div class="wrap cta-grid">
+    <div class="cta-copy">
     <h2 class="cta-head" id="cta-h" data-reveal data-i18n="contact.h">Opowiedz mi o swoim mieszkaniu</h2>
     <p class="cta-sub" data-reveal data-i18n="contact.sub">Pierwsza rozmowa jest bezpłatna i trwa 30 minut. Wychodzisz z niej z konkretną wyceną i pomysłem na swoją przestrzeń, nawet jeśli nie zaczniemy współpracy.</p>
+    <p class="channels" data-reveal data-i18n="contact.channels">Wolisz napisać od razu: WhatsApp [UZUPEŁNIĆ numer] · Telegram [UZUPEŁNIĆ] · Instagram DM @nataliamorozova_design · e mail [UZUPEŁNIĆ adres]</p>
+    </div>
+    <div class="cta-form">
 
     <form class="form" id="leadForm" novalidate data-reveal>
       <div class="hp" aria-hidden="true">
@@ -1103,9 +1138,8 @@ section{position:relative;}
       <p class="form-note" data-i18n="form.rodo">Administratorem danych jest Natalia Morozova. Dane wykorzystuję wyłącznie do kontaktu w sprawie zgłoszenia i usuwam je na twoją prośbę. [UZUPEŁNIĆ dane firmy i NIP]</p>
     </form>
 
-    <p class="form-success" id="formSuccess" data-on="false" role="status" data-i18n="form.success">Dziękuję. Odezwę się w ciągu 24 godzin.</p>
-
-    <p class="channels" data-i18n="contact.channels">Wolisz napisać od razu: WhatsApp [UZUPEŁNIĆ numer] · Telegram [UZUPEŁNIĆ] · Instagram DM @nataliamorozova_design · e mail [UZUPEŁNIĆ adres]</p>
+    <p class="form-success" id="formSuccess" data-on="false" role="status" tabindex="-1" data-i18n="form.success">Dziękuję. Odezwę się w ciągu 24 godzin.</p>
+    </div>
   </div>
 </section>
 
@@ -1148,7 +1182,7 @@ section{position:relative;}
 <div class="lb" id="lightbox" data-open="false" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
   <button type="button" class="lb-close" id="lbClose" data-i18n="nav.close">Zamknij</button>
   <div class="lb-inner">
-    <img id="lbImg" src="" alt="" width="1440" height="1434">
+    <img id="lbImg" alt="" width="1440" height="1434">
     <div class="lb-text">
       <h3 id="lbTitle"></h3>
       <p id="lbDesc"></p>
@@ -1668,7 +1702,7 @@ var stickyCta = document.getElementById("stickyCta");
 function openMenu(){
   overlay.setAttribute("data-open","true");
   menuBtn.setAttribute("aria-expanded","true");
-  menuClose.focus();
+  requestAnimationFrame(function(){ menuClose.focus(); });
 }
 function closeMenu(){
   overlay.setAttribute("data-open","false");
@@ -1718,18 +1752,49 @@ var rafId = null;
 
 function layoutMasonry(){
   if (!grid) return;
-  if (window.innerWidth < 768){
+  var items = grid.querySelectorAll(".pf-item");
+  var w = grid.clientWidth;
+
+  if (w < 560){
     grid.classList.remove("masonry");
-    grid.querySelectorAll(".pf-item").forEach(function(it){ it.style.gridRowEnd = ""; });
+    grid.style.height = "";
+    items.forEach(function(it){ it.style.width = ""; it.style.transform = ""; });
     return;
   }
+
+  var cols = w < 1080 ? 2 : 3;
+  var gap = 24;
+  var colW = Math.floor((w - gap * (cols - 1)) / cols);
+  var heights = new Array(cols).fill(0);
+
   grid.classList.add("masonry");
-  var rowH = 8, gap = 24;
-  grid.querySelectorAll(".pf-item").forEach(function(it){
-    it.style.gridRowEnd = "";
-    var h = it.getBoundingClientRect().height;
-    it.style.gridRowEnd = "span " + Math.ceil((h + gap) / (rowH + gap));
+
+  items.forEach(function(it, i){
+    var span = (i === 0 && cols > 1) ? 2 : 1;
+    var c = 0;
+
+    if (span === 2){
+      var best = Infinity;
+      for (var k = 0; k <= cols - 2; k++){
+        var top = Math.max(heights[k], heights[k + 1]);
+        if (top < best){ best = top; c = k; }
+      }
+    } else {
+      for (var j = 1; j < cols; j++){ if (heights[j] < heights[c] - 0.5) c = j; }
+    }
+
+    var boxW = colW * span + gap * (span - 1);
+    it.style.width = boxW + "px";
+
+    var y = span === 2 ? Math.max(heights[c], heights[c + 1]) : heights[c];
+    var x = c * (colW + gap);
+    it.style.transform = "translate(" + x + "px," + y + "px)";
+
+    var h = it.offsetHeight;
+    for (var m = c; m < c + span; m++) heights[m] = y + h + gap;
   });
+
+  grid.style.height = (Math.max.apply(null, heights) - gap) + "px";
 }
 function scheduleLayout(){
   if (rafId) cancelAnimationFrame(rafId);
@@ -1775,7 +1840,7 @@ function openLightbox(btn){
   fillLightbox(lightboxOpenKey);
   lb.setAttribute("data-open","true");
   document.body.style.overflow = "hidden";
-  lbClose.focus();
+  requestAnimationFrame(function(){ lbClose.focus(); });
 }
 function closeLightbox(){
   lb.setAttribute("data-open","false");
@@ -1808,6 +1873,14 @@ document.addEventListener("keydown", function(e){
   var first = focusables[0], last = focusables[focusables.length - 1];
   if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
   else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+});
+
+/* ---------- faq ---------- */
+document.querySelectorAll(".faq details").forEach(function(d){
+  var sum = d.querySelector("summary");
+  var sync = function(){ sum.setAttribute("aria-expanded", d.open ? "true" : "false"); };
+  sync();
+  d.addEventListener("toggle", sync);
 });
 
 /* ---------- form ---------- */
