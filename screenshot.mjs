@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer'
 import { mkdir } from 'node:fs/promises'
 
-const url = process.argv[2] || 'http://localhost:3000'
+const url = process.argv[2] || 'http://localhost:3100'
 const out = './temporary screenshots'
 await mkdir(out, { recursive: true })
 

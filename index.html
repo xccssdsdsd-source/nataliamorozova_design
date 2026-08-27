@@ -12,11 +12,16 @@
 <meta property="og:title" content="Natalia Morozova — wnętrza, Warszawa">
 <meta property="og:description" content="Natalia Morozova, projektowanie wnętrz. Warszawa i zdalnie.">
 <meta property="og:image" content="https://nataliamorozova.design/assets/hero-45m2-kitchen-bar.webp">
+<meta property="og:image:width" content="1440">
+<meta property="og:image:height" content="1434">
+<meta property="og:image:alt" content="Kuchnia połączona z salonem, burgundowa zabudowa, marmur, podłoga w jodełkę">
+<meta property="og:site_name" content="Natalia Morozova">
 <meta property="og:locale" content="pl_PL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FCFBF9">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23FCFBF9'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='30' fill='%2314120F' text-anchor='middle'%3ENM%3C/text%3E%3C/svg%3E">
 
+<link rel="preload" as="image" href="assets/hero-45m2-kitchen-bar.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500&display=swap&subset=latin,latin-ext,cyrillic,cyrillic-ext">
@@ -121,6 +126,18 @@ h1,h2,p{margin:0;}
 a{color:inherit;text-decoration:none;}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
 :focus-visible{outline:1px solid var(--wine);outline-offset:6px;}
+.skip{
+  position:fixed;left:var(--gutter);top:12px;z-index:90;
+  transform:translateY(-160%);
+  padding:10px 16px;background:var(--ink);color:var(--paper);
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  transition:transform 220ms var(--ease-out);
+}
+.skip:focus-visible{transform:none;outline-color:var(--paper);}
+.sr-only{
+  position:absolute;width:1px;height:1px;margin:-1px;padding:0;
+  overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
+}
 
 /* ── type ───────────────────────────────────── */
 .micro{
@@ -135,7 +152,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
 }
 .display{
   font-family:var(--font-display);
-  font-weight:300;line-height:1.02;letter-spacing:-.025em;
+  font-weight:300;line-height:1.08;letter-spacing:-.025em;
   text-wrap:balance;
 }
 .sec-note,.faq-a p{text-wrap:pretty;}
@@ -197,10 +214,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
   background:var(--paper);
   display:flex;align-items:center;
   padding:0 var(--gutter);
-  opacity:0;pointer-events:none;
-  transition:opacity 380ms var(--ease-out);
+  opacity:0;pointer-events:none;visibility:hidden;
+  transition:opacity 380ms var(--ease-out),visibility 0s linear 380ms;
 }
-.menu.open{opacity:1;pointer-events:auto;}
+.menu.open{opacity:1;pointer-events:auto;visibility:visible;
+  transition:opacity 380ms var(--ease-out),visibility 0s;}
 .menu-list{display:flex;flex-direction:column;width:100%;border-top:1px solid var(--hair-soft);}
 .menu-list a{
   display:flex;align-items:baseline;gap:clamp(14px,4vw,26px);
@@ -377,8 +395,20 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
   padding-inline:max(var(--gutter),7vw);
   padding-top:clamp(48px,8vh,84px);
   will-change:transform;
+  /* baza = natywny scroll poziomy. Działa bez GSAP i przy reduced-motion. */
+  flex:1 1 auto;min-width:0;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-padding-inline-start:max(var(--gutter),7vw);
+  scrollbar-width:none;-ms-overflow-style:none;
 }
-.gal-item{flex:0 0 auto;}
+.gal-track::-webkit-scrollbar{display:none;}
+/* GSAP przejął kadrowanie: taśmę przesuwa scrub, nie scroll kontenera */
+.gal.is-pinned .gal-track{
+  flex:0 0 auto;min-width:auto;
+  overflow:visible;scroll-snap-type:none;
+}
+.gal-item{flex:0 0 auto;scroll-snap-align:start;}
 .gal-item .frame{
   display:block;overflow:hidden;background:rgba(20,18,15,.05);
   box-shadow:0 32px 70px -46px rgba(20,18,15,.55);
@@ -391,8 +421,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
   will-change:transform;
 }
 .gal-item figcaption{
-  display:flex;align-items:center;gap:11px;margin-top:13px;
+  display:flex;align-items:baseline;gap:11px;margin-top:13px;
   color:rgba(20,18,15,.7);
+}
+.gal-item figcaption .num{align-self:center;}
+.gal-cap{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(20,18,15,.5);
+  transition:color 260ms var(--ease-out);
 }
 .gal-item figcaption{transition:color 260ms var(--ease-out);}
 .gal-item figcaption .tick{
@@ -403,6 +439,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
   .gal-item:hover .frame{box-shadow:0 44px 90px -46px rgba(20,18,15,.7);}
   .gal-item:hover figcaption{color:var(--ink);}
   .gal-item:hover figcaption .tick{width:38px;opacity:.9;}
+  .gal-item:hover .gal-cap{color:rgba(20,18,15,.78);}
 }
 .gal-head{
   position:absolute;top:clamp(66px,11vh,120px);left:var(--gutter);right:var(--gutter);
@@ -430,8 +467,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
 /* ── contact (dark focus finale) ────────────── */
 .contact{
   background:var(--wine);color:var(--paper);
-  padding-block:clamp(80px,15vh,170px) 26px;
+  padding-block:clamp(80px,15vh,170px) 0;
 }
+.site-foot{
+  background:var(--wine);color:var(--paper);
+  padding-block:clamp(48px,9vh,110px) 26px;
+}
+.site-foot :focus-visible{outline-color:var(--paper);}
 .contact-lead{display:flex;align-items:center;gap:16px;
   margin-bottom:clamp(24px,5vh,48px);}
 .contact-lead .rule{height:1px;flex:1;max-width:min(34vw,380px);
@@ -468,6 +510,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
   font-family:var(--font-display);
   font-size:clamp(1.05rem,2.4vw,1.7rem);
   text-align:right;
+  min-width:0;overflow-wrap:anywhere;
 }
 .hold-line{display:block;width:min(52%,180px);height:1px;
   background:currentColor;opacity:.34;transform-origin:right center;}
@@ -523,7 +566,7 @@ a.row:active{transform:scale(.99);}
 .contact-foot{
   display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between;
   align-items:baseline;color:rgba(252,251,249,.8);
-  margin-top:clamp(48px,9vh,110px);padding-top:18px;
+  padding-top:18px;
   border-top:1px solid rgba(252,251,249,.24);
 }
 
@@ -729,6 +772,8 @@ a.row:active{transform:scale(.99);}
 </head>
 <body>
 
+<a class="skip" href="#tresc" data-i18n="skip">PRZEJDŹ DO TREŚCI</a>
+
 <header class="head">
   <a class="mark" href="#hero" aria-label="Początek strony">NM</a>
 
@@ -764,7 +809,7 @@ a.row:active{transform:scale(.99);}
   </nav>
 </div>
 
-<main>
+<main id="tresc">
 
 <!-- ── HERO ─────────────────────────────────── -->
 <section class="hero" id="hero">
@@ -833,7 +878,8 @@ a.row:active{transform:scale(.99);}
 </section>
 
 <!-- ── GALLERY (wszystkie projekty, poziomy scroll) ─ -->
-<section class="gal" id="gal" aria-roledescription="galeria">
+<section class="gal" id="gal" aria-labelledby="gal-h">
+  <h2 class="sr-only" id="gal-h" data-i18n="gal.head">Projekty i detale</h2>
   <div class="gal-head micro">
     <span class="num">04</span>
     <span data-i18n="gal.label">PROJEKTY I DETALE</span>
@@ -844,67 +890,67 @@ a.row:active{transform:scale(.99);}
     <figure class="gal-item" style="--cap:828px">
       <span class="frame"><img src="assets/p03-hallway.webp" width="933" height="720" loading="lazy" decoding="async"
         data-i18n-alt="alt.p03" alt="Przedpokój z szarymi frontami bezuchwytowymi"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">01</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">01</span><span class="gal-cap" data-i18n="gcap.01">Przedpokój</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:575px">
       <span class="frame"><img src="assets/p08-bath-terrazzo-mirror.webp" width="281" height="500" loading="lazy" decoding="async"
         data-i18n-alt="alt.p08" alt="Łazienka z terrazzo i okrągłym podświetlanym lustrem"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">02</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">02</span><span class="gal-cap" data-i18n="gcap.02">Łazienka</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:823px">
       <span class="frame"><img src="assets/p05-kitchen-blue-wall.webp" width="826" height="716" loading="lazy" decoding="async"
         data-i18n-alt="alt.p05" alt="Biała kuchnia z drewnianą lamperią i niebieską ścianą"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">03</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">03</span><span class="gal-cap" data-i18n="gcap.03">Kuchnia</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:575px">
       <span class="frame"><img src="assets/p09-bath-walkin-shower.webp" width="384" height="500" loading="lazy" decoding="async"
         data-i18n-alt="alt.p09" alt="Łazienka z prysznicem walk in, terrazzo i drewno"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">04</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">04</span><span class="gal-cap" data-i18n="gcap.04">Łazienka</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:877px">
       <span class="frame"><img src="assets/p14-hall-blue-mirror.webp" width="1080" height="763" loading="lazy" decoding="async"
         data-i18n-alt="alt.p14" alt="Hol z błękitną komodą, wysokim lustrem i podłogą we wzorzyste płytki"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">05</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">05</span><span class="gal-cap" data-i18n="gcap.05">Hol</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:575px">
       <span class="frame"><img src="assets/p12-bath-vertical.webp" width="270" height="500" loading="lazy" decoding="async"
         data-i18n-alt="alt.p12" alt="Wąska łazienka z betonową umywalką i szklanymi kulami"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">06</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">06</span><span class="gal-cap" data-i18n="gcap.06">Łazienka</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:765px">
       <span class="frame"><img src="assets/p07-bedroom-glass-wall.webp" width="714" height="665" loading="lazy" decoding="async"
         data-i18n-alt="alt.p07" alt="Sypialnia oddzielona szklaną ścianą w czarnej ramie"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">07</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">07</span><span class="gal-cap" data-i18n="gcap.07">Sypialnia</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:1035px">
       <span class="frame"><img src="assets/p15-loggia-office.webp" width="720" height="900" loading="lazy" decoding="async"
         data-i18n-alt="alt.p15" alt="Zabudowana loggia z biurkiem, granatowym fotelem i półkami"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">08</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">08</span><span class="gal-cap" data-i18n="gcap.08">Gabinet na loggii</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:877px">
       <span class="frame"><img src="assets/p16-teen-room.webp" width="1080" height="763" loading="lazy" decoding="async"
         data-i18n-alt="alt.p16" alt="Pokój nastolatki z różowo szarymi pasami i miejscem do nauki"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">09</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">09</span><span class="gal-cap" data-i18n="gcap.09">Pokój nastolatki</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:575px">
       <span class="frame"><img src="assets/p11-living-grey-01.webp" width="417" height="500" loading="lazy" decoding="async"
         data-i18n-alt="alt.p11" alt="Salon w szarościach z witryną i szyną oświetleniową"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">10</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">10</span><span class="gal-cap" data-i18n="gcap.10">Salon</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:773px">
       <span class="frame"><img src="assets/p04-kitchen-glass-partition.webp" width="672" height="672" loading="lazy" decoding="async"
         data-i18n-alt="alt.p04" alt="Kuchnia z drewnianym blatem i przeszkloną ścianą działową"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">11</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">11</span><span class="gal-cap" data-i18n="gcap.11">Kuchnia</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:575px">
       <span class="frame"><img src="assets/p10-wc-laundry.webp" width="281" height="500" loading="lazy" decoding="async"
         data-i18n-alt="alt.p10" alt="Toaleta z pralką w zabudowie i grzejnikiem dekoracyjnym"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">12</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">12</span><span class="gal-cap" data-i18n="gcap.12">Toaleta z pralką</span></figcaption>
     </figure>
     <figure class="gal-item" style="--cap:667px">
       <span class="frame"><img src="assets/p06-living-blue-wall.webp" width="712" height="580" loading="lazy" decoding="async"
         data-i18n-alt="alt.p06" alt="Salon z niebieską ścianą, kremową sofą i okrągłym stołem"></span>
-      <figcaption class="micro"><i class="tick"></i><span class="num">13</span></figcaption>
+      <figcaption class="micro"><i class="tick"></i><span class="num">13</span><span class="gal-cap" data-i18n="gcap.13">Salon</span></figcaption>
     </figure>
   </div>
   <div class="gal-bar" aria-hidden="true"><i id="galBar"></i></div>
@@ -1293,13 +1339,16 @@ a.row:active{transform:scale(.99);}
 
   </div>
 
+</section>
+
+</main>
+
+<footer class="site-foot shell">
   <div class="contact-foot micro">
     <span class="micro">WARSZAWA · PL / RU / EN</span>
     <span data-i18n="end.rights">© 2026 NATALIA MOROZOVA</span>
   </div>
-</section>
-
-</main>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
@@ -1321,6 +1370,9 @@ pl:{
   "focus.line":"45 m² na Mokotowie",
   "focus.meta":"02 / WARSZAWA",
   "gal.label":"PROJEKTY I DETALE",
+  "skip":"PRZEJDŹ DO TREŚCI",
+  "gal.head":"Projekty i detale",
+  "gcap.01":"Przedpokój","gcap.02":"Łazienka","gcap.03":"Kuchnia","gcap.04":"Łazienka","gcap.05":"Hol","gcap.06":"Łazienka","gcap.07":"Sypialnia","gcap.08":"Gabinet na loggii","gcap.09":"Pokój nastolatki","gcap.10":"Salon","gcap.11":"Kuchnia","gcap.12":"Toaleta z pralką","gcap.13":"Salon",
   "contact.big":"Porozmawiajmy",
   "form.title":"NAPISZ DO MNIE",
   "f.name":"IMIĘ",
@@ -1399,6 +1451,9 @@ ru:{
   "focus.line":"45 м² на Мокотуве",
   "focus.meta":"02 / ВАРШАВА",
   "gal.label":"ПРОЕКТЫ И ДЕТАЛИ",
+  "skip":"ПЕРЕЙТИ К СОДЕРЖАНИЮ",
+  "gal.head":"Проекты и детали",
+  "gcap.01":"Прихожая","gcap.02":"Ванная","gcap.03":"Кухня","gcap.04":"Ванная","gcap.05":"Холл","gcap.06":"Ванная","gcap.07":"Спальня","gcap.08":"Кабинет на лоджии","gcap.09":"Комната подростка","gcap.10":"Гостиная","gcap.11":"Кухня","gcap.12":"Санузел с постирочной","gcap.13":"Гостиная",
   "contact.big":"Поговорим",
   "form.title":"НАПИШИТЕ МНЕ",
   "f.name":"ИМЯ",
@@ -1477,6 +1532,9 @@ en:{
   "focus.line":"45 m² in Mokotów",
   "focus.meta":"02 / WARSAW",
   "gal.label":"PROJECTS AND DETAILS",
+  "skip":"SKIP TO CONTENT",
+  "gal.head":"Projects and details",
+  "gcap.01":"Hallway","gcap.02":"Bathroom","gcap.03":"Kitchen","gcap.04":"Bathroom","gcap.05":"Entrance hall","gcap.06":"Bathroom","gcap.07":"Bedroom","gcap.08":"Loggia study","gcap.09":"Teen room","gcap.10":"Living room","gcap.11":"Kitchen","gcap.12":"WC with laundry","gcap.13":"Living room",
   "contact.big":"Let us talk",
   "form.title":"WRITE TO ME",
   "f.name":"NAME",
@@ -1593,16 +1651,27 @@ if (form){
   var note = document.getElementById("formNote");
   form.addEventListener("submit", function(e){
     e.preventDefault();
-    var nm = form.querySelector("#f-name").value.trim();
-    var ct = form.querySelector("#f-contact").value.trim();
-    if (!nm || !ct){ note.textContent = t("f.errFields"); return; }
-    if (!form.querySelector("#f-consent").checked){ note.textContent = t("f.errConsent"); return; }
+    var elName = form.querySelector("#f-name");
+    var elCt   = form.querySelector("#f-contact");
+    var elCons = form.querySelector("#f-consent");
+    [elName, elCt, elCons].forEach(function(el){ el.removeAttribute("aria-invalid"); });
+
+    function fail(el, msg){ note.textContent = msg; el.setAttribute("aria-invalid","true"); el.focus(); }
+    if (!elName.value.trim()){ fail(elName, t("f.errFields")); return; }
+    if (!elCt.value.trim()){ fail(elCt, t("f.errFields")); return; }
+    if (!elCons.checked){ fail(elCons, t("f.errConsent")); return; }
     /* Endpoint w action="" wysyła normalnym POST. Bez niego zostaje sama walidacja. */
     if (form.getAttribute("action")){ form.submit(); return; }
     note.textContent = t("f.ok");
     form.reset();
   });
-  form.addEventListener("input", function(){ if (note.textContent) note.textContent = ""; });
+  form.addEventListener("input", function(e){
+    if (e.target.hasAttribute("aria-invalid")) e.target.removeAttribute("aria-invalid");
+    if (note.textContent) note.textContent = "";
+  });
+  form.addEventListener("change", function(e){
+    if (e.target.hasAttribute("aria-invalid")) e.target.removeAttribute("aria-invalid");
+  });
 }
 
 /* ── nawigacja: menu + kotwice ───────────────
@@ -1769,6 +1838,8 @@ if (!hasGSAP || reduced){
     }
     buildStops();
 
+    gal.classList.add("is-pinned");
+
     var galTween = gsap.to(track, {
       x: function(){ return -dist(); },
       ease: "none",
@@ -1807,17 +1878,12 @@ if (!hasGSAP || reduced){
       gsap.from(it, { opacity: 0, duration: .5, ease: "power2.out",
         scrollTrigger: { trigger: it, containerAnimation: galTween, start: "left 96%" }});
     });
-  } else if (gal && track){
-    track.style.overflowX = "auto";
-    track.style.scrollSnapType = "x mandatory";
-    track.style.paddingInline = "var(--gutter)";
-    Array.prototype.forEach.call(track.children, function(f){ f.style.scrollSnapAlign = "start"; });
   }
 
   /* header inverts over the two dark sections */
   var head = document.querySelector(".head");
-  gsap.utils.toArray(".focus, .contact").forEach(function(sec){
-    var wine = sec.classList.contains("contact");
+  gsap.utils.toArray(".focus, .contact, .site-foot").forEach(function(sec){
+    var wine = !sec.classList.contains("focus");
     ScrollTrigger.create({ trigger: sec, start: "top 56px", end: "bottom 56px",
       onToggle: function(self){
         head.classList.toggle("on-dark", self.isActive);
