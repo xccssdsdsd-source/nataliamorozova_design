@@ -32,7 +32,41 @@
   "knowsLanguage": ["pl", "ru", "en"],
   "sameAs": ["https://www.instagram.com/nataliamorozova_design/"],
   "address": { "@type": "PostalAddress", "addressLocality": "Warszawa", "addressCountry": "PL" },
-  "areaServed": ["Warszawa", "Online"]
+  "areaServed": ["Warszawa", "Online"],
+  "knowsAbout": ["projektowanie wn\u0119trz mieszkalnych", "wizualizacje 3D", "dob\u00f3r materia\u0142\u00f3w wyko\u0144czeniowych"]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Czy Natalia Morozova pracuje tylko w Warszawie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nie. Projekty prowadzone s\u0105 w Warszawie oraz zdalnie, niezale\u017cnie od miasta. Przy pracy zdalnej ca\u0142o\u015b\u0107 ustalana jest online, na podstawie pomiar\u00f3w i zdj\u0119\u0107 mieszkania."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jakim j\u0119zyku mo\u017cna poprowadzi\u0107 projekt wn\u0119trza?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Po polsku, rosyjsku albo angielsku. Rozmowy, opisy i dokumentacja mog\u0105 by\u0107 w wybranym przez klienta j\u0119zyku."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy zobacz\u0119 wn\u0119trze przed remontem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Ka\u017cdy projekt pokazywany jest na wizualizacjach 3D. Zmiany wprowadzane s\u0105 na obrazie, zanim cokolwiek trafi na budow\u0119."
+      }
+    }
+  ]
 }
 </script>
 
@@ -73,6 +107,15 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 img{display:block;max-width:100%;height:auto;}
+::selection{background:var(--wine);color:var(--paper);}
+
+/* delikatne ziarno na całej stronie — tło przestaje być płaskim polem koloru */
+body::after{
+  content:"";position:fixed;inset:0;z-index:60;pointer-events:none;
+  opacity:.42;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+}
 figure{margin:0;}
 h1,h2,p{margin:0;}
 a{color:inherit;text-decoration:none;}
@@ -83,6 +126,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
 .micro{
   font-family:var(--font-body);
   font-size:10px;letter-spacing:.24em;text-transform:uppercase;line-height:1.6;
+  text-wrap:balance;
 }
 .num{
   font-family:var(--font-display);
@@ -92,21 +136,104 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
 .display{
   font-family:var(--font-display);
   font-weight:300;line-height:1.02;letter-spacing:-.025em;
+  text-wrap:balance;
 }
+.sec-note,.faq-a p{text-wrap:pretty;}
 .shell{padding-inline:var(--gutter);}
 .focus .num,.contact .num{opacity:.55;}
 
 /* ── header ─────────────────────────────────── */
 .head{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  display:flex;align-items:center;justify-content:space-between;
+  --scrim:249,247,244;
+  position:fixed;top:0;left:0;right:0;z-index:70;
+  display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,48px);
   padding:20px var(--gutter);
   pointer-events:none;
   color:var(--ink);
   transition:color 450ms var(--ease-out);
 }
-.head.on-dark{color:var(--paper);}
-.head > *{pointer-events:auto;}
+/* miękka zasłona pod nagłówkiem: treść nigdy nie zderza się z NM ani z przełącznikiem języka */
+.head::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:calc(100% + 30px);
+  background:linear-gradient(to bottom,
+    rgba(var(--scrim),1) 0%,
+    rgba(var(--scrim),.94) 52%,
+    rgba(var(--scrim),0) 100%);
+  opacity:0;pointer-events:none;
+  transition:opacity 420ms var(--ease-out),background 450ms var(--ease-out);
+}
+.head.lifted::before{opacity:1;}
+.head-right{display:flex;align-items:center;gap:clamp(16px,2.2vw,30px);}
+
+/* ── nawigacja ──────────────────────────────── */
+.nav{display:none;gap:clamp(15px,2vw,32px);}
+.nav a{
+  font-family:var(--font-body);
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:inherit;opacity:.6;
+  padding-bottom:3px;border-bottom:1px solid transparent;
+  transition:opacity 200ms var(--ease-out),border-color 260ms var(--ease-out);
+}
+.nav a[aria-current="true"]{opacity:1;border-bottom-color:currentColor;}
+@media (hover:hover) and (pointer:fine){
+  .nav a:hover{opacity:.95;border-bottom-color:currentColor;}
+}
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:24px;height:18px;}
+.burger span{
+  display:block;width:100%;height:1px;background:currentColor;opacity:.8;
+  transition:transform 320ms var(--ease-out);
+}
+.burger.is-open span:first-child{transform:translateY(3px) rotate(45deg);}
+.burger.is-open span:last-child{transform:translateY(-3px) rotate(-45deg);}
+@media (min-width:960px){
+  /* .head > * ustawia position:relative, więc centrowanie potrzebuje wyższej wagi */
+  .head .nav{display:flex;position:absolute;left:50%;transform:translateX(-50%);}
+  .burger{display:none;}
+}
+
+/* ── menu pełnoekranowe (mobile / tablet) ───── */
+.menu{
+  position:fixed;inset:0;z-index:55;
+  background:var(--paper);
+  display:flex;align-items:center;
+  padding:0 var(--gutter);
+  opacity:0;pointer-events:none;
+  transition:opacity 380ms var(--ease-out);
+}
+.menu.open{opacity:1;pointer-events:auto;}
+.menu-list{display:flex;flex-direction:column;width:100%;border-top:1px solid var(--hair-soft);}
+.menu-list a{
+  display:flex;align-items:baseline;gap:clamp(14px,4vw,26px);
+  padding:clamp(13px,2.4vh,22px) 0;
+  border-bottom:1px solid var(--hair-soft);
+  font-family:var(--font-display);font-weight:300;
+  font-size:clamp(1.9rem,9vw,3.2rem);line-height:1;letter-spacing:-.03em;
+  transform:translateY(14px);opacity:0;
+  transition:transform 520ms var(--ease-out),opacity 420ms var(--ease-out);
+}
+.menu.open .menu-list a{transform:none;opacity:1;}
+.menu.open .menu-list a:nth-child(2){transition-delay:.05s;}
+.menu.open .menu-list a:nth-child(3){transition-delay:.10s;}
+.menu.open .menu-list a:nth-child(4){transition-delay:.15s;}
+.menu.open .menu-list a:nth-child(5){transition-delay:.20s;}
+.menu.open .menu-list a:nth-child(6){transition-delay:.25s;}
+.menu-list .num{opacity:.4;font-size:clamp(.8rem,3vw,1rem);}
+
+.head.on-dark{color:var(--paper);--scrim:20,18,15;}
+.head.on-wine{--scrim:107,31,46;}
+/* menu ma jasne tło — nagłówek wraca do ciemnego tuszu, nawet nad bordową sekcją */
+.head.menu-open{color:var(--ink);--scrim:249,247,244;}
+.head > *{position:relative;pointer-events:auto;}
+/* monogram w nagłówku tą samą ręką co znak w stopce kontaktowej */
+.mark{
+  font-family:var(--font-display);font-weight:400;font-style:italic;
+  font-size:19px;letter-spacing:.04em;line-height:1;
+  transition:opacity 200ms var(--ease-out);
+}
+.mark:active{opacity:.6;}
+@media (hover:hover) and (pointer:fine){
+  .mark:hover{opacity:.62;}
+}
 .lang{display:flex;gap:14px;}
 .lang button{
   font-family:var(--font-body);
@@ -125,13 +252,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
 }
 
 /* ── placeholders (hodery) ──────────────────── */
-.ph{display:flex;flex-direction:column;gap:17px;max-width:44ch;}
-.ph-tag{
-  font-family:var(--font-body);
-  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--wine);opacity:.92;margin-bottom:3px;
-}
-.contact .ph-tag,.focus .ph-tag{color:rgba(252,251,249,.82);}
+.ph{display:flex;flex-direction:column;gap:22px;max-width:44ch;}
 .ph-line{
   display:block;height:1px;width:var(--w,100%);
   background:currentColor;opacity:.22;
@@ -188,8 +309,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
 .hero-rule{height:1px;width:100%;background:var(--hair);transform-origin:left center;}
 .hero-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;}
 .hero-foot .micro{color:rgba(20,18,15,.74);}
-.cue{display:block;width:1px;height:42px;
+.cue{display:block;position:relative;width:1px;height:42px;overflow:hidden;
   background:linear-gradient(to bottom,rgba(20,18,15,0),rgba(20,18,15,.5));}
+.cue::after{
+  content:"";position:absolute;left:0;top:0;width:1px;height:15px;
+  background:var(--ink);
+  animation:cueRun 2.6s var(--ease-in-out) infinite;
+}
+@keyframes cueRun{
+  0%{transform:translateY(-18px);opacity:0;}
+  28%{opacity:.85;}
+  100%{transform:translateY(46px);opacity:0;}
+}
 
 /* ── say ────────────────────────────────────── */
 .say{padding-block:clamp(90px,19vh,220px);}
@@ -234,54 +365,67 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
   line-height:1.08;letter-spacing:-.02em;max-width:14ch;
 }
 
-/* ── flow ───────────────────────────────────── */
-.flow{
-  display:grid;grid-template-columns:repeat(12,1fr);
-  column-gap:clamp(16px,2.6vw,40px);
-  row-gap:clamp(52px,10vh,140px);
-  padding-block:clamp(70px,15vh,190px);
-  align-items:start;
+/* ── gallery (pinned horizontal, all projects) ─ */
+.gal{
+  position:relative;height:100svh;min-height:560px;
+  overflow:hidden;display:flex;align-items:center;
+  background:var(--paper-2);
 }
-.fig{grid-column:1/-1;max-width:var(--nw,none);}
+.gal-track{
+  display:flex;align-items:flex-end;
+  gap:clamp(30px,5.5vw,104px);
+  padding-inline:max(var(--gutter),7vw);
+  padding-top:clamp(48px,8vh,84px);
+  will-change:transform;
+}
+.gal-item{flex:0 0 auto;}
+.gal-item .frame{
+  display:block;overflow:hidden;background:rgba(20,18,15,.05);
+  box-shadow:0 32px 70px -46px rgba(20,18,15,.55);
+  transition:box-shadow 320ms var(--ease-out);
+}
+.gal-item img{
+  /* --cap = natywna wysokość × 1.15; kadr nigdy nie jest rozdmuchiwany ponad swoją rozdzielczość */
+  height:min(clamp(320px,72svh,900px), var(--cap,900px));
+  width:auto;max-width:none;
+  will-change:transform;
+}
+.gal-item figcaption{
+  display:flex;align-items:center;gap:11px;margin-top:13px;
+  color:rgba(20,18,15,.7);
+}
+.gal-item figcaption{transition:color 260ms var(--ease-out);}
+.gal-item figcaption .tick{
+  width:20px;height:1px;background:currentColor;opacity:.55;
+  transition:width 320ms var(--ease-out),opacity 260ms var(--ease-out);
+}
+@media (hover:hover) and (pointer:fine){
+  .gal-item:hover .frame{box-shadow:0 44px 90px -46px rgba(20,18,15,.7);}
+  .gal-item:hover figcaption{color:var(--ink);}
+  .gal-item:hover figcaption .tick{width:38px;opacity:.9;}
+}
+.gal-head{
+  position:absolute;top:clamp(66px,11vh,120px);left:var(--gutter);right:var(--gutter);
+  z-index:2;display:flex;align-items:center;gap:14px;color:rgba(20,18,15,.7);
+}
+.gal-head .rule{flex:1;max-width:min(26vw,280px);height:1px;
+  background:currentColor;opacity:.5;transform-origin:left center;}
+.gal-head .count{margin-left:auto;letter-spacing:.2em;}
+.gal-bar{
+  position:absolute;left:var(--gutter);right:var(--gutter);
+  bottom:clamp(24px,4.6vh,52px);height:1px;background:var(--hair-soft);z-index:2;
+}
+.gal-bar i{display:block;height:1px;background:var(--wine);opacity:.5;
+  transform:scaleX(0);transform-origin:left center;}
+
+/* ── figure ──────────────────────────────── */
+.fig{max-width:var(--nw,none);}
+/* uwaga: clip-path przycina box-shadow, więc kadry z animacją wipe zostają bez cienia */
 .fig .frame{display:block;overflow:hidden;clip-path:inset(0 0 0 0);}
 .fig img{width:100%;will-change:transform;}
 .fig figcaption{display:flex;align-items:center;gap:12px;margin-top:12px;
   color:rgba(20,18,15,.7);}
 .fig figcaption .tick{width:22px;height:1px;background:currentColor;opacity:.55;}
-.side{grid-column:1/-1;align-self:center;}
-
-/* ── strip (pinned horizontal, light) ───────── */
-.strip{
-  position:relative;height:100svh;min-height:520px;
-  overflow:hidden;display:flex;align-items:center;
-  background:var(--paper-2);
-}
-.strip-track{
-  display:flex;align-items:center;
-  gap:clamp(36px,6vw,110px);
-  padding-inline:max(var(--gutter),8vw);
-  will-change:transform;
-}
-.strip figure{flex:0 0 auto;}
-.strip img{width:auto;max-height:min(56svh,486px);}
-.strip figcaption{margin-top:12px;color:rgba(20,18,15,.7);}
-.strip-head{
-  position:absolute;top:clamp(72px,12vh,124px);left:var(--gutter);
-  display:flex;align-items:center;gap:14px;color:rgba(20,18,15,.7);
-}
-.strip-head .rule{width:clamp(40px,8vw,120px);height:1px;background:currentColor;
-  opacity:.5;transform-origin:left center;}
-
-/* ── folio ──────────────────────────────────── */
-.folio{
-  display:grid;grid-template-columns:repeat(12,1fr);
-  column-gap:clamp(16px,2.6vw,40px);row-gap:clamp(34px,6vh,72px);
-  padding-block:clamp(70px,15vh,190px);align-items:end;
-}
-.folio .fig{grid-column:1/-1;}
-.folio-name{grid-column:1/-1;font-family:var(--font-display);font-weight:300;
-  font-size:clamp(2.3rem,8.4vw,7rem);line-height:1;letter-spacing:-.03em;}
-.folio-side{grid-column:1/-1;}
 
 /* ── contact (dark focus finale) ────────────── */
 .contact{
@@ -296,10 +440,22 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
   font-family:var(--font-display);font-weight:300;
   font-size:clamp(2.5rem,10vw,8.5rem);line-height:.96;letter-spacing:-.03em;
 }
-.rows{
+.contact-grid{
+  display:grid;grid-template-columns:1fr;
+  column-gap:clamp(28px,4.5vw,80px);row-gap:clamp(44px,8vh,92px);
   margin-top:clamp(36px,7vh,80px);
-  border-top:1px solid rgba(252,251,249,.24);
-  max-width:920px;
+  align-items:start;
+}
+.contact-left{display:flex;flex-direction:column;min-height:100%;}
+.rows{border-top:1px solid rgba(252,251,249,.24);}
+/* monogram domyka lewą kolumnę zamiast zostawiać pod nią pustkę */
+.contact-mark{
+  display:none;
+  font-family:var(--font-display);font-weight:300;font-style:italic;
+  font-size:clamp(6rem,13vw,12.5rem);line-height:.78;letter-spacing:-.05em;
+  color:var(--paper);opacity:.12;
+  margin-top:auto;padding-top:clamp(40px,7vh,80px);
+  user-select:none;
 }
 .row{
   display:flex;align-items:center;justify-content:space-between;
@@ -313,14 +469,57 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
   font-size:clamp(1.05rem,2.4vw,1.7rem);
   text-align:right;
 }
-.row .v.hold{opacity:.8;font-family:var(--font-body);font-size:12px;
-  letter-spacing:.16em;text-transform:uppercase;}
+.hold-line{display:block;width:min(52%,180px);height:1px;
+  background:currentColor;opacity:.34;transform-origin:right center;}
 a.row{transition:transform 220ms var(--ease-out);}
 a.row:active{transform:scale(.99);}
 @media (hover:hover) and (pointer:fine){
   a.row:hover{transform:translateX(6px);}
 }
-.contact-ph{margin-top:clamp(36px,7vh,80px);}
+.contact :focus-visible{outline-color:var(--paper);}
+
+/* ── form ─────────────────────────── */
+.form-title{margin-bottom:clamp(20px,3.4vh,32px);color:rgba(252,251,249,.8);}
+.form{display:flex;flex-direction:column;gap:clamp(20px,3.4vh,30px);max-width:520px;}
+.field{display:flex;flex-direction:column;gap:7px;}
+.field label{color:rgba(252,251,249,.72);}
+.field input,.field textarea{
+  width:100%;padding:5px 0 10px;
+  font-family:var(--font-display);font-weight:300;
+  font-size:clamp(1.1rem,2.1vw,1.55rem);line-height:1.35;
+  color:var(--paper);background:transparent;
+  border:0;border-bottom:1px solid rgba(252,251,249,.32);
+  border-radius:0;
+  transition:border-color 220ms var(--ease-out);
+}
+.field textarea{resize:none;line-height:1.5;min-height:74px;}
+.field input:focus,.field textarea:focus{outline:none;border-bottom-color:var(--paper);}
+.consent{display:flex;align-items:flex-start;gap:12px;cursor:pointer;}
+.consent input{
+  flex:0 0 auto;appearance:none;-webkit-appearance:none;
+  width:15px;height:15px;margin:4px 0 0;border-radius:0;
+  border:1px solid rgba(252,251,249,.5);background:transparent;cursor:pointer;
+  transition:background-color 180ms var(--ease-out),border-color 180ms var(--ease-out);
+}
+.consent input:checked{background:var(--paper);border-color:var(--paper);
+  box-shadow:inset 0 0 0 3px var(--wine);}
+.consent span{font-size:11px;line-height:1.65;color:rgba(252,251,249,.78);max-width:44ch;}
+.send{
+  align-self:flex-start;padding:.65em 1.5em;
+  border:1px solid rgba(252,251,249,.5);
+  font-family:var(--font-body);
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  transition:transform 180ms var(--ease-out),
+             background-color 200ms var(--ease-out),
+             color 200ms var(--ease-out),
+             box-shadow 220ms var(--ease-out);
+}
+.send:active{transform:scale(.98);}
+@media (hover:hover) and (pointer:fine){
+  .send:hover{background:var(--paper);color:var(--wine);
+    transform:translateY(-2px);box-shadow:0 12px 26px rgba(20,18,15,.26);}
+}
+.form-note{min-height:1.7em;color:rgba(252,251,249,.86);}
 .contact-foot{
   display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between;
   align-items:baseline;color:rgba(252,251,249,.8);
@@ -328,11 +527,150 @@ a.row:active{transform:scale(.99);}
   border-top:1px solid rgba(252,251,249,.24);
 }
 
+/* ── shared section lead ────────────────────── */
+.sec{padding-block:clamp(70px,15vh,190px);}
+.sec-lead{display:flex;align-items:center;gap:16px;}
+.sec-lead .rule{height:1px;flex:1;max-width:min(30vw,340px);
+  background:var(--wine);opacity:.3;transform-origin:left center;}
+.sec-lead .flag{margin-left:auto;color:rgba(20,18,15,.42);letter-spacing:.2em;}
+.sec-head{font-size:clamp(2rem,6.2vw,5rem);max-width:14ch;margin-top:clamp(22px,4vh,44px);}
+.sec-note{color:rgba(20,18,15,.6);max-width:52ch;margin-top:22px;line-height:1.75;}
+
+/* ── usługi ─────────────────────────────────── */
+.svc{background:var(--paper);}
+.svc-grid{
+  display:grid;grid-template-columns:repeat(12,1fr);
+  column-gap:clamp(16px,2.6vw,40px);row-gap:clamp(40px,7vh,84px);
+  align-items:start;
+}
+.svc-intro{grid-column:1/-1;}
+/* nierówna para: drugi kadr węższy i opuszczony — układ przestaje być symetryczną kratką */
+.svc-media{grid-column:1/-1;display:grid;grid-template-columns:1.1fr .9fr;
+  gap:clamp(14px,2vw,26px);margin-top:clamp(30px,5vh,52px);align-items:start;}
+.svc-media .fig:last-child{transform:translateY(clamp(18px,4.5vh,52px));}
+.svc-list{grid-column:1/-1;border-top:1px solid var(--hair);}
+.svc-item{
+  display:grid;grid-template-columns:auto 1fr;
+  column-gap:clamp(16px,2.4vw,34px);row-gap:14px;
+  padding:clamp(22px,3.4vh,34px) 0;
+  border-bottom:1px solid var(--hair);
+}
+.svc-item .num{padding-top:.45em;opacity:.4;}
+.svc-name{
+  font-family:var(--font-display);font-weight:300;
+  font-size:clamp(1.35rem,3vw,2.15rem);line-height:1.12;letter-spacing:-.025em;
+  margin:0;transition:transform 220ms var(--ease-out);
+}
+@media (hover:hover) and (pointer:fine){
+  .svc-item:hover .svc-name{transform:translateX(5px);}
+}
+.svc-body{grid-column:2;display:flex;flex-direction:column;gap:16px;}
+.svc-body .ph{gap:16px;max-width:40ch;}
+.svc-tag{color:rgba(20,18,15,.42);}
+
+/* ── opinie ─────────────────────────────────── */
+.op{background:var(--paper-2);}
+.op-grid{
+  display:grid;grid-template-columns:1fr;
+  column-gap:clamp(18px,2.6vw,40px);row-gap:clamp(34px,5vh,52px);
+  margin-top:clamp(38px,6vh,72px);
+}
+.op-card{
+  border-top:1px solid rgba(107,31,46,.28);padding-top:20px;
+  display:flex;flex-direction:column;gap:18px;
+  min-height:clamp(210px,26vh,270px);
+  transition:border-color 260ms var(--ease-out);
+}
+.op-mark{font-family:var(--font-display);font-size:4.4rem;line-height:.52;
+  color:var(--wine);opacity:.34;margin-top:6px;}
+.op-card .ph-blur{font-size:clamp(1rem,1.6vw,1.25rem);max-width:none;filter:blur(4.5px);opacity:.5;}
+@media (hover:hover) and (pointer:fine){
+  .op-card:hover{border-top-color:rgba(107,31,46,.55);}
+}
+.op-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px;}
+.op-foot .ph{gap:12px;max-width:22ch;}
+
+/* ── FAQ ────────────────────────────────────── */
+.faq-grid{
+  display:grid;grid-template-columns:repeat(12,1fr);
+  column-gap:clamp(16px,2.6vw,40px);row-gap:clamp(34px,5vh,56px);
+  align-items:start;
+}
+.faq-intro{grid-column:1/-1;}
+.faq-list{grid-column:1/-1;border-top:1px solid var(--hair);}
+.faq-item{border-bottom:1px solid var(--hair);}
+.faq-item summary{
+  display:flex;align-items:baseline;justify-content:space-between;gap:clamp(16px,3vw,44px);
+  padding:clamp(20px,3vh,28px) 0;cursor:pointer;list-style:none;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-q{
+  font-family:var(--font-display);font-weight:300;
+  font-size:clamp(1.15rem,2.5vw,1.85rem);line-height:1.16;letter-spacing:-.025em;
+  max-width:34ch;text-wrap:balance;
+  transition:transform 200ms var(--ease-out);
+}
+.faq-sign{
+  flex:0 0 auto;position:relative;width:13px;height:13px;
+  align-self:center;opacity:.5;
+  transition:transform 320ms var(--ease-out),opacity 200ms var(--ease-out);
+}
+.faq-sign::before,.faq-sign::after{
+  content:"";position:absolute;inset:50% 0 auto;height:1px;background:currentColor;
+}
+.faq-sign::after{transform:rotate(90deg);transition:opacity 260ms var(--ease-out);}
+.faq-item[open] .faq-sign{transform:rotate(180deg);opacity:.85;}
+.faq-item[open] .faq-sign::after{opacity:0;}
+.faq-a{
+  padding:0 0 clamp(24px,3.6vh,34px);
+  max-width:58ch;color:rgba(20,18,15,.7);line-height:1.75;
+  display:flex;flex-direction:column;gap:18px;
+}
+.faq-a .ph{max-width:none;}
+.faq-hold{color:rgba(20,18,15,.4);}
+@media (hover:hover) and (pointer:fine){
+  .faq-item summary:hover .faq-q{transform:translateX(5px);}
+  .faq-item summary:hover .faq-sign{opacity:.85;}
+}
+@media (prefers-reduced-motion:no-preference){
+  .faq-item[open] .faq-a{animation:faqIn 420ms var(--ease-out) both;}
+  @keyframes faqIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+}
+
+/* ── o mnie (aligned) ───────────────────────── */
+.about{background:var(--paper);}
+.about-grid{
+  display:grid;grid-template-columns:repeat(12,1fr);
+  column-gap:clamp(16px,2.6vw,40px);row-gap:clamp(34px,6vh,64px);
+  align-items:start;
+}
+.about-media{grid-column:1/-1;display:flex;flex-direction:column;
+  gap:clamp(12px,1.8vw,26px);}
+.about-col{grid-column:1/-1;display:flex;flex-direction:column;
+  gap:clamp(26px,4.4vh,42px);}
+.about-name{font-family:var(--font-display);font-weight:300;
+  font-size:clamp(2.3rem,7.4vw,5.4rem);line-height:1;letter-spacing:-.03em;margin:0;}
+.facts{border-top:1px solid var(--hair);}
+.fact{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:20px;padding:15px 0;border-bottom:1px solid var(--hair);
+}
+.fact .k{color:rgba(20,18,15,.55);flex:0 0 auto;}
+.fact .v{font-family:var(--font-display);font-weight:300;
+  font-size:clamp(1rem,1.9vw,1.35rem);text-align:right;line-height:1.3;}
+.fact .hold-line{background:currentColor;opacity:.22;width:min(50%,150px);}
+.about-pair{display:grid;grid-template-columns:1.06fr .94fr;
+  gap:clamp(14px,2vw,28px);align-items:start;}
+.about-pair .fig:last-child{transform:translateY(clamp(16px,4vh,46px));}
+.about-pair .fig .frame{aspect-ratio:4/5;}
+.about-pair .fig img{width:100%;height:100%;object-fit:cover;}
+
 /* ── JS initial states ──────────────────────── */
 .js [data-rise]{opacity:0;}
 .js [data-wipe] .frame{clip-path:inset(0 0 100% 0);}
 .js [data-lines] .ln > span{transform:translateY(105%);}
 .js .ph-line{transform:scaleX(0);}
+.js .faq-a .ph-line{transform:none;}
 .js [data-hair]{transform:scaleX(0);}
 
 /* ── breakpoints ────────────────────────────── */
@@ -345,29 +683,38 @@ a.row:active{transform:scale(.99);}
   .say-head{grid-column:1/span 7;}
   .say-side{grid-column:9/span 4;padding-top:12px;}
 
-  .flow .fig[data-p="a"]{grid-column:1/span 7;}
-  .flow .fig[data-p="b"]{grid-column:9/span 4;margin-top:16vh;}
-  .flow .fig[data-p="c"]{grid-column:2/span 6;}
-  .flow .side[data-p="s1"]{grid-column:9/span 4;}
-  .flow .fig[data-p="d"]{grid-column:1/span 5;}
-  .flow .fig[data-p="e"]{grid-column:7/span 6;margin-top:14vh;}
+  .contact-grid{grid-template-columns:minmax(0,1fr) minmax(0,.92fr);align-items:stretch;}
+  .contact-mark{display:block;}
 
-  .folio .fig[data-p="p1"]{grid-column:1/span 5;}
-  .folio .fig[data-p="p2"]{grid-column:7/span 3;}
-  .folio .fig[data-p="p3"]{grid-column:10/span 3;}
-  .folio-name{grid-column:7/span 6;}
-  .folio-side{grid-column:7/span 5;}
+  .svc-intro{grid-column:1/span 5;position:sticky;top:clamp(96px,14vh,140px);}
+  .svc-media{grid-column:1/span 5;}
+  .svc-list{grid-column:7/span 6;}
 
-  .contact-ph{max-width:48ch;}
+  .faq-intro{grid-column:1/span 4;position:sticky;top:clamp(96px,14vh,140px);}
+  .faq-list{grid-column:6/span 7;}
+
+  /* schodkowy rytm ramek — trzy równe kolumny czytały się jak tabela.
+     margin, nie transform: GSAP trzyma transform na [data-rise] */
+  .op-grid{grid-template-columns:repeat(3,1fr);align-items:start;}
+  .op-grid .op-card:nth-child(2){margin-top:clamp(18px,3.4vh,40px);}
+  .op-grid .op-card:nth-child(3){margin-top:clamp(36px,6.8vh,80px);}
+
+  .about-media{grid-column:1/span 5;}
+  .about-col{grid-column:7/span 6;position:sticky;top:clamp(96px,14vh,140px);}
 }
 
-@media (min-width:1280px){
-  .flow .fig[data-p="a"]{grid-column:1/span 7;}
-  .flow .fig[data-p="b"]{grid-column:9/span 4;margin-top:18vh;}
-  .flow .fig[data-p="c"]{grid-column:2/span 6;}
-  .flow .side[data-p="s1"]{grid-column:9/span 3;}
-  .flow .fig[data-p="d"]{grid-column:1/span 5;}
-  .flow .fig[data-p="e"]{grid-column:7/span 6;margin-top:16vh;}
+@media (min-width:1100px){
+  .sec-head{font-size:clamp(2.6rem,4.4vw,4.4rem);}
+}
+
+@media (max-width:767px){
+  .gal{height:auto;min-height:0;display:block;overflow:visible;padding-block:15vh 12vh;}
+  .gal-track{padding-top:0;gap:18px;scroll-padding-inline-start:var(--gutter);}
+  /* mobile: równe kadry na całą szerokość ekranu, z zajawką następnego */
+  .gal-item .frame{width:min(84vw,420px);height:clamp(340px,54svh,520px);}
+  .gal-item img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;}
+  .gal-head{position:static;margin:0 var(--gutter) 26px;}
+  .gal-bar{display:none;}
 }
 
 /* Reduced motion: keep opacity/colour, drop movement */
@@ -383,13 +730,39 @@ a.row:active{transform:scale(.99);}
 <body>
 
 <header class="head">
-  <p class="micro">NM</p>
-  <div class="lang" role="group" aria-label="Language" id="lang">
-    <button type="button" data-lang="pl" aria-current="true">PL</button>
-    <button type="button" data-lang="ru" aria-current="false">RU</button>
-    <button type="button" data-lang="en" aria-current="false">EN</button>
+  <a class="mark" href="#hero" aria-label="Początek strony">NM</a>
+
+  <nav class="nav" aria-label="Sekcje strony">
+    <a href="#gal" data-i18n="nav.gal">PROJEKTY</a>
+    <a href="#uslugi" data-i18n="nav.svc">USŁUGI</a>
+    <a href="#o-mnie" data-i18n="nav.about">O MNIE</a>
+    <a href="#opinie" data-i18n="nav.op">OPINIE</a>
+    <a href="#pytania" data-i18n="nav.faq">PYTANIA</a>
+    <a href="#kontakt" data-i18n="nav.contact">KONTAKT</a>
+  </nav>
+
+  <div class="head-right">
+    <div class="lang" role="group" aria-label="Language" id="lang">
+      <button type="button" data-lang="pl" aria-current="true">PL</button>
+      <button type="button" data-lang="ru" aria-current="false">RU</button>
+      <button type="button" data-lang="en" aria-current="false">EN</button>
+    </div>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span><span></span>
+    </button>
   </div>
 </header>
+
+<div class="menu" id="menu">
+  <nav class="menu-list" aria-label="Menu">
+    <a href="#gal"><span class="num">04</span><span data-i18n="nav.gal">PROJEKTY</span></a>
+    <a href="#uslugi"><span class="num">05</span><span data-i18n="nav.svc">USŁUGI</span></a>
+    <a href="#o-mnie"><span class="num">06</span><span data-i18n="nav.about">O MNIE</span></a>
+    <a href="#opinie"><span class="num">07</span><span data-i18n="nav.op">OPINIE</span></a>
+    <a href="#pytania"><span class="num">08</span><span data-i18n="nav.faq">PYTANIA</span></a>
+    <a href="#kontakt"><span class="num">09</span><span data-i18n="nav.contact">KONTAKT</span></a>
+  </nav>
+</div>
 
 <main>
 
@@ -407,7 +780,7 @@ a.row:active{transform:scale(.99);}
     </h1>
     <div class="hero-rule" id="heroRule"></div>
     <div class="hero-foot">
-      <p class="micro" data-i18n="hero.meta">WNĘTRZA MIESZKALNE / WARSZAWA I ZDALNIE</p>
+      <p class="micro" data-i18n="hero.meta">WNĘTRZA MIESZKALNE / WARSZAWA I ZDALNIE</p>
       <span class="cue" aria-hidden="true"></span>
     </div>
   </div>
@@ -421,16 +794,6 @@ a.row:active{transform:scale(.99);}
       <span class="rule" data-hair></span>
     </div>
     <p class="say-head display" data-rise data-i18n="say.1">Moje realizacje i projekty</p>
-    <div class="say-side">
-      <div class="ph" data-ph>
-        <span class="ph-tag" data-i18n="ph.intro">OPIS PROJEKTU / UZUPEŁNIĆ</span>
-        <span class="ph-line" style="--w:100%"></span>
-        <span class="ph-line" style="--w:94%"></span>
-        <span class="ph-line" style="--w:99%"></span>
-        <span class="ph-line" style="--w:88%"></span>
-        <span class="ph-line" style="--w:52%"></span>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -448,178 +811,490 @@ a.row:active{transform:scale(.99);}
   </div>
 </section>
 
-<!-- ── FLOW A ───────────────────────────────── -->
-<section class="flow shell">
-
-  <figure class="fig" data-p="a" data-wipe data-par="-8" style="--nw:933px">
-    <span class="frame"><img src="assets/p03-hallway.webp" width="933" height="720" loading="lazy" decoding="async"
-      data-i18n-alt="alt.p03" alt="Przedpokój z szarymi frontami bezuchwytowymi"></span>
-    <figcaption class="micro"><i class="tick"></i><span class="num">03</span></figcaption>
-  </figure>
-
-  <figure class="fig" data-p="b" data-wipe data-par="10" style="--nw:826px">
-    <span class="frame"><img src="assets/p05-kitchen-blue-wall.webp" width="826" height="716" loading="lazy" decoding="async"
-      data-i18n-alt="alt.p05" alt="Biała kuchnia z drewnianą lamperią i niebieską ścianą"></span>
-    <figcaption class="micro"><i class="tick"></i><span class="num">04</span></figcaption>
-  </figure>
-
-  <figure class="fig" data-p="c" data-wipe data-par="-6" style="--nw:714px">
-    <span class="frame"><img src="assets/p07-bedroom-glass-wall.webp" width="714" height="665" loading="lazy" decoding="async"
-      data-i18n-alt="alt.p07" alt="Sypialnia oddzielona szklaną ścianą w czarnej ramie"></span>
-    <figcaption class="micro"><i class="tick"></i><span class="num">05</span></figcaption>
-  </figure>
-
-  <div class="side" data-p="s1" data-par="6">
-    <div class="ph" data-ph>
-      <span class="ph-tag" data-i18n="ph.materials">MATERIAŁY I ROZWIĄZANIA / UZUPEŁNIĆ</span>
-      <span class="ph-line" style="--w:100%"></span>
-      <span class="ph-line" style="--w:91%"></span>
-      <span class="ph-line" style="--w:97%"></span>
-      <span class="ph-line" style="--w:73%"></span>
-      <span class="ph-line thick" style="--w:38%"></span>
-    </div>
-  </div>
-
-  <figure class="fig" data-p="d" data-wipe data-par="-5" style="--nw:672px">
-    <span class="frame"><img src="assets/p04-kitchen-glass-partition.webp" width="672" height="672" loading="lazy" decoding="async"
-      data-i18n-alt="alt.p04" alt="Kuchnia z drewnianym blatem i przeszkloną ścianą działową"></span>
-    <figcaption class="micro"><i class="tick"></i><span class="num">06</span></figcaption>
-  </figure>
-
-  <figure class="fig" data-p="e" data-wipe data-par="8" style="--nw:712px">
-    <span class="frame"><img src="assets/p06-living-blue-wall.webp" width="712" height="580" loading="lazy" decoding="async"
-      data-i18n-alt="alt.p06" alt="Salon z niebieską ścianą, kremową sofą i okrągłym stołem"></span>
-    <figcaption class="micro"><i class="tick"></i><span class="num">07</span></figcaption>
-  </figure>
-
-</section>
-
-<!-- ── SAY 02 ───────────────────────────────── -->
+<!-- ── SAY 02 ─────────────────────── -->
 <section class="say say-tint shell">
   <div class="say-grid">
     <div class="say-lead">
-      <span class="num">08</span>
+      <span class="num">03</span>
       <span class="rule" data-hair></span>
     </div>
     <p class="say-head display" data-rise data-i18n="say.2">Projektuję znaczenia, uczucia i kolor</p>
     <div class="say-side">
       <div class="ph-blur-wrap" data-rise>
-        <span class="ph-tag" data-i18n="ph.approach">O PODEJŚCIU / TEKST DO UZUPEŁNIENIA</span>
         <p class="ph-blur" aria-hidden="true" data-i18n="ph.blur1">Wnętrze działa wtedy, kiedy wchodzisz i od razu wiesz, że to twoje miejsce. Dlatego zaczynam od pytań o życie, a nie o styl.</p>
+        <div class="ph" data-ph style="margin-top:6px">
+          <span class="ph-line" style="--w:100%"></span>
+          <span class="ph-line" style="--w:91%"></span>
+          <span class="ph-line" style="--w:64%"></span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── STRIP ────────────────────────────────── -->
-<section class="strip" id="strip">
-  <div class="strip-head micro">
-    <span data-i18n="strip.label">DETALE</span>
+<!-- ── GALLERY (wszystkie projekty, poziomy scroll) ─ -->
+<section class="gal" id="gal" aria-roledescription="galeria">
+  <div class="gal-head micro">
+    <span class="num">04</span>
+    <span data-i18n="gal.label">PROJEKTY I DETALE</span>
     <span class="rule" data-hair></span>
+    <span class="count num"><span id="galIdx">01</span> / 13</span>
   </div>
-  <div class="strip-track" id="stripTrack">
-    <figure>
-      <img src="assets/p08-bath-terrazzo-mirror.webp" width="281" height="500" loading="lazy" decoding="async"
-      data-i18n-alt="alt.p08" alt="Łazienka z terrazzo i okrągłym podświetlanym lustrem">
-      <figcaption class="micro"><span class="num">09</span></figcaption>
+  <div class="gal-track" id="galTrack">
+    <figure class="gal-item" style="--cap:828px">
+      <span class="frame"><img src="assets/p03-hallway.webp" width="933" height="720" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p03" alt="Przedpokój z szarymi frontami bezuchwytowymi"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">01</span></figcaption>
     </figure>
-    <figure>
-      <img src="assets/p09-bath-walkin-shower.webp" width="384" height="500" loading="lazy" decoding="async"
-      data-i18n-alt="alt.p09" alt="Łazienka z prysznicem walk in, terrazzo i drewno">
-      <figcaption class="micro"><span class="num">10</span></figcaption>
+    <figure class="gal-item" style="--cap:575px">
+      <span class="frame"><img src="assets/p08-bath-terrazzo-mirror.webp" width="281" height="500" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p08" alt="Łazienka z terrazzo i okrągłym podświetlanym lustrem"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">02</span></figcaption>
     </figure>
-    <figure>
-      <img src="assets/p12-bath-vertical.webp" width="270" height="500" loading="lazy" decoding="async"
-      data-i18n-alt="alt.p12" alt="Wąska łazienka z betonową umywalką i szklanymi kulami">
-      <figcaption class="micro"><span class="num">11</span></figcaption>
+    <figure class="gal-item" style="--cap:823px">
+      <span class="frame"><img src="assets/p05-kitchen-blue-wall.webp" width="826" height="716" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p05" alt="Biała kuchnia z drewnianą lamperią i niebieską ścianą"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">03</span></figcaption>
     </figure>
-    <figure>
-      <img src="assets/p10-wc-laundry.webp" width="281" height="500" loading="lazy" decoding="async"
-      data-i18n-alt="alt.p10" alt="Toaleta z pralką w zabudowie i grzejnikiem dekoracyjnym">
-      <figcaption class="micro"><span class="num">12</span></figcaption>
+    <figure class="gal-item" style="--cap:575px">
+      <span class="frame"><img src="assets/p09-bath-walkin-shower.webp" width="384" height="500" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p09" alt="Łazienka z prysznicem walk in, terrazzo i drewno"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">04</span></figcaption>
     </figure>
-    <figure>
-      <img src="assets/p11-living-grey-01.webp" width="417" height="500" loading="lazy" decoding="async"
-      data-i18n-alt="alt.p11" alt="Salon w szarościach z witryną i szyną oświetleniową">
-      <figcaption class="micro"><span class="num">13</span></figcaption>
+    <figure class="gal-item" style="--cap:877px">
+      <span class="frame"><img src="assets/p14-hall-blue-mirror.webp" width="1080" height="763" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p14" alt="Hol z błękitną komodą, wysokim lustrem i podłogą we wzorzyste płytki"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">05</span></figcaption>
     </figure>
-    <figure>
-      <img src="assets/p13-bedroom-neutral.webp" width="400" height="340" loading="lazy" decoding="async"
-      data-i18n-alt="alt.p13" alt="Jasna sypialnia z zabudową po sufit i miejscem do pracy">
-      <figcaption class="micro"><span class="num">14</span></figcaption>
+    <figure class="gal-item" style="--cap:575px">
+      <span class="frame"><img src="assets/p12-bath-vertical.webp" width="270" height="500" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p12" alt="Wąska łazienka z betonową umywalką i szklanymi kulami"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">06</span></figcaption>
     </figure>
+    <figure class="gal-item" style="--cap:765px">
+      <span class="frame"><img src="assets/p07-bedroom-glass-wall.webp" width="714" height="665" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p07" alt="Sypialnia oddzielona szklaną ścianą w czarnej ramie"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">07</span></figcaption>
+    </figure>
+    <figure class="gal-item" style="--cap:1035px">
+      <span class="frame"><img src="assets/p15-loggia-office.webp" width="720" height="900" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p15" alt="Zabudowana loggia z biurkiem, granatowym fotelem i półkami"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">08</span></figcaption>
+    </figure>
+    <figure class="gal-item" style="--cap:877px">
+      <span class="frame"><img src="assets/p16-teen-room.webp" width="1080" height="763" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p16" alt="Pokój nastolatki z różowo szarymi pasami i miejscem do nauki"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">09</span></figcaption>
+    </figure>
+    <figure class="gal-item" style="--cap:575px">
+      <span class="frame"><img src="assets/p11-living-grey-01.webp" width="417" height="500" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p11" alt="Salon w szarościach z witryną i szyną oświetleniową"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">10</span></figcaption>
+    </figure>
+    <figure class="gal-item" style="--cap:773px">
+      <span class="frame"><img src="assets/p04-kitchen-glass-partition.webp" width="672" height="672" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p04" alt="Kuchnia z drewnianym blatem i przeszkloną ścianą działową"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">11</span></figcaption>
+    </figure>
+    <figure class="gal-item" style="--cap:575px">
+      <span class="frame"><img src="assets/p10-wc-laundry.webp" width="281" height="500" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p10" alt="Toaleta z pralką w zabudowie i grzejnikiem dekoracyjnym"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">12</span></figcaption>
+    </figure>
+    <figure class="gal-item" style="--cap:667px">
+      <span class="frame"><img src="assets/p06-living-blue-wall.webp" width="712" height="580" loading="lazy" decoding="async"
+        data-i18n-alt="alt.p06" alt="Salon z niebieską ścianą, kremową sofą i okrągłym stołem"></span>
+      <figcaption class="micro"><i class="tick"></i><span class="num">13</span></figcaption>
+    </figure>
+  </div>
+  <div class="gal-bar" aria-hidden="true"><i id="galBar"></i></div>
+</section>
+
+<!-- ── USŁUGI ───────────────────────────────── -->
+<!-- [DO UZUPEŁNIENIA] Nazwy usług i opisy podmienia klientka.
+     Każdy blok to <article class="svc-item"> — dopisz kolejny albo usuń zbędny.
+     Kreski .ph-line to hodery: skasuj je i wstaw <p class="sec-note">…</p> z opisem. -->
+<section class="sec svc shell" id="uslugi">
+  <div class="svc-grid">
+
+    <div class="svc-intro">
+      <div class="sec-lead">
+        <span class="num">05</span>
+        <span class="rule" data-hair></span>
+        <span class="micro flag" data-i18n="flag.draft">SZKIC / DO UZUPEŁNIENIA</span>
+      </div>
+      <h2 class="sec-head display" data-rise data-i18n="svc.head">Jak wygląda współpraca</h2>
+      <p class="sec-note" data-rise data-i18n="svc.note">Zakres i nazwy etapów zostaną ustalone z Natalią. Poniżej miejsce na opis każdej usługi.</p>
+
+      <div class="svc-media">
+        <figure class="fig" data-wipe>
+          <span class="frame"><img src="assets/mat-tiles.webp" width="1080" height="1080" loading="lazy" decoding="async"
+            data-i18n-alt="alt.tiles" alt="Próbki płytek ceramicznych w błękitach, terakocie i beżach"></span>
+        </figure>
+        <figure class="fig" data-wipe>
+          <span class="frame"><img src="assets/mat-catalogues.webp" width="1080" height="1080" loading="lazy" decoding="async"
+            data-i18n-alt="alt.catalogues" alt="Rozłożone katalogi materiałów i wyposażenia wnętrz"></span>
+        </figure>
+      </div>
+    </div>
+
+    <div class="svc-list">
+      <article class="svc-item" data-rise>
+        <span class="num">01</span>
+        <h3 class="svc-name" data-i18n="svc.1">Rozmowa i brief</h3>
+        <div class="svc-body">
+          <div class="ph" data-ph>
+            <span class="ph-line" style="--w:100%"></span>
+            <span class="ph-line" style="--w:92%"></span>
+            <span class="ph-line" style="--w:58%"></span>
+          </div>
+          <span class="micro svc-tag" data-i18n="svc.tag">ZAKRES DO UZUPEŁNIENIA</span>
+        </div>
+      </article>
+
+      <article class="svc-item" data-rise>
+        <span class="num">02</span>
+        <h3 class="svc-name" data-i18n="svc.2">Koncepcja i układ</h3>
+        <div class="svc-body">
+          <div class="ph" data-ph>
+            <span class="ph-line" style="--w:97%"></span>
+            <span class="ph-line" style="--w:100%"></span>
+            <span class="ph-line" style="--w:64%"></span>
+          </div>
+          <span class="micro svc-tag" data-i18n="svc.tag">ZAKRES DO UZUPEŁNIENIA</span>
+        </div>
+      </article>
+
+      <article class="svc-item" data-rise>
+        <span class="num">03</span>
+        <h3 class="svc-name" data-i18n="svc.3">Wizualizacje 3D</h3>
+        <div class="svc-body">
+          <div class="ph" data-ph>
+            <span class="ph-line" style="--w:100%"></span>
+            <span class="ph-line" style="--w:88%"></span>
+            <span class="ph-line" style="--w:47%"></span>
+          </div>
+          <span class="micro svc-tag" data-i18n="svc.tag">ZAKRES DO UZUPEŁNIENIA</span>
+        </div>
+      </article>
+
+      <article class="svc-item" data-rise>
+        <span class="num">04</span>
+        <h3 class="svc-name" data-i18n="svc.4">Dobór materiałów i wyposażenia</h3>
+        <div class="svc-body">
+          <div class="ph" data-ph>
+            <span class="ph-line" style="--w:94%"></span>
+            <span class="ph-line" style="--w:100%"></span>
+            <span class="ph-line" style="--w:71%"></span>
+          </div>
+          <span class="micro svc-tag" data-i18n="svc.tag">ZAKRES DO UZUPEŁNIENIA</span>
+        </div>
+      </article>
+
+      <article class="svc-item" data-rise>
+        <span class="num">05</span>
+        <h3 class="svc-name" data-i18n="svc.5">Dokumentacja wykonawcza</h3>
+        <div class="svc-body">
+          <div class="ph" data-ph>
+            <span class="ph-line" style="--w:100%"></span>
+            <span class="ph-line" style="--w:83%"></span>
+            <span class="ph-line" style="--w:52%"></span>
+          </div>
+          <span class="micro svc-tag" data-i18n="svc.tag">ZAKRES DO UZUPEŁNIENIA</span>
+        </div>
+      </article>
+    </div>
+
   </div>
 </section>
 
-<!-- ── FOLIO ────────────────────────────────── -->
-<section class="folio shell">
-  <figure class="fig" data-p="p1" data-wipe data-par="-6" style="--nw:1080px">
-    <span class="frame"><img src="assets/about-portrait.webp" width="1080" height="1080" loading="lazy" decoding="async"
-      data-i18n-alt="alt.portrait" alt="Natalia Morozova, portret w kamienicznej klatce schodowej"></span>
-  </figure>
-  <h2 class="folio-name" data-rise>Natalia Morozova</h2>
-  <div class="folio-side">
-    <div class="ph-blur-wrap" data-rise>
-      <span class="ph-tag" data-i18n="ph.bio">BIOGRAM / TEKST DO UZUPEŁNIENIA</span>
-      <p class="ph-blur" aria-hidden="true" data-i18n="ph.blur2">Od dziesięciu lat tworzę przestrzenie emocjonalne. Projektuję znaczenia, uczucia i kolor, a nie tylko rzuty i rysunki.</p>
+<!-- ── O MNIE ───────────────────────────────── -->
+<section class="sec about shell" id="o-mnie">
+  <div class="about-grid">
+
+    <div class="about-media">
+    <figure class="fig about-portrait" data-wipe>
+      <span class="frame"><img src="assets/about-portrait.webp" width="1080" height="1080" loading="lazy" decoding="async"
+        data-i18n-alt="alt.portrait" alt="Natalia Morozova, portret w kamienicznej klatce schodowej"></span>
+    </figure>
+
+      <div class="about-pair">
+      <figure class="fig" data-wipe>
+        <span class="frame"><img src="assets/about-fair-sofa.webp" width="1080" height="1239" loading="lazy" decoding="async"
+          data-i18n-alt="alt.fairbath" alt="Ekspozycja targowa, aranżacja łazienki z kamienia i drewna"></span>
+        <figcaption class="micro"><i class="tick"></i><span data-i18n="about.cap1">TARGI BRANŻOWE</span></figcaption>
+      </figure>
+      <figure class="fig" data-wipe>
+        <span class="frame"><img src="assets/about-fair-bathroom.webp" width="1080" height="1070" loading="lazy" decoding="async"
+          data-i18n-alt="alt.fairsofa" alt="Natalia na targach branżowych, przegląda katalogi"></span>
+        <figcaption class="micro"><i class="tick"></i><span data-i18n="about.cap2">PRZEGLĄD MATERIAŁÓW</span></figcaption>
+      </figure>
+      </div>
     </div>
-    <div class="ph" data-ph style="margin-top:28px">
-      <span class="ph-line" style="--w:100%"></span>
-      <span class="ph-line" style="--w:86%"></span>
-      <span class="ph-line" style="--w:44%"></span>
+
+    <div class="about-col">
+      <div class="sec-lead">
+        <span class="num">06</span>
+        <span class="rule" data-hair></span>
+      </div>
+
+      <h2 class="about-name" data-rise>Natalia Morozova</h2>
+
+      <div class="ph-blur-wrap" data-rise>
+        <p class="ph-blur" aria-hidden="true" data-i18n="ph.blur2">Od dziesięciu lat tworzę przestrzenie emocjonalne. Projektuję znaczenia, uczucia i kolor, a nie tylko rzuty i rysunki.</p>
+      </div>
+
+      <!-- [DO UZUPEŁNIENIA] Wartości z kreską to hodery. Podmień <span class="hold-line"> na <span class="v">treść</span>. -->
+      <div class="facts">
+        <div class="fact">
+          <span class="k micro" data-i18n="fact.city">MIASTO</span>
+          <span class="v" data-i18n="fact.cityV">Warszawa i zdalnie</span>
+        </div>
+        <div class="fact">
+          <span class="k micro" data-i18n="fact.lang">JĘZYKI</span>
+          <span class="v" data-i18n="fact.langV">polski · rosyjski · angielski</span>
+        </div>
+        <div class="fact">
+          <span class="k micro" data-i18n="fact.scope">SPECJALIZACJA</span>
+          <span class="v" data-i18n="fact.scopeV">wnętrza mieszkalne</span>
+        </div>
+        <div class="fact">
+          <span class="k micro" data-i18n="fact.exp">DOŚWIADCZENIE</span>
+          <span class="hold-line" aria-hidden="true"></span>
+        </div>
+        <div class="fact">
+          <span class="k micro" data-i18n="fact.tools">NARZĘDZIA</span>
+          <span class="hold-line" aria-hidden="true"></span>
+        </div>
+        <div class="fact">
+          <span class="k micro" data-i18n="fact.edu">WYKSZTAŁCENIE</span>
+          <span class="hold-line" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="ph" data-ph>
+        <span class="ph-line" style="--w:100%"></span>
+        <span class="ph-line" style="--w:93%"></span>
+        <span class="ph-line" style="--w:97%"></span>
+        <span class="ph-line" style="--w:49%"></span>
+      </div>
     </div>
+
   </div>
-  <figure class="fig" data-p="p2" data-wipe data-par="7" style="--nw:1080px">
-    <span class="frame"><img src="assets/about-fair-sofa.webp" width="1080" height="1239" loading="lazy" decoding="async"
-      data-i18n-alt="alt.fairsofa" alt="Natalia na targach branżowych, przegląda katalogi"></span>
-  </figure>
-  <figure class="fig" data-p="p3" data-wipe data-par="4" style="--nw:1080px">
-    <span class="frame"><img src="assets/about-fair-bathroom.webp" width="1080" height="1070" loading="lazy" decoding="async"
-      data-i18n-alt="alt.fairbath" alt="Ekspozycja targowa, aranżacja łazienki z kamienia i drewna"></span>
-  </figure>
+</section>
+
+<!-- ── OPINIE ───────────────────────────────── -->
+<!-- [DO UZUPEŁNIENIA] Puste ramki. Gdy będą prawdziwe opinie: usuń .ph-blur i .ph,
+     wstaw <blockquote>cytat</blockquote> oraz <p class="micro">Imię, projekt</p>.
+     Nie wstawiamy zmyślonych opinii. -->
+<section class="sec op shell" id="opinie">
+  <div class="sec-lead">
+    <span class="num">07</span>
+    <span class="rule" data-hair></span>
+    <span class="micro flag" data-i18n="flag.empty">MIEJSCE NA OPINIE KLIENTÓW</span>
+  </div>
+  <h2 class="sec-head display" data-rise data-i18n="op.head">Co mówią osoby po projekcie</h2>
+
+  <div class="op-grid">
+    <article class="op-card" data-rise>
+      <span class="op-mark" aria-hidden="true">“</span>
+      <p class="ph-blur" aria-hidden="true" data-i18n="op.q1">Miejsce na opinię klientki lub klienta po zakończonym projekcie wnętrza.</p>
+      <div class="op-foot">
+        <div class="ph" data-ph>
+          <span class="ph-line" style="--w:64%"></span>
+          <span class="ph-line" style="--w:42%"></span>
+        </div>
+        <span class="micro svc-tag" data-i18n="op.tag">DO UZUPEŁNIENIA</span>
+      </div>
+    </article>
+
+    <article class="op-card" data-rise>
+      <span class="op-mark" aria-hidden="true">“</span>
+      <p class="ph-blur" aria-hidden="true" data-i18n="op.q2">Tu wpiszemy prawdziwą wypowiedź, dopiero kiedy taka opinia zostanie przekazana.</p>
+      <div class="op-foot">
+        <div class="ph" data-ph>
+          <span class="ph-line" style="--w:58%"></span>
+          <span class="ph-line" style="--w:38%"></span>
+        </div>
+        <span class="micro svc-tag" data-i18n="op.tag">DO UZUPEŁNIENIA</span>
+      </div>
+    </article>
+
+    <article class="op-card" data-rise>
+      <span class="op-mark" aria-hidden="true">“</span>
+      <p class="ph-blur" aria-hidden="true" data-i18n="op.q3">Ramka trzecia. Można ją usunąć albo dodać kolejne, zależnie od liczby opinii.</p>
+      <div class="op-foot">
+        <div class="ph" data-ph>
+          <span class="ph-line" style="--w:70%"></span>
+          <span class="ph-line" style="--w:44%"></span>
+        </div>
+        <span class="micro svc-tag" data-i18n="op.tag">DO UZUPEŁNIENIA</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ── PYTANIA ──────────────────────────────── -->
+<section class="sec faq shell" id="pytania">
+  <div class="faq-grid">
+
+    <div class="faq-intro">
+      <div class="sec-lead">
+        <span class="num">08</span>
+        <span class="rule" data-hair></span>
+      </div>
+      <h2 class="sec-head display" data-rise data-i18n="faq.head">Najczęstsze pytania</h2>
+      <p class="sec-note" data-rise data-i18n="faq.note">Trzy odpowiedzi są już pewne. Pozostałe uzupełnimy razem z Natalią.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>
+          <span class="faq-q" data-i18n="faq.q1">Czy pracujesz tylko w Warszawie?</span>
+          <span class="faq-sign" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-a">
+          <p data-i18n="faq.a1">Nie. Prowadzę projekty w Warszawie oraz zdalnie, niezależnie od miasta. Przy pracy zdalnej całość ustalamy online, na podstawie pomiarów i zdjęć mieszkania.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="faq-q" data-i18n="faq.q2">W jakim języku poprowadzimy projekt?</span>
+          <span class="faq-sign" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-a">
+          <p data-i18n="faq.a2">Po polsku, rosyjsku albo angielsku. Rozmowy, opisy i dokumentacja mogą być w wybranym przez Ciebie języku.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="faq-q" data-i18n="faq.q3">Czy zobaczę wnętrze przed remontem?</span>
+          <span class="faq-sign" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-a">
+          <p data-i18n="faq.a3">Tak. Każdy projekt pokazuję na wizualizacjach 3D, takich jak te w galerii powyżej. Zmiany wprowadzamy na obrazie, zanim cokolwiek trafi na budowę.</p>
+        </div>
+      </details>
+
+      <!-- [DO UZUPEŁNIENIA] Odpowiedzi poniżej czekają na treść od klientki.
+           Podmień blok .ph na <p>treść odpowiedzi</p> i usuń .faq-hold. -->
+      <details class="faq-item">
+        <summary>
+          <span class="faq-q" data-i18n="faq.q4">Ile trwa projekt i od czego zależy cena?</span>
+          <span class="faq-sign" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-a">
+          <div class="ph">
+            <span class="ph-line" style="--w:100%"></span>
+            <span class="ph-line" style="--w:91%"></span>
+            <span class="ph-line" style="--w:56%"></span>
+          </div>
+          <span class="micro faq-hold" data-i18n="faq.hold">ODPOWIEDŹ DO UZUPEŁNIENIA</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="faq-q" data-i18n="faq.q5">Co dokładnie dostaję na koniec?</span>
+          <span class="faq-sign" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-a">
+          <div class="ph">
+            <span class="ph-line" style="--w:96%"></span>
+            <span class="ph-line" style="--w:100%"></span>
+            <span class="ph-line" style="--w:62%"></span>
+          </div>
+          <span class="micro faq-hold" data-i18n="faq.hold">ODPOWIEDŹ DO UZUPEŁNIENIA</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="faq-q" data-i18n="faq.q6">Czy pomagasz w zakupach i na budowie?</span>
+          <span class="faq-sign" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-a">
+          <div class="ph">
+            <span class="ph-line" style="--w:100%"></span>
+            <span class="ph-line" style="--w:87%"></span>
+            <span class="ph-line" style="--w:44%"></span>
+          </div>
+          <span class="micro faq-hold" data-i18n="faq.hold">ODPOWIEDŹ DO UZUPEŁNIENIA</span>
+        </div>
+      </details>
+    </div>
+
+  </div>
 </section>
 
 <!-- ── CONTACT ──────────────────────────────── -->
 <section class="contact shell" id="kontakt">
   <div class="contact-lead">
-    <span class="num">15</span>
+    <span class="num">09</span>
     <span class="rule" data-hair></span>
   </div>
   <p class="contact-big" data-rise data-i18n="contact.big">Porozmawiajmy</p>
 
-  <div class="rows">
-    <a class="row" href="https://www.instagram.com/nataliamorozova_design/" target="_blank" rel="noopener">
-      <span class="k micro">INSTAGRAM</span>
-      <span class="v">@nataliamorozova_design</span>
-    </a>
-    <div class="row">
-      <span class="k micro" data-i18n="c.mail">E MAIL</span>
-      <span class="v hold" data-i18n="c.hold">[UZUPEŁNIĆ]</span>
-    </div>
-    <div class="row">
-      <span class="k micro" data-i18n="c.tel">TELEFON</span>
-      <span class="v hold" data-i18n="c.hold">[UZUPEŁNIĆ]</span>
-    </div>
-    <div class="row">
-      <span class="k micro" data-i18n="c.msg">WHATSAPP / TELEGRAM</span>
-      <span class="v hold" data-i18n="c.hold">[UZUPEŁNIĆ]</span>
-    </div>
-    <div class="row">
-      <span class="k micro" data-i18n="c.studio">PRACOWNIA</span>
-      <span class="v hold" data-i18n="c.hold">[UZUPEŁNIĆ]</span>
-    </div>
-  </div>
+  <div class="contact-grid">
 
-  <div class="contact-ph ph" data-ph>
-    <span class="ph-tag" data-i18n="ph.form">FORMULARZ KONTAKTOWY / DO ZAPROJEKTOWANIA</span>
-    <span class="ph-line" style="--w:100%"></span>
-    <span class="ph-line" style="--w:100%"></span>
-    <span class="ph-line" style="--w:100%"></span>
-    <span class="ph-line thick" style="--w:42%"></span>
+    <div class="contact-left">
+    <div class="rows">
+      <a class="row" href="https://www.instagram.com/nataliamorozova_design/" target="_blank" rel="noopener">
+        <span class="k micro">INSTAGRAM</span>
+        <span class="v">@nataliamorozova_design</span>
+      </a>
+      <div class="row">
+        <span class="k micro" data-i18n="c.mail">E MAIL</span>
+        <span class="hold-line" aria-hidden="true"></span>
+      </div>
+      <div class="row">
+        <span class="k micro" data-i18n="c.tel">TELEFON</span>
+        <span class="hold-line" aria-hidden="true"></span>
+      </div>
+      <div class="row">
+        <span class="k micro" data-i18n="c.msg">WHATSAPP / TELEGRAM</span>
+        <span class="hold-line" aria-hidden="true"></span>
+      </div>
+      <div class="row">
+        <span class="k micro" data-i18n="c.studio">PRACOWNIA</span>
+        <span class="hold-line" aria-hidden="true"></span>
+      </div>
+    </div>
+      <span class="contact-mark" aria-hidden="true">NM</span>
+    </div>
+
+    <div class="form-col">
+      <p class="micro form-title" data-i18n="form.title">NAPISZ DO MNIE</p>
+      <!-- Podepnij endpoint w action="" (Formspree, Netlify Forms albo własny skrypt).
+           Puste action = formularz tylko waliduje po stronie przeglądarki. -->
+      <form class="form" id="leadForm" action="" method="post" novalidate>
+        <div class="field">
+          <label class="micro" for="f-name" data-i18n="f.name">IMIĘ</label>
+          <input id="f-name" name="name" type="text" autocomplete="name">
+        </div>
+        <div class="field">
+          <label class="micro" for="f-contact" data-i18n="f.contact">E MAIL LUB TELEFON</label>
+          <input id="f-contact" name="contact" type="text" autocomplete="email">
+        </div>
+        <div class="field">
+          <label class="micro" for="f-msg" data-i18n="f.msg">WIADOMOŚĆ</label>
+          <textarea id="f-msg" name="message" rows="3"></textarea>
+        </div>
+        <label class="consent" for="f-consent">
+          <input type="checkbox" id="f-consent" name="consent">
+          <span data-i18n="f.consent">Zgadzam się na kontakt w sprawie mojego zapytania. Dane służą wyłącznie do odpowiedzi.</span>
+        </label>
+        <button class="send" type="submit" data-i18n="f.send">WYŚLIJ</button>
+        <p class="form-note micro" id="formNote" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
   </div>
 
   <div class="contact-foot micro">
-    <span data-i18n="end.note">KONCEPCJA WIZUALNA / TREŚĆ I DANE DO UZUPEŁNIENIA</span>
+    <span class="micro">WARSZAWA · PL / RU / EN</span>
     <span data-i18n="end.rights">© 2026 NATALIA MOROZOVA</span>
   </div>
 </section>
@@ -639,24 +1314,64 @@ var i18n = {
 pl:{
   "meta.title":"Natalia Morozova — wnętrza, Warszawa",
   "meta.desc":"Natalia Morozova, projektowanie wnętrz. Warszawa i zdalnie. Wizualizacje projektów mieszkaniowych.",
-  "hero.meta":"WNĘTRZA MIESZKALNE / WARSZAWA I ZDALNIE",
+  "nav.gal":"PROJEKTY","nav.svc":"USŁUGI","nav.about":"O MNIE","nav.op":"OPINIE","nav.faq":"PYTANIA","nav.contact":"KONTAKT",
+  "hero.meta":"WNĘTRZA MIESZKALNE / WARSZAWA I ZDALNIE",
   "say.1":"Moje realizacje i projekty",
   "say.2":"Projektuję znaczenia, uczucia i kolor",
   "focus.line":"45 m² na Mokotowie",
   "focus.meta":"02 / WARSZAWA",
-  "strip.label":"DETALE",
+  "gal.label":"PROJEKTY I DETALE",
   "contact.big":"Porozmawiajmy",
-  "ph.intro":"OPIS PROJEKTU / UZUPEŁNIĆ",
-  "ph.materials":"MATERIAŁY I ROZWIĄZANIA / UZUPEŁNIĆ",
-  "ph.approach":"O PODEJŚCIU / TEKST DO UZUPEŁNIENIA",
-  "ph.bio":"BIOGRAM / TEKST DO UZUPEŁNIENIA",
-  "ph.form":"FORMULARZ KONTAKTOWY / DO ZAPROJEKTOWANIA",
+  "form.title":"NAPISZ DO MNIE",
+  "f.name":"IMIĘ",
+  "f.contact":"E MAIL LUB TELEFON",
+  "f.msg":"WIADOMOŚĆ",
+  "f.consent":"Zgadzam się na kontakt w sprawie mojego zapytania. Dane służą wyłącznie do odpowiedzi.",
+  "f.send":"WYŚLIJ",
+  "f.errFields":"Uzupełnij imię i kontakt.",
+  "f.errConsent":"Potrzebuję zgody na kontakt.",
+  "f.ok":"Dziękuję. Odezwę się.",
   "ph.blur1":"Wnętrze działa wtedy, kiedy wchodzisz i od razu wiesz, że to twoje miejsce. Dlatego zaczynam od pytań o życie, a nie o styl.",
   "ph.blur2":"Od dziesięciu lat tworzę przestrzenie emocjonalne. Projektuję znaczenia, uczucia i kolor, a nie tylko rzuty i rysunki.",
   "c.mail":"E MAIL","c.tel":"TELEFON","c.msg":"WHATSAPP / TELEGRAM","c.studio":"PRACOWNIA",
-  "c.hold":"[UZUPEŁNIĆ]",
-  "end.note":"KONCEPCJA WIZUALNA / TREŚĆ I DANE DO UZUPEŁNIENIA",
   "end.rights":"© 2026 NATALIA MOROZOVA",
+  "flag.draft":"SZKIC / DO UZUPEŁNIENIA",
+  "flag.empty":"MIEJSCE NA OPINIE KLIENTÓW",
+  "svc.head":"Jak wygląda współpraca",
+  "svc.note":"Zakres i nazwy etapów zostaną ustalone z Natalią. Poniżej miejsce na opis każdej usługi.",
+  "svc.1":"Rozmowa i brief",
+  "svc.2":"Koncepcja i układ",
+  "svc.3":"Wizualizacje 3D",
+  "svc.4":"Dobór materiałów i wyposażenia",
+  "svc.5":"Dokumentacja wykonawcza",
+  "svc.tag":"ZAKRES DO UZUPEŁNIENIA",
+  "fact.city":"MIASTO","fact.cityV":"Warszawa i zdalnie",
+  "fact.lang":"JĘZYKI","fact.langV":"polski · rosyjski · angielski",
+  "fact.scope":"SPECJALIZACJA","fact.scopeV":"wnętrza mieszkalne",
+  "fact.exp":"DOŚWIADCZENIE","fact.tools":"NARZĘDZIA","fact.edu":"WYKSZTAŁCENIE",
+  "about.cap1":"TARGI BRANŻOWE","about.cap2":"PRZEGLĄD MATERIAŁÓW",
+  "op.head":"Co mówią osoby po projekcie",
+  "op.q1":"Miejsce na opinię klientki lub klienta po zakończonym projekcie wnętrza.",
+  "op.q2":"Tu wpiszemy prawdziwą wypowiedź, dopiero kiedy taka opinia zostanie przekazana.",
+  "op.q3":"Ramka trzecia. Można ją usunąć albo dodać kolejne, zależnie od liczby opinii.",
+  "op.tag":"DO UZUPEŁNIENIA",
+  "faq.head":"Najczęstsze pytania",
+  "faq.note":"Trzy odpowiedzi są już pewne. Pozostałe uzupełnimy razem z Natalią.",
+  "faq.q1":"Czy pracujesz tylko w Warszawie?",
+  "faq.a1":"Nie. Prowadzę projekty w Warszawie oraz zdalnie, niezależnie od miasta. Przy pracy zdalnej całość ustalamy online, na podstawie pomiarów i zdjęć mieszkania.",
+  "faq.q2":"W jakim języku poprowadzimy projekt?",
+  "faq.a2":"Po polsku, rosyjsku albo angielsku. Rozmowy, opisy i dokumentacja mogą być w wybranym przez Ciebie języku.",
+  "faq.q3":"Czy zobaczę wnętrze przed remontem?",
+  "faq.a3":"Tak. Każdy projekt pokazuję na wizualizacjach 3D, takich jak te w galerii powyżej. Zmiany wprowadzamy na obrazie, zanim cokolwiek trafi na budowę.",
+  "faq.q4":"Ile trwa projekt i od czego zależy cena?",
+  "faq.q5":"Co dokładnie dostaję na koniec?",
+  "faq.q6":"Czy pomagasz w zakupach i na budowie?",
+  "faq.hold":"ODPOWIEDŹ DO UZUPEŁNIENIA",
+  "alt.p14":"Hol z błękitną komodą, wysokim lustrem i podłogą we wzorzyste płytki",
+  "alt.p15":"Zabudowana loggia z biurkiem, granatowym fotelem i półkami",
+  "alt.p16":"Pokój nastolatki z różowo szarymi pasami i miejscem do nauki",
+  "alt.tiles":"Próbki płytek ceramicznych w błękitach, terakocie i beżach",
+  "alt.catalogues":"Rozłożone katalogi materiałów i wyposażenia wnętrz",
   "alt.hero":"Kuchnia połączona z salonem, burgundowa zabudowa, marmur, podłoga w jodełkę",
   "alt.p02":"Studio, strefa spania oddzielona zasłoną od aneksu kuchennego",
   "alt.p03":"Przedpokój z szarymi frontami bezuchwytowymi",
@@ -677,24 +1392,64 @@ pl:{
 ru:{
   "meta.title":"Наталья Морозова — интерьеры, Варшава",
   "meta.desc":"Наталья Морозова, дизайн интерьера. Варшава и удалённо. Визуализации жилых проектов.",
-  "hero.meta":"ЖИЛЫЕ ИНТЕРЬЕРЫ / ВАРШАВА И УДАЛЁННО",
+  "nav.gal":"ПРОЕКТЫ","nav.svc":"УСЛУГИ","nav.about":"ОБО МНЕ","nav.op":"ОТЗЫВЫ","nav.faq":"ВОПРОСЫ","nav.contact":"КОНТАКТ",
+  "hero.meta":"ЖИЛЫЕ ИНТЕРЬЕРЫ / ВАРШАВА И УДАЛЁННО",
   "say.1":"Мои работы и проекты",
   "say.2":"Проектирую смыслы, чувства и цвет",
   "focus.line":"45 м² на Мокотуве",
   "focus.meta":"02 / ВАРШАВА",
-  "strip.label":"ДЕТАЛИ",
+  "gal.label":"ПРОЕКТЫ И ДЕТАЛИ",
   "contact.big":"Поговорим",
-  "ph.intro":"ОПИСАНИЕ ПРОЕКТА / ДОПОЛНИТЬ",
-  "ph.materials":"МАТЕРИАЛЫ И РЕШЕНИЯ / ДОПОЛНИТЬ",
-  "ph.approach":"О ПОДХОДЕ / ТЕКСТ ДОПОЛНИТЬ",
-  "ph.bio":"БИОГРАФИЯ / ТЕКСТ ДОПОЛНИТЬ",
-  "ph.form":"ФОРМА КОНТАКТА / СПРОЕКТИРОВАТЬ",
+  "form.title":"НАПИШИТЕ МНЕ",
+  "f.name":"ИМЯ",
+  "f.contact":"E MAIL ИЛИ ТЕЛЕФОН",
+  "f.msg":"СООБЩЕНИЕ",
+  "f.consent":"Соглашаюсь на связь по моему запросу. Данные используются только для ответа.",
+  "f.send":"ОТПРАВИТЬ",
+  "f.errFields":"Заполните имя и контакт.",
+  "f.errConsent":"Нужно согласие на связь.",
+  "f.ok":"Спасибо. Я отвечу.",
   "ph.blur1":"Интерьер работает тогда, когда вы входите и сразу понимаете, что это ваше место. Поэтому я начинаю с вопросов о жизни, а не о стиле.",
   "ph.blur2":"Уже десять лет я создаю эмоциональные пространства. Я проектирую смыслы, чувства и цвет, а не только планы и чертежи.",
   "c.mail":"E MAIL","c.tel":"ТЕЛЕФОН","c.msg":"WHATSAPP / TELEGRAM","c.studio":"СТУДИЯ",
-  "c.hold":"[ДОПОЛНИТЬ]",
-  "end.note":"ВИЗУАЛЬНАЯ КОНЦЕПЦИЯ / КОНТЕНТ И ДАННЫЕ ДОПОЛНИТЬ",
   "end.rights":"© 2026 НАТАЛЬЯ МОРОЗОВА",
+  "flag.draft":"ЧЕРНОВИК / ЗАПОЛНИТЬ",
+  "flag.empty":"МЕСТО ДЛЯ ОТЗЫВОВ КЛИЕНТОВ",
+  "svc.head":"Как проходит работа",
+  "svc.note":"Объём и названия этапов уточним с Натальей. Ниже место для описания каждой услуги.",
+  "svc.1":"Разговор и бриф",
+  "svc.2":"Концепция и планировка",
+  "svc.3":"Визуализации 3D",
+  "svc.4":"Подбор материалов и мебели",
+  "svc.5":"Рабочая документация",
+  "svc.tag":"ОБЪЁМ УТОЧНЯЕТСЯ",
+  "fact.city":"ГОРОД","fact.cityV":"Варшава и удалённо",
+  "fact.lang":"ЯЗЫКИ","fact.langV":"польский · русский · английский",
+  "fact.scope":"СПЕЦИАЛИЗАЦИЯ","fact.scopeV":"жилые интерьеры",
+  "fact.exp":"ОПЫТ","fact.tools":"ИНСТРУМЕНТЫ","fact.edu":"ОБРАЗОВАНИЕ",
+  "about.cap1":"ОТРАСЛЕВАЯ ВЫСТАВКА","about.cap2":"ПОДБОР МАТЕРИАЛОВ",
+  "op.head":"Что говорят после проекта",
+  "op.q1":"Место для отзыва клиента после завершённого проекта интерьера.",
+  "op.q2":"Здесь появится настоящий отзыв, когда он будет получен.",
+  "op.q3":"Третья рамка. Её можно удалить или добавить ещё, по числу отзывов.",
+  "op.tag":"ЗАПОЛНИТЬ",
+  "faq.head":"Частые вопросы",
+  "faq.note":"Три ответа уже точные. Остальные заполним вместе с Натальей.",
+  "faq.q1":"Вы работаете только в Варшаве?",
+  "faq.a1":"Нет. Я веду проекты в Варшаве и удалённо, независимо от города. При удалённой работе всё согласуем онлайн, по замерам и фотографиям квартиры.",
+  "faq.q2":"На каком языке будет идти проект?",
+  "faq.a2":"На польском, русском или английском. Общение, описания и документация могут быть на выбранном вами языке.",
+  "faq.q3":"Увижу ли я интерьер до ремонта?",
+  "faq.a3":"Да. Каждый проект я показываю на визуализациях 3D, как в галерее выше. Правки вносим на картинке, до того как что-то попадёт на объект.",
+  "faq.q4":"Сколько длится проект и от чего зависит цена?",
+  "faq.q5":"Что именно я получаю в итоге?",
+  "faq.q6":"Помогаете ли вы с закупками и на объекте?",
+  "faq.hold":"ОТВЕТ ЗАПОЛНЯЕТСЯ",
+  "alt.p14":"Прихожая с голубым комодом, высоким зеркалом и узорчатой плиткой на полу",
+  "alt.p15":"Утеплённая лоджия с рабочим столом, синим креслом и полками",
+  "alt.p16":"Комната подростка в розово серых полосах с местом для учёбы",
+  "alt.tiles":"Образцы керамической плитки в голубых, терракотовых и бежевых тонах",
+  "alt.catalogues":"Разложенные каталоги материалов и предметов интерьера",
   "alt.hero":"Кухня-гостиная, бордовая мебель, мрамор, пол ёлочкой",
   "alt.p02":"Студия, зона сна отделена шторой от кухонной зоны",
   "alt.p03":"Прихожая с серыми фасадами без ручек",
@@ -715,24 +1470,64 @@ ru:{
 en:{
   "meta.title":"Natalia Morozova — interiors, Warsaw",
   "meta.desc":"Natalia Morozova, interior design. Warsaw and remote. Visualisations of residential projects.",
-  "hero.meta":"RESIDENTIAL INTERIORS / WARSAW AND REMOTE",
+  "nav.gal":"PROJECTS","nav.svc":"SERVICES","nav.about":"ABOUT","nav.op":"REVIEWS","nav.faq":"QUESTIONS","nav.contact":"CONTACT",
+  "hero.meta":"RESIDENTIAL INTERIORS / WARSAW AND REMOTE",
   "say.1":"My work and projects",
   "say.2":"I design meaning, feeling and colour",
   "focus.line":"45 m² in Mokotów",
   "focus.meta":"02 / WARSAW",
-  "strip.label":"DETAILS",
+  "gal.label":"PROJECTS AND DETAILS",
   "contact.big":"Let us talk",
-  "ph.intro":"PROJECT DESCRIPTION / TO BE ADDED",
-  "ph.materials":"MATERIALS AND SOLUTIONS / TO BE ADDED",
-  "ph.approach":"ON THE APPROACH / COPY TO BE ADDED",
-  "ph.bio":"BIOGRAPHY / COPY TO BE ADDED",
-  "ph.form":"CONTACT FORM / TO BE DESIGNED",
+  "form.title":"WRITE TO ME",
+  "f.name":"NAME",
+  "f.contact":"EMAIL OR PHONE",
+  "f.msg":"MESSAGE",
+  "f.consent":"I agree to be contacted about my enquiry. The data is used only to reply.",
+  "f.send":"SEND",
+  "f.errFields":"Please add your name and contact.",
+  "f.errConsent":"I need your consent to reply.",
+  "f.ok":"Thank you. I will be in touch.",
   "ph.blur1":"An interior works when you walk in and know immediately that this is your place. That is why I start with questions about your life, not about style.",
   "ph.blur2":"For ten years I have been creating emotional spaces. I design meaning, feeling and colour, not only plans and drawings.",
   "c.mail":"EMAIL","c.tel":"PHONE","c.msg":"WHATSAPP / TELEGRAM","c.studio":"STUDIO",
-  "c.hold":"[TO BE ADDED]",
-  "end.note":"VISUAL CONCEPT / COPY AND DATA TO BE COMPLETED",
   "end.rights":"© 2026 NATALIA MOROZOVA",
+  "flag.draft":"DRAFT / TO BE COMPLETED",
+  "flag.empty":"SPACE FOR CLIENT REVIEWS",
+  "svc.head":"How the work goes",
+  "svc.note":"The scope and the names of the stages will be set with Natalia. Below is space to describe each service.",
+  "svc.1":"Conversation and brief",
+  "svc.2":"Concept and layout",
+  "svc.3":"3D visualisations",
+  "svc.4":"Materials and furnishings",
+  "svc.5":"Working drawings",
+  "svc.tag":"SCOPE TO BE COMPLETED",
+  "fact.city":"CITY","fact.cityV":"Warsaw and remote",
+  "fact.lang":"LANGUAGES","fact.langV":"Polish · Russian · English",
+  "fact.scope":"SPECIALISATION","fact.scopeV":"residential interiors",
+  "fact.exp":"EXPERIENCE","fact.tools":"TOOLS","fact.edu":"EDUCATION",
+  "about.cap1":"TRADE FAIR","about.cap2":"MATERIAL REVIEW",
+  "op.head":"What people say afterwards",
+  "op.q1":"Space for a review from a client after a finished interior project.",
+  "op.q2":"A real quote goes here, only once such a review has been given.",
+  "op.q3":"Third frame. It can be removed, or more can be added, depending on the number of reviews.",
+  "op.tag":"TO BE COMPLETED",
+  "faq.head":"Common questions",
+  "faq.note":"Three answers are already certain. The rest will be completed with Natalia.",
+  "faq.q1":"Do you work only in Warsaw?",
+  "faq.a1":"No. I run projects in Warsaw and remotely, whatever the city. Remotely, everything is agreed online, based on measurements and photographs of the flat.",
+  "faq.q2":"Which language will the project run in?",
+  "faq.a2":"Polish, Russian or English. Conversations, descriptions and documentation can be in the language you choose.",
+  "faq.q3":"Will I see the interior before the works start?",
+  "faq.a3":"Yes. Every project is shown in 3D visualisations, like the ones in the gallery above. Changes are made on the image, before anything reaches the site.",
+  "faq.q4":"How long does a project take and what sets the price?",
+  "faq.q5":"What exactly do I receive at the end?",
+  "faq.q6":"Do you help with purchasing and on site?",
+  "faq.hold":"ANSWER TO BE COMPLETED",
+  "alt.p14":"Hallway with a pale blue chest of drawers, a tall mirror and patterned floor tiles",
+  "alt.p15":"Enclosed loggia with a desk, a navy armchair and shelving",
+  "alt.p16":"Teenager's room in pink and grey stripes with a study place",
+  "alt.tiles":"Ceramic tile samples in blues, terracotta and beige",
+  "alt.catalogues":"Interior material and furnishing catalogues laid out",
   "alt.hero":"Open plan kitchen and living room, burgundy joinery, marble, herringbone floor",
   "alt.p02":"Studio, sleeping area separated by a curtain from the kitchenette",
   "alt.p03":"Hallway with grey handleless fronts",
@@ -792,6 +1587,68 @@ document.getElementById("lang").addEventListener("click", function(e){
 
 setLang(detectLang());
 
+/* ── formularz ───────────────────── */
+var form = document.getElementById("leadForm");
+if (form){
+  var note = document.getElementById("formNote");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var nm = form.querySelector("#f-name").value.trim();
+    var ct = form.querySelector("#f-contact").value.trim();
+    if (!nm || !ct){ note.textContent = t("f.errFields"); return; }
+    if (!form.querySelector("#f-consent").checked){ note.textContent = t("f.errConsent"); return; }
+    /* Endpoint w action="" wysyła normalnym POST. Bez niego zostaje sama walidacja. */
+    if (form.getAttribute("action")){ form.submit(); return; }
+    note.textContent = t("f.ok");
+    form.reset();
+  });
+  form.addEventListener("input", function(){ if (note.textContent) note.textContent = ""; });
+}
+
+/* ── nawigacja: menu + kotwice ───────────────
+   Poza blokiem animacji, żeby działała też bez GSAP i przy reduced-motion. */
+var burger = document.getElementById("burger");
+var menu   = document.getElementById("menu");
+
+function setMenu(open){
+  menu.classList.toggle("open", open);
+  burger.classList.toggle("is-open", open);
+  document.querySelector(".head").classList.toggle("menu-open", open);
+  burger.setAttribute("aria-expanded", open ? "true" : "false");
+  document.documentElement.style.overflow = open ? "hidden" : "";
+  if (window.lenis){ open ? lenis.stop() : lenis.start(); }
+}
+burger.addEventListener("click", function(){ setMenu(!menu.classList.contains("open")); });
+document.addEventListener("keydown", function(e){ if (e.key === "Escape") setMenu(false); });
+
+/* podniesiona flaga wstrzymuje snap galerii, żeby nie przechwycił przewijania z menu */
+var navScrolling = false;
+var navTimer;
+
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener("click", function(e){
+    var target = document.querySelector(this.getAttribute("href"));
+    if (!target) return;
+    e.preventDefault();
+    setMenu(false);
+    if (!window.lenis){ target.scrollIntoView({ behavior: "smooth" }); return; }
+
+    /* liczbowy cel zamiast elementu: Lenis nie rusza się przy ujemnym offsecie (kotwica hero) */
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var y   = target.getBoundingClientRect().top + window.scrollY - 6;
+    y = Math.max(0, Math.min(y, max));
+
+    var dist = Math.abs(y - window.scrollY);
+    navScrolling = true;
+    clearTimeout(navTimer);
+    lenis.scrollTo(y, {
+      duration: dist > 6000 ? 1.8 : 1.25,
+      onComplete: function(){ navScrolling = false; }
+    });
+    navTimer = setTimeout(function(){ navScrolling = false; }, 2600);
+  });
+});
+
 /* ── motion ─────────────────────────────────── */
 var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 var hasGSAP = typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined";
@@ -807,6 +1664,7 @@ if (!hasGSAP || reduced){
 
   if (typeof Lenis !== "undefined"){
     var lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    window.lenis = lenis;
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
     gsap.ticker.lagSmoothing(0);
@@ -858,9 +1716,6 @@ if (!hasGSAP || reduced){
     gsap.to(box.querySelectorAll(".ph-line"), {
       scaleX: 1, duration: .95, ease: EASE_OUT, stagger: .055,
       scrollTrigger: { trigger: box, start: "top 88%" }});
-    var tag = box.querySelector(".ph-tag");
-    if (tag) gsap.from(tag, { opacity: 0, duration: .7, ease: "power2.out",
-      scrollTrigger: { trigger: box, start: "top 88%" }});
   });
 
   /* image reveal: clip wipe + counter scale */
@@ -885,30 +1740,107 @@ if (!hasGSAP || reduced){
     });
   }
 
-  /* pinned horizontal strip */
-  var strip = document.getElementById("strip");
-  var track = document.getElementById("stripTrack");
-  if (strip && track && !narrow){
-    var dist = function(){ return Math.max(0, track.scrollWidth - window.innerWidth); };
-    gsap.to(track, { x: function(){ return -dist(); }, ease: "none",
-      scrollTrigger: { trigger: strip, start: "top top", end: function(){ return "+=" + dist(); },
-        pin: true, scrub: .8, invalidateOnRefresh: true, anticipatePin: 1 }});
-    gsap.from(track.children, { opacity: 0, y: 26, duration: .9, ease: EASE_SOFT, stagger: .06,
-      scrollTrigger: { trigger: strip, start: "top 72%" }});
-  } else if (strip){
-    strip.style.height = "auto";
-    strip.style.paddingBlock = "14vh 12vh";
+  /* galeria: pin + poziomy scrub, postoj na kazdym zdjeciu (snap) */
+  var gal = document.getElementById("gal");
+  var track = document.getElementById("galTrack");
+  var bar = document.getElementById("galBar");
+  var idxEl = document.getElementById("galIdx");
+
+  if (gal && track && !narrow){
+    var items = gsap.utils.toArray(".gal-item");
+    var dist = function(){ return Math.max(1, track.scrollWidth - window.innerWidth); };
+    var stops = [];
+
+    /* pozycja postoju = zdjecie wysrodkowane w oknie */
+    function buildStops(){
+      var d = dist();
+      stops = items.map(function(it){
+        var x = it.offsetLeft + it.offsetWidth / 2 - window.innerWidth / 2;
+        return gsap.utils.clamp(0, 1, x / d);
+      });
+    }
+    function nearest(v){
+      var best = 0, gap = 2;
+      for (var i = 0; i < stops.length; i++){
+        var g = Math.abs(stops[i] - v);
+        if (g < gap){ gap = g; best = i; }
+      }
+      return best;
+    }
+    buildStops();
+
+    var galTween = gsap.to(track, {
+      x: function(){ return -dist(); },
+      ease: "none",
+      scrollTrigger: {
+        trigger: gal, start: "top top",
+        end: function(){ return "+=" + dist() * 1.05; },
+        pin: true, scrub: .7, anticipatePin: 1, invalidateOnRefresh: true,
+        onRefresh: buildStops,
+        onUpdate: function(self){
+          if (bar) bar.style.transform = "scaleX(" + self.progress.toFixed(4) + ")";
+          if (idxEl) idxEl.textContent = ("0" + (nearest(self.progress) + 1)).slice(-2);
+        }
+      }
+    });
+
+    /* postoj na zdjeciu: snap prowadzony przez Lenis, zeby nie bil sie ze scrubem */
+    var galST = galTween.scrollTrigger, snapping = false;
+    function snapToNearest(){
+      if (!galST.isActive || snapping || navScrolling || !stops.length) return;
+      var y = galST.start + stops[nearest(galST.progress)] * (galST.end - galST.start);
+      if (Math.abs(y - window.scrollY) < 2) return;
+      snapping = true;
+      if (window.lenis){
+        lenis.scrollTo(y, { duration: .5, onComplete: function(){ snapping = false; } });
+      } else {
+        window.scrollTo(0, y); snapping = false;
+      }
+    }
+    ScrollTrigger.addEventListener("scrollEnd", snapToNearest);
+
+    /* parallax w kadrze: zdjecie plynie wolniej niz tasma */
+    items.forEach(function(it){
+      var img = it.querySelector("img");
+      var st = { trigger: it, containerAnimation: galTween, start: "left right", end: "right left", scrub: true };
+      gsap.fromTo(img, { xPercent: -4, scale: 1.1 }, { xPercent: 4, scale: 1.1, ease: "none", scrollTrigger: st });
+      gsap.from(it, { opacity: 0, duration: .5, ease: "power2.out",
+        scrollTrigger: { trigger: it, containerAnimation: galTween, start: "left 96%" }});
+    });
+  } else if (gal && track){
     track.style.overflowX = "auto";
     track.style.scrollSnapType = "x mandatory";
     track.style.paddingInline = "var(--gutter)";
-    Array.prototype.forEach.call(track.children, function(f){ f.style.scrollSnapAlign = "center"; });
+    Array.prototype.forEach.call(track.children, function(f){ f.style.scrollSnapAlign = "start"; });
   }
 
   /* header inverts over the two dark sections */
   var head = document.querySelector(".head");
   gsap.utils.toArray(".focus, .contact").forEach(function(sec){
+    var wine = sec.classList.contains("contact");
     ScrollTrigger.create({ trigger: sec, start: "top 56px", end: "bottom 56px",
-      onToggle: function(self){ head.classList.toggle("on-dark", self.isActive); }});
+      onToggle: function(self){
+        head.classList.toggle("on-dark", self.isActive);
+        head.classList.toggle("on-wine", self.isActive && wine);
+      }});
+  });
+
+  /* aktywna pozycja w nawigacji */
+  gsap.utils.toArray("#gal, #uslugi, #o-mnie, #opinie, #pytania, #kontakt").forEach(function(sec){
+    var links = document.querySelectorAll('.nav a[href="#' + sec.id + '"]');
+    ScrollTrigger.create({ trigger: sec, start: "top 45%", end: "bottom 45%",
+      onToggle: function(self){
+        links.forEach(function(l){ l.setAttribute("aria-current", self.isActive ? "true" : "false"); });
+      }});
+  });
+
+  /* zasłona pod nagłówkiem pojawia się dopiero po zejściu z hero */
+  ScrollTrigger.create({ start: 30, end: 99999,
+    onToggle: function(self){ head.classList.toggle("lifted", self.isActive); }});
+
+  /* FAQ: wysokosc strony zmienia sie przy rozwijaniu, ScrollTrigger musi to wiedziec */
+  document.querySelectorAll(".faq-item").forEach(function(d){
+    d.addEventListener("toggle", function(){ ScrollTrigger.refresh(); });
   });
 
   window.addEventListener("load", function(){ ScrollTrigger.refresh(); });

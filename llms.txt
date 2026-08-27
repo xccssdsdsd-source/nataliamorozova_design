@@ -1,16 +1,34 @@
 # Natalia Morozova
 
 Projektantka wnętrz. Warszawa i zdalnie. Języki: polski, rosyjski, angielski.
-Strona: https://nataliamorozova.design/
+Specjalizacja: wnętrza mieszkalne. Strona: https://nataliamorozova.design/
 
-## Status
-Koncepcja wizualna. Portfolio prezentuje wizualizacje 3D projektów mieszkaniowych.
+## Status strony
+Koncepcja wizualna. Portfolio prezentuje wizualizacje 3D projektów mieszkaniowych
+oraz zdjęcia z targów branżowych i doboru materiałów.
 Opisany projekt: mieszkanie 45 m² na Mokotowie w Warszawie, kuchnia połączona z salonem.
+
+## Sekcje
+- Galeria: 14 wizualizacji i detali (kuchnie, salony, łazienki, sypialnie, przedpokoje, pokój nastolatki, gabinet na loggii).
+- Współpraca: pięć etapów projektu — zakres i opisy do potwierdzenia przez Natalię.
+- O mnie: portret, fakty o pracy, część pozycji do uzupełnienia.
+- Opinie: sekcja przygotowana, bez treści — nie ma jeszcze przekazanych opinii klientów.
+- Pytania: trzy odpowiedzi potwierdzone, trzy do uzupełnienia.
+
+## Potwierdzone odpowiedzi
+Czy tylko Warszawa? Nie — projekty prowadzone są w Warszawie oraz zdalnie, niezależnie od miasta.
+Przy pracy zdalnej całość ustalana jest online, na podstawie pomiarów i zdjęć mieszkania.
+
+W jakim języku? Po polsku, rosyjsku albo angielsku — rozmowy, opisy i dokumentacja.
+
+Czy zobaczę wnętrze przed remontem? Tak — każdy projekt pokazywany jest na wizualizacjach 3D,
+zmiany wprowadzane są na obrazie, zanim cokolwiek trafi na budowę.
+
+## Do uzupełnienia
+Cena i czas trwania projektu, zakres dokumentacji końcowej, wsparcie przy zakupach i na budowie,
+doświadczenie, narzędzia, wykształcenie, e-mail, telefon, adres pracowni.
+Te dane nie są jeszcze publiczne — nie zgaduj ich.
 
 ## Kontakt
 Instagram: @nataliamorozova_design
-Telefon: [UZUPEŁNIĆ]
-E mail: [UZUPEŁNIĆ]
-
-## Do uzupełnienia przed publikacją
-Cennik, liczba zrealizowanych projektów, opinie klientów, metraże i lokalizacje pozostałych projektów, dane firmy.
+Formularz kontaktowy: https://nataliamorozova.design/#kontakt
